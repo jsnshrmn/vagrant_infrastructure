@@ -1,0 +1,58 @@
+---
+- hosts: vagrant
+  vars_files:
+    - my-vars.yml
+  roles:
+    - OULibraries.centos7
+  pre_tasks:
+    - name: Enable selinux for testing
+      selinux:
+        state: enforcing
+        policy: targeted
+      when: environment_name != "vagrant"
+    - name: Disable selinux for vagrant dev
+      selinux:
+        state: permissive
+        policy: targeted
+      when: environment_name == "vagrant"
+
+- hosts: cas.vagrant.dev
+  sudo: yes
+  vars_files:
+    - my-vars.yml
+  roles:
+    - OULibraries.cas
+
+- hosts: d7.vagrant.dev
+  sudo: yes
+  vars_files:
+    - my-vars.yml
+  pre_tasks:
+    - name: /srv is a directory
+      file: path=/srv state=directory mode=0755 force=yes
+
+    - name: Check preconditions for running playbook. 
+      assert:
+        that:
+          - mariadb_root_pass is defined
+  roles:
+    - OULibraries.mariadb
+    - OULibraries.apache2
+    - OULibraries.d7
+  tasks:
+    - name: Add apache user to vagrant group
+      user:
+        name: apache
+        append: yes
+        groups: vagrant
+    - name: Add vagrant user to apache group
+      user:
+        name: vagrant
+        append: yes
+        groups: apache
+
+- hosts: vagrant
+  vars_files:
+    - my-vars.yml
+  roles:
+    - OULibraries.users
