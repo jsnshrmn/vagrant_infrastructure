@@ -1,10 +1,10 @@
-# vagrant_cas
+# vagrant_infrastructure
 
 ##  Notes
 
 * Requires [Vagrant](https://www.vagrantup.com/downloads.html). 
 * Creates an Ansible control VM, so you don't need a working Ansible install.
-
+* Currently sets up CAS and Drupal environments
 
 ## Installation
 
@@ -34,4 +34,5 @@ This thing currently expects all or nothing up and provision commands. Doesn't d
 
 ## TODO
 
-Add nginx box with port forwarding turned on.
+* Add nginx box with port forwarding turned on.
+* Add support for the rest of our environments
