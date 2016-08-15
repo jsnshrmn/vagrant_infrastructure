@@ -10,8 +10,9 @@ Though there is a way to go before all of these provision nicely together, since
 
 Requirements
 ------------
+
 * Requires [Vagrant](https://www.vagrantup.com/downloads.html). 
-* Uses the Ansible local provisioner, so you don't need a working Ansible install, but you do need at least Vagrant 1.8.
+* Creates an Ansible control VM, so you don't need a working Ansible install.
 
 Installation
 ------------
@@ -22,7 +23,9 @@ Installation
 
 Notes
 ------------
-The Vagrantfile tries to bind nginx box to port 443, which is privileged on Unix and Unix-like systems.  You can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
+
+* This thing currently expects all or nothing up and provision commands. Doesn't do useful port forwarding currently.
+* The Vagrantfile tries to bind nginx box to port 443, which is privileged on Unix and Unix-like systems.  You can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
 
 ```
 sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
@@ -45,3 +48,8 @@ It maybe be neccessary to do a `halt` or `reload` if the guest VM gets confused 
 Less frequently, you'll may want to reprovision to get the lastest changes, or rebuild your VM Completely. In that case, you'll need these commands:
 * `vagrant provision` will re-run the ansible provisioners
 * `vagrant destroy` to delete the VM, in case you want to start over
+
+TODO
+------------
+
+* Add support for the rest of our environments
