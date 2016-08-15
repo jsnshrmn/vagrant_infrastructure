@@ -51,6 +51,13 @@
         append: yes
         groups: apache
 
+- hosts: nginx.vagrant.dev
+  sudo: yes
+  vars_files:
+    - my-vars.yml
+  roles:
+    - OULibraries.nginx
+
 - hosts: vagrant
   vars_files:
     - my-vars.yml

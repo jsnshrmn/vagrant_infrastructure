@@ -45,7 +45,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # CAS
   config.vm.define "cas" do |cas|
     cas.vm.hostname = "cas.vagrant.dev"
-#    config.vm.network "forwarded_port", guest:8443, host:8443
     cas.vm.provision "shell",
       path: "gethostinfo.sh", keep_color: "True"
   end
@@ -53,15 +52,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Drupal 7
   config.vm.define "d7" do |d7|
     d7.vm.hostname = "d7.vagrant.dev"
-#    config.vm.network "forwarded_port", guest:443, host:443
     d7.vm.provision "shell",
       path: "gethostinfo.sh", keep_color: "True"
   end
 
+  # Nginx
+  config.vm.define "nginx" do |nginx|
+    nginx.vm.provider :virtualbox do |v|
+      v.memory = 512
+      v.linked_clone = true
+    end
+    nginx.vm.hostname = "nginx.vagrant.dev"
+    nginx.vm.network "forwarded_port", guest:443, host:443
+    nginx.vm.provision "shell",
+      path: "gethostinfo.sh", keep_color: "True"
+  end
   # Ansible Control
   config.vm.define "ansible" do |ansible|
     ansible.vm.provider :virtualbox do |v|
-      v.memory = 1024
+      v.memory = 512
       v.linked_clone = true
     end
     ansible.vm.hostname = "ansible.vagrant.dev"

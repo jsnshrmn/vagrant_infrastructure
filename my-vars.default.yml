@@ -36,3 +36,21 @@ httpd_dn_suffix: "vagrant.dev"
 # Local APC credentials
 apc_username: apcuser
 apc_password: apcpass
+
+# Front end
+# nginx_star_sites: [] # Use this if you have no star sites
+nginx_star_sites:
+ - name: d7.vagrant.dev
+   upstreams:
+     - name: d7-vagrant-dev
+       servers:
+         - d7.vagrant.dev:443
+   robots: disallow
+# nginx_literal_sites: [] # Use this if you have no literal sites
+nginx_literal_sites:
+ - name: cas.vagrant.dev
+   upstreams:
+     - name: cas-vagrant-dev
+       servers:
+         - cas.vagrant.dev:8443
+   robots: disallow

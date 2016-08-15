@@ -7,6 +7,10 @@
   version: master
   name: OULibraries.cas
 
+- src: https://github.com/OULibraries/ansible-role-nginx
+  version: master
+  name: OULibraries.nginx
+
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
   version: master
   name: OULibraries.postfix-mta
