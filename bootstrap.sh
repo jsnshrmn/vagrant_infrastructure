@@ -15,12 +15,12 @@ cp /vagrant/ansible.hosts /etc/ansible/hosts
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 chmod -x /etc/ansible/hosts
 
-# run ansible
+# Install ansible roles
 ansible-galaxy install -r /vagrant/requirements.yml --force
 
-
+# run ansible
 sudo -u vagrant bash -c "
 # Keep colors intact
 export PYTHONUNBUFFERED=1
 export ANSIBLE_FORCE_COLOR=1
-ansible-playbook --inventory-file=/etc/ansible/hosts /vagrant/vagrant.yml"
+ansible-playbook /vagrant/vagrant.yml"
