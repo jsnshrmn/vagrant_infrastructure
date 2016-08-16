@@ -33,6 +33,13 @@ sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
 
 Where the specified executable is the actual vagrant binary, not the wrapper script that calls it. If this turns out to be unbearably obnoxious, we may change it in the future.
 
+* This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
+```
+address=/vagrant.dev/127.0.0.1
+```
+Or you could edit your hosts file, or use Ngrok.
+
+
 Vagrant Usage 
 ------------
 
