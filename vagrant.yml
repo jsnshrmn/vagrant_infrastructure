@@ -5,16 +5,8 @@
   roles:
     - OULibraries.centos7
   pre_tasks:
-    - name: Enable selinux for testing
-      selinux:
-        state: enforcing
-        policy: targeted
-      when: environment_name != "vagrant"
-    - name: Disable selinux for vagrant dev
-      selinux:
-        state: permissive
-        policy: targeted
-      when: environment_name == "vagrant"
+    - include: pretasks.yml
+      sudo: yes
 
 - hosts: cas.vagrant.dev
   sudo: yes
