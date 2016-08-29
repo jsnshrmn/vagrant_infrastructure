@@ -19,10 +19,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # write hostfile when provisioning
-  if  ['up', 'provision'].include? VAGRANTFILE_COMMAND
+  if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
     # Start new Ansible hosts file for ansible control machine
     File.open('ansible.hosts', 'w') do |hosts|
-      hosts.puts "ansible.vagrant.dev ansible_connection=local"
+      hosts.puts "ansible.vagrant.local ansible_connection=local"
       hosts.puts "[vagrant]"
     end
     # Start new hosts file for ansible control machine
@@ -31,7 +31,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     # Start new ssh.cfg file for ansible control machine
     File.open('ssh.cfg', 'w') do |hosts|
-      hosts.puts "Host *.vagrant.dev"
+      hosts.puts "Host *.vagrant.local"
       hosts.puts "  StrictHostKeyChecking no"
     end
   end
@@ -44,16 +44,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # CAS
   config.vm.define "cas" do |cas|
-    cas.vm.hostname = "cas.vagrant.dev"
+    cas.vm.network "forwarded_port", guest:8443, host:8443
+    cas.vm.hostname = "cas.vagrant.local"
     cas.vm.provision "shell",
-      path: "gethostinfo.sh", keep_color: "True"
+      path: "gethostinfo.sh", keep_color: "True",
+      run: "always"
   end
 
   # Drupal 7
   config.vm.define "d7" do |d7|
-    d7.vm.hostname = "d7.vagrant.dev"
+    d7.vm.hostname = "d7.vagrant.local"
     d7.vm.provision "shell",
-      path: "gethostinfo.sh", keep_color: "True"
+      path: "gethostinfo.sh", keep_color: "True",
+      run: "always"
   end
 
   # Nginx
@@ -62,10 +65,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.memory = 512
       v.linked_clone = true
     end
-    nginx.vm.hostname = "nginx.vagrant.dev"
-    nginx.vm.network "forwarded_port", guest:443, host:443
+    nginx.vm.hostname = "nginx.vagrant.local"
+    nginx.vm.network "forwarded_port", guest:443, host:64443
     nginx.vm.provision "shell",
-      path: "gethostinfo.sh", keep_color: "True"
+      path: "gethostinfo.sh", keep_color: "True",
+      run: "always"
   end
   # Ansible Control
   config.vm.define "ansible" do |ansible|
@@ -73,9 +77,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.memory = 512
       v.linked_clone = true
     end
-    ansible.vm.hostname = "ansible.vagrant.dev"
+    ansible.vm.hostname = "ansible.vagrant.local"
     ansible.vm.provision "shell",
-      path: "gethostinfo.sh", keep_color: "True"
+      path: "gethostinfo.sh", keep_color: "True",
+      run: "always"
     ansible.vm.provision "shell",
       path: "bootstrap.sh", keep_color: "True"
   end

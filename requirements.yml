@@ -1,6 +1,6 @@
 ---
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2016-08-10.1
+  version: v2016-08-24.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-cas

@@ -20,3 +20,6 @@ my-vars.yml
 ansible.hosts
 hosts
 ssh.cfg
+
+# Ignore iso files.
+*.iso

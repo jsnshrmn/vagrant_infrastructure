@@ -8,14 +8,14 @@
     - include: pretasks.yml
       sudo: yes
 
-- hosts: cas.vagrant.dev
+- hosts: cas.vagrant.local
   sudo: yes
   vars_files:
     - my-vars.yml
   roles:
     - OULibraries.cas
 
-- hosts: d7.vagrant.dev
+- hosts: d7.vagrant.local
   sudo: yes
   vars_files:
     - my-vars.yml
@@ -43,10 +43,14 @@
         append: yes
         groups: apache
 
-- hosts: nginx.vagrant.dev
+- hosts: nginx.vagrant.local
   sudo: yes
   vars_files:
     - my-vars.yml
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
   roles:
     - OULibraries.nginx
 
