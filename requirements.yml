@@ -23,14 +23,17 @@
   version: v2016-08-10.0
   name: OULibraries.apache2
 
-# - src: https://github.com/OULibraries/ansible-role-d7
-#   version: v2016-07-29.0
-#   name: OULibraries.d7
+- src: https://github.com/OULibraries/ansible-role-d7
+  version: v2016-07-29.0
+  name: OULibraries.d7
 
 - src: https://github.com/OULibraries/ansible-role-users
   version: v2016-08-10.0
   name: OULibraries.users
 
+- src: https://github.com/OULibraries/ansible-role-java
+  name: OULibraries.java
+  
 - src: https://github.com/geerlingguy/ansible-role-solr
   version: 3.2.0
   name: geerlingguy.solr
