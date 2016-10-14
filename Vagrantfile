@@ -3,7 +3,7 @@
 
 ##### Config
 
-VAGRANTFILE_USERNAME = "lmc"
+VAGRANTFILE_USERNAME = "vagrant"
 VAGRANTFILE_PLAYBOOK = "project/playbooks/vagrant.yml"
 VAGRANTFILE_HOSTSRB = "project/vagrant.rb"
 
