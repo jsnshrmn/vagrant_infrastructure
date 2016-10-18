@@ -24,3 +24,9 @@ ssh.cfg
 
 # Ignore iso files.
 *.iso
+
+# Ignore ansible vault files
+vault.yml
+
+# Ignore ansible vault password file
+vault_password.txt
