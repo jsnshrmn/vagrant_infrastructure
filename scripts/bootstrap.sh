@@ -4,6 +4,9 @@
 yum install -y git
 yum install -y ansible
 
+# create ansible vault secret if one doesn't exist.
+stat /vagrant/vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "a-zA-Z0-9~!@#$%^&*_-" | head -c${1:-254};echo;' > /vagrant/vault_password.txt
+
 # copy hosts file provided by vagrant provisioner
 cp /vagrant/hosts /etc/hosts
 cp /vagrant/ssh.cfg /home/vagrant/.ssh/config
