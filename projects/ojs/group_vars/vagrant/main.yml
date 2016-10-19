@@ -35,3 +35,14 @@ nginx_star_sites:
    robots: disallow
 # nginx_literal_sites: [] # Use this if you have no literal sites
 nginx_literal_sites: []
+
+
+# Credentials for creating the OJS DB
+ojs_mariadb_login_username: root
+ojs_mariadb_login_password: "{{ mariadb_root_pass }}"
+
+# DB Client config
+ojs_mariadb_host: localhost
+ojs_mariadb_port: 3306
+#ojs_mariadb_username:
+ojs_mariadb_password: "{{ ojs_mariadb_username }}"
