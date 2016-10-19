@@ -1,7 +1,7 @@
 ---
 
 - src: https://github.com/OULibraries/ansible-role-apache2
-  version: v2016-08-10.0
+  version: v2016-10-17.0
   name: OULibraries.apache2
 
 - src: https://github.com/OULibraries/ansible-role-cas
@@ -9,7 +9,7 @@
   name: OULibraries.cas
 
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2016-08-24.0
+  version: v2016-10-17.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
@@ -21,11 +21,11 @@
   name: OULibraries.java
 
 - src: https://github.com/OULibraries/ansible-role-mariadb
-  version: v2016-04-08.0
+  version: v2016-09-26.0
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: master
+  version: v2016-08-29
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
@@ -37,7 +37,7 @@
   name: OULibraries.ojs
 
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
-  version: master
+  version: v2016-10-17.0
   name: OULibraries.postfix-mta
  
 - src: https://github.com/geerlingguy/ansible-role-solr
