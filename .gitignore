@@ -30,3 +30,6 @@ vault.yml
 
 # Ignore ansible vault password file
 vault_password.txt
+
+# Ignore symlink for active project
+project

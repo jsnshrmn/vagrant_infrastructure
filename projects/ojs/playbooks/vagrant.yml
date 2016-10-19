@@ -1,0 +1,42 @@
+---
+- hosts: vagrant
+  roles:
+    - OULibraries.centos7
+  pre_tasks:
+    - include: pretasks.yml
+      sudo: yes
+
+- hosts: ojs.vagrant.local
+  sudo: yes
+  roles:
+    - OULibraries.mariadb
+    - OULibraries.apache2
+#    - OULibraries.ojs
+    - name: Check preconditions for running playbook. 
+      assert:
+        that:
+          - mariadb_root_pass is defined
+  tasks:
+    - name: Add apache user to vagrant group
+      user:
+        name: apache
+        append: yes
+        groups: vagrant
+    - name: Add vagrant user to apache group
+      user:
+        name: vagrant
+        append: yes
+        groups: apache
+
+- hosts: nginx.vagrant.local
+  sudo: yes
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
+  roles:
+    - OULibraries.nginx
+
+- hosts: vagrant
+  roles:
+    - OULibraries.users
