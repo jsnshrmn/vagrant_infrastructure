@@ -53,4 +53,4 @@ nginx_literal_sites:
      - name: cas-vagrant-dev
        servers:
          - cas.vagrant.dev:8443
-robots: disallow
+   robots: disallow
