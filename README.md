@@ -19,7 +19,19 @@ Installation
 
 1. Install Vagrant.
 1. Clone this repo to a local folder.
-1. Copy `my-vars.default.yml` to `my-vars.yml` and insert your particulars.
+1. symlink your project in projects to project, eg.
+```
+# Linux
+ln -s projects/example project
+
+# Windows
+mklink /J project projects\example
+```
+1. set an editor in your shell environment, eg.
+
+```
+export EDITOR=vim
+```
 
 Notes
 ------------
