@@ -11,7 +11,7 @@
   roles:
     - OULibraries.mariadb
     - OULibraries.apache2
-#    - OULibraries.ojs
+    - OULibraries.ojs
     - name: Check preconditions for running playbook. 
       assert:
         that:
