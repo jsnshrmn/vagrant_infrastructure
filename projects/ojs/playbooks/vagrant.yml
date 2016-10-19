@@ -12,7 +12,8 @@
     - OULibraries.mariadb
     - OULibraries.apache2
     - OULibraries.ojs
-    - name: Check preconditions for running playbook. 
+  pre_tasks:
+    - name: Check preconditions for running playbook.
       assert:
         that:
           - mariadb_root_pass is defined

@@ -34,4 +34,4 @@ nginx_star_sites:
          - cas.vagrant.dev:443
    robots: disallow
 # nginx_literal_sites: [] # Use this if you have no literal sites
-nginx_literal_sites:[]
+nginx_literal_sites: []
