@@ -47,7 +47,7 @@ Where the specified executable is the actual vagrant binary, not the wrapper scr
 
 * This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
 ```
-address=/vagrant.dev/127.0.0.1
+address=/vagrant.localdomain/127.0.0.1
 ```
 Or you could edit your hosts file, or use Ngrok.
 

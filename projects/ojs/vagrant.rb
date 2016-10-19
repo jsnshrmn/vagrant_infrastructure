@@ -2,11 +2,11 @@
 
 # OJS
 config.vm.define "ojs" do |ojs|
-  ojs.vm.hostname = "ojs.vagrant.local"
+  ojs.vm.hostname = "ojs.vagrant.localdomain"
 end
 
 # Nginx
 config.vm.define "nginx" do |nginx|
-  nginx.vm.hostname = "nginx.vagrant.local"
+  nginx.vm.hostname = "nginx.vagrant.localdomain"
   nginx.vm.network "forwarded_port", guest:443, host:64443
 end

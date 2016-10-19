@@ -6,7 +6,7 @@
     - include: pretasks.yml
       sudo: yes
 
-- hosts: ojs.vagrant.local
+- hosts: ojs.vagrant.localdomain
   sudo: yes
   roles:
     - OULibraries.mariadb
@@ -29,7 +29,7 @@
         append: yes
         groups: apache
 
-- hosts: nginx.vagrant.local
+- hosts: nginx.vagrant.localdomain
   sudo: yes
   pre_tasks:
     - copy:

@@ -18,7 +18,7 @@ ssh_brokers:
 mariadb_root_pass: 'root'
 
 # Passing the local domain on to apache
-httpd_dn_suffix: "vagrant.dev"
+httpd_dn_suffix: "vagrant.localdomain"
 
 # Local APC credentials
 apc_username: apcuser
@@ -27,11 +27,11 @@ apc_password: apcpass
 # Front end
 # nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
- - name: cas.vagrant.dev
+ - name: journals.vagrant.localdomain
    upstreams:
-     - name: cas-vagrant-dev
+     - name: journals-vagrant-localdomain
        servers:
-         - cas.vagrant.dev:443
+         - ojs.vagrant.localdomain:443
    robots: disallow
 # nginx_literal_sites: [] # Use this if you have no literal sites
 nginx_literal_sites: []
