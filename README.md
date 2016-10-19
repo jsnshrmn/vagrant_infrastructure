@@ -21,7 +21,11 @@ Installation
 1. Clone this repo to a local folder.
 1. symlink your project in projects to project, eg.
 ```
+# Linux
 ln -s projects/example project
+
+# Windows
+mklink /J project projects\example
 ```
 1. set an editor in your shell environment, eg.
 
