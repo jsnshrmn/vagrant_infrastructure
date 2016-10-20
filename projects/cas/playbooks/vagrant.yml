@@ -1,7 +1,5 @@
 ---
 - hosts: vagrant
-  vars_files:
-    - my-vars.yml
   roles:
     - OULibraries.centos7
   pre_tasks:
@@ -10,15 +8,11 @@
 
 - hosts: cas.vagrant.local
   sudo: yes
-  vars_files:
-    - my-vars.yml
   roles:
     - OULibraries.cas
 
 - hosts: d7.vagrant.local
   sudo: yes
-  vars_files:
-    - my-vars.yml
   pre_tasks:
     - name: /srv is a directory
       file: path=/srv state=directory mode=0755 force=yes
@@ -45,8 +39,6 @@
 
 - hosts: nginx.vagrant.local
   sudo: yes
-  vars_files:
-    - my-vars.yml
   pre_tasks:
     - copy:
         src: /vagrant/dhparam.pem
@@ -55,7 +47,5 @@
     - OULibraries.nginx
 
 - hosts: vagrant
-  vars_files:
-    - my-vars.yml
   roles:
     - OULibraries.users
