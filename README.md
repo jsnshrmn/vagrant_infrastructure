@@ -19,13 +19,14 @@ Installation
 
 1. Install Vagrant.
 1. Clone this repo to a local folder.
-1. Copy `my-vars.default.yml` to `my-vars.yml` and insert your particulars.
-1. Generate a local ansible vault passphrase.  Feel free to make it quite strong, eg.
-
+1. symlink your project in projects to project, eg.
 ```
-stat vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "a-zA-Z0-9~!@#$%^&*_-" | head -c${1:-254};echo;' > vault_password.txt
-```
+# Linux
+ln -s projects/example project
 
+# Windows
+mklink /J project projects\example
+```
 1. set an editor in your shell environment, eg.
 
 ```
@@ -46,7 +47,7 @@ Where the specified executable is the actual vagrant binary, not the wrapper scr
 
 * This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
 ```
-address=/vagrant.dev/127.0.0.1
+address=/vagrant.localdomain/127.0.0.1
 ```
 Or you could edit your hosts file, or use Ngrok.
 

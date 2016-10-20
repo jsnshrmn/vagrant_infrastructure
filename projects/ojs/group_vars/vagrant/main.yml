@@ -14,19 +14,6 @@ ssh_brokers:
     ip: '127.0.0.1'
     dn_suffix: 'localdomain'
 
-# LDAP General
-cas_ldap_url: "ldaps://ldap.vagrant.localdomain"
-cas_ldap_use_ssl: "false"
-cas_ldap_useStartTLS: "true"
-cas_ldap_rootDn: "CN=root,OU=Scary,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_baseDn: "ou=General,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_managerDn: "CN=root,OU=Scary,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_managerPassword: "mypassword"
-
-# LDAP authentication
-cas_ldap_domain: "vagrant.localdomain"
-
-
 # root db password
 mariadb_root_pass: 'root'
 
@@ -40,17 +27,22 @@ apc_password: apcpass
 # Front end
 # nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
- - name: d7.vagrant.localdomain
+ - name: journals.vagrant.localdomain
    upstreams:
-     - name: d7-vagrant-localdomain
+     - name: journals-vagrant-localdomain
        servers:
-         - d7.vagrant.localdomain:443
+         - ojs.vagrant.localdomain:443
    robots: disallow
 # nginx_literal_sites: [] # Use this if you have no literal sites
-nginx_literal_sites:
- - name: cas.vagrant.localdomain
-   upstreams:
-     - name: cas-vagrant-localdomain
-       servers:
-         - cas.vagrant.localdomain:8443
-   robots: disallow
+nginx_literal_sites: []
+
+
+# Credentials for creating the OJS DB
+ojs_mariadb_login_username: root
+ojs_mariadb_login_password: "{{ mariadb_root_pass }}"
+
+# DB Client config
+ojs_mariadb_host: localhost
+ojs_mariadb_port: 3306
+#ojs_mariadb_username:
+ojs_mariadb_password: "{{ ojs_mariadb_username }}"

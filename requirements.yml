@@ -1,43 +1,49 @@
 ---
-- src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2016-08-24.0
-  name: OULibraries.centos7
+
+- src: https://github.com/OULibraries/ansible-role-apache2
+  version: v2016-10-17.0
+  name: OULibraries.apache2
 
 - src: https://github.com/OULibraries/ansible-role-cas
   version: master
   name: OULibraries.cas
 
-- src: https://github.com/OULibraries/ansible-role-nginx
-  version: master
-  name: OULibraries.nginx
-
-- src: https://github.com/OULibraries/ansible-role-postfix-mta
-  version: master
-  name: OULibraries.postfix-mta
-
-- src: https://github.com/OULibraries/ansible-role-mariadb
-  version: v2016-04-08.0
-  name: OULibraries.mariadb
-
-- src: https://github.com/OULibraries/ansible-role-apache2
-  version: v2016-08-10.0
-  name: OULibraries.apache2
+- src: https://github.com/OULibraries/ansible-role-centos7
+  version: v2016-10-17.0
+  name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
   version: v2016-07-29.0
   name: OULibraries.d7
 
-- src: https://github.com/OULibraries/ansible-role-users
-  version: v2016-08-10.0
-  name: OULibraries.users
-
 - src: https://github.com/OULibraries/ansible-role-java
+  version: master
   name: OULibraries.java
-  
-- src: https://github.com/geerlingguy/ansible-role-solr
-  version: 3.2.0
-  name: geerlingguy.solr
+
+- src: https://github.com/OULibraries/ansible-role-mariadb
+  version: v2016-09-26.0
+  name: OULibraries.mariadb
+
+- src: https://github.com/OULibraries/ansible-role-nginx
+  version: v2016-08-29
+  name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
   version: v2016-09-01.0
   name: OULibraries.ngrok
+
+- src: https://github.com/OULibraries/ansible-role-ojs
+  version: master
+  name: OULibraries.ojs
+
+- src: https://github.com/OULibraries/ansible-role-postfix-mta
+  version: v2016-10-17.0
+  name: OULibraries.postfix-mta
+ 
+- src: https://github.com/geerlingguy/ansible-role-solr
+  version: 3.2.0
+  name: geerlingguy.solr
+
+- src: https://github.com/OULibraries/ansible-role-users
+  version: v2016-08-10.0
+  name: OULibraries.users
