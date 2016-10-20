@@ -18,10 +18,14 @@
         that:
           - mariadb_root_pass is defined
   roles:
-    - OULibraries.mariadb
-    - OULibraries.apache2
-    - OULibraries.d7
-    - OULibraries.ngrok
+    - role: OULibraries.mariadb
+      tags: mariadb
+    - role: OULibraries.apache2
+      tags: apache2
+    - role: OULibraries.d7
+      tags: d7
+    - role: OULibraries.ngrok
+      tags: ngrok
 
   post_tasks:
     - name: Make sure securepath works
@@ -49,4 +53,5 @@
 
 - hosts: vagrant
   roles:
-    - OULibraries.users
+    - role: OULibraries.users
+      tags: users
