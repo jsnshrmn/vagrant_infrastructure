@@ -18,8 +18,13 @@ chmod 600 /home/vagrant/.ssh/config
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 #chmod -x /etc/ansible/hosts
 
-# Install ansible roles
-ansible-galaxy install -r /vagrant/requirements.yml --force
+# Install default ansible roles
+# Or project-specific roles if present
+VAGRANT_REQUIREMENTS='/vagrant/requirements.yml'
+if [ -f '/vagrant/project/requirements.yml' ]; then
+    VAGRANT_REQUIREMENTS='/vagrant/project/requirements.yml'
+fi
+ansible-galaxy install -r "${VAGRANT_REQUIREMENTS}" --force
 
 # run ansible
 sudo -u vagrant bash -c "
