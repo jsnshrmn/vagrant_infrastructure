@@ -26,20 +26,20 @@ ngrok_authtoken: "{{my_ngrok_authtoken }}"
 apc_username: "apcuser"
 apc_password: "apcpass123"
 
+# Passing the local domain on to apache
+httpd_dn_suffix: "test.lib.ngrok.io"
+
 # Configuration for tunnels.
 # Note that because proto == tls, traffic is encrypted end-to-end, rather than cleartext. This is good.
 # DO NOT PASS SENSITIVE DATA OVER CLEARTEXT TUNNELS.
 tunnels:
-  - name: 'repository'
-    dn_suffix: 'test.lib.ngrok.io'
+  - name: '*'
+    dn_suffix: '{{ httpd_dn_suffix }}'
     port: '443'
     proto: 'tls'
     
 # root db password
 mariadb_root_pass: 'root'
-
-# Passing the local domain on to apache
-httpd_dn_suffix: "test.lib.ngrok.io"
 
 # Email config
 
@@ -57,16 +57,10 @@ sendmail_users:
 solr_version: "4.10.4"    
 solr_install_dir: "/opt/"
 solr_install_path: "/opt/solr"
-
 solr_home: "/var/solr"
-
 solr_port: "8983"
-
 solr_xmx: "512M"
-
 solr_cores:
   - collection1
-
 solr_log_file_path: "/var/log/solr.log"
-
 solr_host: "0.0.0.0"
