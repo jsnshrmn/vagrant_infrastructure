@@ -19,16 +19,16 @@ VAGRANTFILE_PATH = File.dirname(__FILE__)
 if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
   # Ansible inventory for control machine
   File.open(VAGRANTFILE_PATH+'/project/ansible.hosts', 'w') do |hosts|
-    hosts.puts "ansible.vagrant.local ansible_connection=local"
+    hosts.puts "ansible.vagrant.localdomain ansible_connection=local"
     hosts.puts "[vagrant]"
   end
   # /etc/hosts file for control machine
   File.open(VAGRANTFILE_PATH+'/hosts', 'w') do |hosts|
-    hosts.puts "127.0.0.1	localhost.localdomain localhost"
+    hosts.puts "127.0.0.1	localhost.vagrant.localdomain localhost"
   end
   # ~/.ssh/config for vagrant user on control machine
   File.open(VAGRANTFILE_PATH+'/ssh.cfg', 'w') do |hosts|
-    hosts.puts "Host *.vagrant.local"
+    hosts.puts "Host *.vagrant.localdomain"
     hosts.puts "  StrictHostKeyChecking no"
   end
 end
@@ -61,7 +61,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Build Ansible control machine and run vagrant playbook
   config.vm.define "ansible" do |ansible|
-    ansible.vm.hostname = "ansible.vagrant.local"
+    ansible.vm.hostname = "ansible.vagrant.localdomain"
     ansible.vm.provider :virtualbox do |v|
       v.memory = 256  # Keeping overhead low
       v.cpus = 1
