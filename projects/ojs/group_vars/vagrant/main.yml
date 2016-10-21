@@ -44,5 +44,4 @@ ojs_mariadb_login_password: "{{ mariadb_root_pass }}"
 # DB Client config
 ojs_mariadb_host: localhost
 ojs_mariadb_port: 3306
-#ojs_mariadb_username:
 ojs_mariadb_password: "{{ ojs_mariadb_username }}"
