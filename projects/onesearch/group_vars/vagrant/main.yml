@@ -27,7 +27,7 @@ apc_username: "apcuser"
 apc_password: "apcpass123"
 
 # Passing the local domain on to apache
-httpd_dn_suffix: "test.lib.ngrok.io"
+httpd_dn_suffix: "{{ my_httpd_dn_suffix }}"
 
 # Configuration for tunnels.
 # Note that because proto == tls, traffic is encrypted end-to-end, rather than cleartext. This is good.
