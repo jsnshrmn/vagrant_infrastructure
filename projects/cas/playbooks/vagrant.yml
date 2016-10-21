@@ -6,12 +6,12 @@
     - include: pretasks.yml
       sudo: yes
 
-- hosts: cas.vagrant.local
+- hosts: cas.vagrant.localdomain
   sudo: yes
   roles:
     - OULibraries.cas
 
-- hosts: d7.vagrant.local
+- hosts: d7.vagrant.localdomain
   sudo: yes
   pre_tasks:
     - name: /srv is a directory
@@ -37,7 +37,7 @@
         append: yes
         groups: apache
 
-- hosts: nginx.vagrant.local
+- hosts: nginx.vagrant.localdomain
   sudo: yes
   pre_tasks:
     - copy:
