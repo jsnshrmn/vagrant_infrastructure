@@ -1,6 +1,6 @@
 ---
 # Style of environment to build: vagrant, test or prod
-environment_name: "vagrant"
+environment_name: "test"
 
 # Local credentials
 # additional shell accounts
@@ -9,16 +9,17 @@ users:
     groups: 'wheel'
     pubkey: 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAtkaGGkonm3HJmRoupKgM0A04uZu3aPhFyWmyMWCHTk1TtDskTgO0krOgUKuxAB2G/d39Xz6oISL9+dQdZt5aEJK7WoHpkK8l8xXfrIJ8OiWuJ+IRygjjLsib8tVTRsEIvMrQUtnhGzVNM7lQNXaEviGmR+ZunH68fv/QpomR5qW/veLFsR0KQLnd8yoG2+Tm8EdYouDcUPTS1nr9XdPSWGcsvpDq48JdxSmtXXC/8NHfdhpmCMmoC/IXbFl7typeLd9gt7EFvqOLWEbysEF3hD6hMAV3MEWaDnhf25n2cUgdAvdk086REgg2bXx1dBdeSi+wq5MadfP80UuPuaN2lw== libacct@ou.edu'
 
-ssh_brokers:
-  - alias: 'localhost'
-    ip: '127.0.0.1'
-    dn_suffix: 'localdomain'
+ssh_brokers: []
+
+# Should be something.ngrok.io. set it in your vault / secrets file.
+#vagrant_ojs_dn:
 
 # root db password
 mariadb_root_pass: 'root'
 
 # Passing the local domain on to apache
-httpd_dn_suffix: "vagrant.localdomain"
+#httpd_dn_suffix: "vagrant.localdomain"
+httpd_dn_suffix: "{{ vagrant_ojs_dn }}"
 
 # Local APC credentials
 apc_username: apcuser
@@ -27,7 +28,8 @@ apc_password: apcpass
 # Front end
 # nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
- - name: journals.vagrant.localdomain
+# - name: journals.vagrant.localdomain
+ - name: "journals.{{ vagrant_ojs_dn }}"
    upstreams:
      - name: journals-vagrant-localdomain
        servers:
@@ -45,3 +47,8 @@ ojs_mariadb_login_password: "{{ mariadb_root_pass }}"
 ojs_mariadb_host: localhost
 ojs_mariadb_port: 3306
 ojs_mariadb_password: "{{ ojs_mariadb_username }}"
+
+# OJS site info
+ojs_site_username: vagrant
+ojs_site_password: vagrant
+ojs_site_email: vagrant@localhost.localdomain
