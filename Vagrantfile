@@ -16,11 +16,6 @@ VAGRANTFILE_PATH = File.dirname(__FILE__)
 # need to start new versions of the config files that need to know
 # about our VMs.
 if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
-  # Ansible inventory for control machine
-  File.open(VAGRANTFILE_PATH+"/"+VAGRANTFILE_PROJECT+'/ansible.hosts', 'w') do |hosts|
-    hosts.puts "ansible.vagrant.localdomain ansible_connection=local"
-    hosts.puts "[vagrant]"
-  end
   # /etc/hosts file for control machine
   File.open(VAGRANTFILE_PATH+'/hosts', 'w') do |hosts|
     hosts.puts "127.0.0.1	localhost.localdomain localhost"

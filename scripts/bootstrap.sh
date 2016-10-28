@@ -13,16 +13,18 @@ cp /vagrant/ssh.cfg /home/vagrant/.ssh/config
 chown vagrant:vagrant /home/vagrant/.ssh/config
 chmod 600 /home/vagrant/.ssh/config
 
-# ansible complains if these files are on the windows share because permissions
-#cp /vagrant/ansible.hosts /etc/ansible/hosts
+# ansible complains if this file is on the windows share because permissions
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
-#chmod -x /etc/ansible/hosts
+
+# ansible uses the inventory path to locate group and host vars so we have to
+# make sure the script is in the project folder
+cp "/vagrant/scripts/inventory.py" "/vagrant/${1}"
 
 # Install default ansible roles
 # Or project-specific roles if present
 VAGRANT_REQUIREMENTS='/vagrant/requirements.yml'
 if [ -f "/vagrant/{$1}/requirements.yml" ]; then
-    VAGRANT_REQUIREMENTS='/vagrant/{$1}/requirements.yml'
+    VAGRANT_REQUIREMENTS="/vagrant/${1}/requirements.yml"
 fi
 ansible-galaxy install -r "${VAGRANT_REQUIREMENTS}" --force
 
@@ -31,5 +33,5 @@ sudo -u vagrant bash -c "
 # Keep colors intact
 export PYTHONUNBUFFERED=1
 export ANSIBLE_FORCE_COLOR=1
-ansible-playbook /vagrant/{$1}/playbooks/vagrant.yml
+ansible-playbook /vagrant/${1}/playbooks/vagrant.yml
 "

@@ -5,9 +5,6 @@ IP=$(ip addr | grep 'state UP' -A2 | tail -n1 | awk '{print $2}' | cut -f1  -d'/
 HOSTNAME=$(hostname)
 VAGRANTNAME=$(hostname | cut -d"." -f 1)
 
-# Ends up in /etc/ansible/hosts on ansible machine
-echo "${HOSTNAME}" >> /vagrant/project/ansible.hosts
-
 # Ends up in /etc/hosts on ansible machine
 echo "${IP}	${HOSTNAME}" >> /vagrant/hosts
 
