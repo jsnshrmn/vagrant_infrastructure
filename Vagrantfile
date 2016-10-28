@@ -4,8 +4,7 @@
 ##### Config
 
 VAGRANTFILE_USERNAME = "vagrant"
-VAGRANTFILE_PLAYBOOK = "project/playbooks/vagrant.yml"
-VAGRANTFILE_HOSTSRB = "project/vagrant.rb"
+VAGRANTFILE_PROJECT="project"
 
 ##### End of Config
 
@@ -18,7 +17,7 @@ VAGRANTFILE_PATH = File.dirname(__FILE__)
 # about our VMs.
 if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
   # Ansible inventory for control machine
-  File.open(VAGRANTFILE_PATH+'/project/ansible.hosts', 'w') do |hosts|
+  File.open(VAGRANTFILE_PATH+"/"+VAGRANTFILE_PROJECT+'/ansible.hosts', 'w') do |hosts|
     hosts.puts "ansible.vagrant.localdomain ansible_connection=local"
     hosts.puts "[vagrant]"
   end
@@ -57,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   
   # Load and build project VMs
   # Use binding.eval to make sure that we're in the right scope.
-  binding.eval(File.read(File.expand_path(VAGRANTFILE_PATH+'/'+ VAGRANTFILE_HOSTSRB)))
+  binding.eval(File.read(File.expand_path(VAGRANTFILE_PATH+'/'+ VAGRANTFILE_PROJECT+"/vagrant.rb")))
 
   # Build Ansible control machine and run vagrant playbook
   config.vm.define "ansible" do |ansible|
@@ -69,6 +68,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.vm.provision "shell",
                          path: "scripts/bootstrap.sh",
                          keep_color: "True",
-                         args: VAGRANTFILE_PLAYBOOK
+                         args: VAGRANTFILE_PROJECT+"/playbooks/vagrant.yml"
   end
 end
