@@ -37,6 +37,7 @@
         dest: "{{ nginx_cert_path }}/dhparam.pem"
   roles:
     - OULibraries.nginx
+    - OULibraries.ngrok
 
 - hosts: vagrant
   roles:
