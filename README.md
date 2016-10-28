@@ -20,6 +20,7 @@ Installation
 1. Install Vagrant.
 1. Clone this repo to a local folder.
 1. Configure the project to build:
+
       On Linux or MacOS, you can symlink your project in projects to `project`, eg.
       ```
       # Linux or MacOS
