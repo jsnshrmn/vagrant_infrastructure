@@ -51,22 +51,21 @@ Notes
 
 * This thing currently expects all or nothing up and provision commands. Doesn't do useful port forwarding currently.
 
-
 * If you need to Vagrant to port forward to a privleged service, you can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
 
-```
-sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
-```
-
-Where the specified executable is the actual vagrant binary, not the wrapper script that calls it. If this turns out to be unbearably obnoxious, we may change it in the future.
-
-* This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
-```
-address=/vagrant.localdomain/127.0.0.1
-```
-
-It may be easier to skip doing this an use ngrok. 
-
+    ```
+    sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
+    ```
+    
+    Where the specified executable is the actual vagrant binary, not the wrapper script that calls it. If this turns out to be unbearably obnoxious, we may change it in the future.
+    
+    * This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
+    ```
+    address=/vagrant.localdomain/127.0.0.1
+    ```
+    
+    It may be easier to skip doing this an use ngrok. 
+    
 
 Vagrant Usage 
 ------------
