@@ -24,7 +24,7 @@ if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
   end
   # /etc/hosts file for control machine
   File.open(VAGRANTFILE_PATH+'/hosts', 'w') do |hosts|
-    hosts.puts "127.0.0.1	localhost.vagrant.localdomain localhost"
+    hosts.puts "127.0.0.1	localhost.localdomain localhost"
   end
   # ~/.ssh/config for vagrant user on control machine
   File.open(VAGRANTFILE_PATH+'/ssh.cfg', 'w') do |hosts|
