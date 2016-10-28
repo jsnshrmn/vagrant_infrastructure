@@ -21,27 +21,26 @@ Installation
 1. Clone this repo to a local folder.
 1. Configure the project to build:
 
-
-On Linux or MacOS, you can symlink your project in projects to `project`, eg.
-```
-# Linux or MacOS
-ln -s projects/example project
-```
-
-On Windows, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
-
-In `Vagrantfile`, specify your project
-```
--VAGRANTFILE_PROJECT="project"
-+VAGRANTFILE_PROJECT="projects/web"
-```
-
-In the `ansible.cfg`, specify the path to your projects inventory
-```
--inventory = /vagrant/project/inventory.py
-+inventory = /vagrant/projects/web/inventory.py
-```
-
+     On Linux or MacOS, you can symlink your project in projects to `project`, eg.
+     ```
+     # Linux or MacOS
+     ln -s projects/example project
+     ```
+    
+     On Windows, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
+     
+     In `Vagrantfile`, specify your project
+     ```
+     -VAGRANTFILE_PROJECT="project"
+     +VAGRANTFILE_PROJECT="projects/web"
+     ```
+    
+     In the `ansible.cfg`, specify the path to your projects inventory
+     ```
+     -inventory = /vagrant/project/inventory.py
+     +inventory = /vagrant/projects/web/inventory.py
+     ```
+    
 
 1. set an editor in your shell environment, eg.
 
