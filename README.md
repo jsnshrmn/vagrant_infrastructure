@@ -19,14 +19,30 @@ Installation
 
 1. Install Vagrant.
 1. Clone this repo to a local folder.
-1. symlink your project in projects to project, eg.
-```
-# Linux
-ln -s projects/example project
+1. Configure the project to build:
 
-# Windows
-mklink /J project projects\example
+
+On Linux or MacOS, you can symlink your project in projects to `project`, eg.
 ```
+# Linux or MacOS
+ln -s projects/example project
+```
+
+On Windows, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
+
+In `Vagrantfile`, specify your project
+```
+-VAGRANTFILE_PROJECT="project"
++VAGRANTFILE_PROJECT="projects/web"
+```
+
+In the `ansible.cfg`, specify the path to your projects inventory
+```
+-inventory = /vagrant/project/inventory.py
++inventory = /vagrant/projects/web/inventory.py
+```
+
+
 1. set an editor in your shell environment, eg.
 
 ```
@@ -37,7 +53,9 @@ Notes
 ------------
 
 * This thing currently expects all or nothing up and provision commands. Doesn't do useful port forwarding currently.
-* The Vagrantfile tries to bind nginx box to port 443, which is privileged on Unix and Unix-like systems.  You can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
+
+
+* If you need to Vagrant to port forward to a privleged service, you can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
 
 ```
 sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
@@ -49,7 +67,8 @@ Where the specified executable is the actual vagrant binary, not the wrapper scr
 ```
 address=/vagrant.localdomain/127.0.0.1
 ```
-Or you could edit your hosts file, or use Ngrok.
+
+It may be easier to skip doing this an use ngrok. 
 
 
 Vagrant Usage 

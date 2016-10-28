@@ -34,5 +34,5 @@ vault_password.txt
 # Ignore symlink for active project
 project
 
-# Ignore
+# Ignore copies of inventory script
 projects/*/inventory.py
