@@ -3,6 +3,9 @@
 # OJS
 config.vm.define "ojs" do |ojs|
   ojs.vm.hostname = "ojs.vagrant.localdomain"
+  ojs.vm.provider :virtualbox do |v|
+    v.memory = 1024
+  end
 end
 
 # Nginx

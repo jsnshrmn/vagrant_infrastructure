@@ -2,7 +2,7 @@
 
 # Solr
 config.vm.define( "solr") do |solr|
-  solr.vm.hostname = "solr.vagrant.local"
+  solr.vm.hostname = "solr.vagrant.localdomain"
   solr.vm.network "forwarded_port", guest:8983, host:8983
   solr.vm.provider :virtualbox do |v|
     v.memory = 1024
@@ -11,10 +11,10 @@ end
 
 # Drupal 7
 config.vm.define( "d7") do |d7|
-  d7.vm.hostname = "d7.vagrant.local"
+  d7.vm.hostname = "d7.vagrant.localdomain"
 end
 
 # Nginx
 config.vm.define( "nginx") do |nginx|
-  nginx.vm.hostname = "nginx.vagrant.local"
+  nginx.vm.hostname = "nginx.vagrant.localdomain"
 end
