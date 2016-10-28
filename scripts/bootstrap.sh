@@ -21,8 +21,8 @@ cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 # Install default ansible roles
 # Or project-specific roles if present
 VAGRANT_REQUIREMENTS='/vagrant/requirements.yml'
-if [ -f '/vagrant/project/requirements.yml' ]; then
-    VAGRANT_REQUIREMENTS='/vagrant/project/requirements.yml'
+if [ -f "/vagrant/{$1}/requirements.yml" ]; then
+    VAGRANT_REQUIREMENTS='/vagrant/{$1}/requirements.yml'
 fi
 ansible-galaxy install -r "${VAGRANT_REQUIREMENTS}" --force
 
@@ -31,4 +31,5 @@ sudo -u vagrant bash -c "
 # Keep colors intact
 export PYTHONUNBUFFERED=1
 export ANSIBLE_FORCE_COLOR=1
-ansible-playbook /vagrant/${1}"
+ansible-playbook /vagrant/{$1}/playbooks/vagrant.yml
+"

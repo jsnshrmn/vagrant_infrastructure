@@ -68,6 +68,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.vm.provision "shell",
                          path: "scripts/bootstrap.sh",
                          keep_color: "True",
-                         args: VAGRANTFILE_PROJECT+"/playbooks/vagrant.yml"
+                         args: VAGRANTFILE_PROJECT
   end
 end
