@@ -40,7 +40,8 @@ Installation
       -inventory = /vagrant/project/inventory.py
       +inventory = /vagrant/projects/web/inventory.py
       ```
-1. set an editor in your shell environment, eg.
+1. Set an editor in your shell environment, eg.
+
       ```
       export EDITOR=vim
       ```
