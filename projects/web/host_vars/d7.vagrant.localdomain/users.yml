@@ -1,0 +1,7 @@
+users:
+  - name: 'libacct'
+    groups: 'wheel,apache'
+    pubkey: '{{ libacct_pubkey }}'
+  - name: '{{my_user}}'
+    groups: 'wheel,apache'
+    pubkey: '{{ my_pubkey }}'
