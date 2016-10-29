@@ -6,14 +6,15 @@ import json
 inventory = {
     'vagrant' : {
         'hosts' : [],
-        'vars': {"ansible_connection": "local" } 
     }
 }
 
 # Read vagrant hosts file (/etc/hosts format) 
 with open( "/vagrant/hosts", "r") as hosts:
     for line in hosts:
-        inventory['vagrant']['hosts'].append( line.split()[1])
+        my_host = line.split()[1]
+        if( my_host == "localhost.localdomain"): continue
+        inventory['vagrant']['hosts'].append(my_host)
 
 print json.dumps(inventory)
 
