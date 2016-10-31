@@ -10,4 +10,4 @@ echo "${IP}	${HOSTNAME}" >> /vagrant/hosts
 
 # Ends up in /vagrant/.ssh/config on ansible machine
 echo "Host ${HOSTNAME}" >> /vagrant/ssh.cfg
-echo "  IdentityFile /vagrant/.vagrant/machines/${VAGRANTNAME}/virtualbox/private_key" >> /vagrant/ssh.cfg
+echo "  IdentityFile /home/vagrant/.ssh/machines/${VAGRANTNAME}/private_key" >> /vagrant/ssh.cfg
