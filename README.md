@@ -59,7 +59,7 @@ Notes
     
     Where the specified executable is the actual vagrant binary, not the wrapper script that calls it. If this turns out to be unbearably obnoxious, we may change it in the future.
     
-    * This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
+    This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
     ```
     address=/vagrant.localdomain/127.0.0.1
     ```
