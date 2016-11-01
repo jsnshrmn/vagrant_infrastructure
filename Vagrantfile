@@ -3,25 +3,27 @@
 
 ##### Config
 
-VAGRANTFILE_USERNAME = "vagrant"
-VAGRANTFILE_PROJECT="project"
+vagrant_project ="project"
 
 ##### End of Config
 
-VAGRANTFILE_COMMAND = ARGV[0]
+vagrant_user = ENV.fetch("OULIB_USER", "vagrant")
+vagrant_command = ARGV[0]
+vagrantfile_path = File.dirname(__FILE__)
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
-VAGRANTFILE_PATH = File.dirname(__FILE__)
 
 # If we're doing anything that provisions or reprovisions machines, we
 # need to start new versions of the config files that need to know
 # about our VMs.
-if  ['up', 'reload', 'provision'].include? VAGRANTFILE_COMMAND
+if  ['up', 'reload', 'provision'].include? vagrant_command
   # /etc/hosts file for control machine
-  File.open(VAGRANTFILE_PATH+'/hosts', 'w') do |hosts|
+  File.open(vagrantfile_path+'/hosts', 'w') do |hosts|
     hosts.puts "127.0.0.1	localhost.localdomain localhost"
   end
   # ~/.ssh/config for vagrant user on control machine
-  File.open(VAGRANTFILE_PATH+'/ssh.cfg', 'w') do |hosts|
+  File.open(vagrantfile_path+'/ssh.cfg', 'w') do |hosts|
     hosts.puts "Host *.vagrant.localdomain"
     hosts.puts "  StrictHostKeyChecking no"
   end
@@ -44,14 +46,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                       run: "always"
 
   # Use a "real" user for interactive logins
-  if  ['ssh', 'scp'].include? VAGRANTFILE_COMMAND
+  if  ['ssh', 'scp'].include? vagrant_command
     # Maybe you want to set this to a real account
-    config.ssh.username = VAGRANTFILE_USERNAME
+    config.ssh.username = vagrant_user
   end
-  
+
+
   # Load and build project VMs
   # Use binding.eval to make sure that we're in the right scope.
-  binding.eval(File.read(File.expand_path(VAGRANTFILE_PATH+'/'+ VAGRANTFILE_PROJECT+"/vagrant.rb")))
+  binding.eval(File.read(File.expand_path(vagrantfile_path+'/'+ vagrant_project+"/vagrant.rb")))
 
   # Build Ansible control machine and run vagrant playbook
   config.vm.define "ansible" do |ansible|
@@ -63,6 +66,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.vm.provision "shell",
                          path: "scripts/bootstrap.sh",
                          keep_color: "True",
-                         args: VAGRANTFILE_PROJECT
+                         args: vagrant_project
   end
 end
