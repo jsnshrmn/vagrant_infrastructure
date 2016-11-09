@@ -12,6 +12,10 @@ VAGRANTFILE_COMMAND = ARGV[0]
 VAGRANTFILE_API_VERSION = "2"
 VAGRANTFILE_PATH = File.dirname(__FILE__)
 
+# Recent vagrant releases have been buggy, so we're requiring an exact
+# version known to work.
+Vagrant.require_version( "=1.8.4")
+
 # If we're doing anything that provisions or reprovisions machines, we
 # need to start new versions of the config files that need to know
 # about our VMs.
