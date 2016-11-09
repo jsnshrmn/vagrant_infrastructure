@@ -30,6 +30,7 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
   config.vm.box = "geerlingguy/centos7"
+  config.vm.box_version = "1.1.3"
   config.ssh.forward_agent = true
   config.vm.network "private_network", type: "dhcp"
   config.vm.provider :virtualbox do |v|
