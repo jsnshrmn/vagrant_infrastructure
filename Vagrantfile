@@ -14,6 +14,10 @@ vagrantfile_path = File.dirname(__FILE__)
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
+# Recent vagrant releases have been buggy, so we're requiring an exact
+# version known to work.
+Vagrant.require_version( "=1.8.4")
+
 # If we're doing anything that provisions or reprovisions machines, we
 # need to start new versions of the config files that need to know
 # about our VMs.
@@ -32,6 +36,7 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
   config.vm.box = "geerlingguy/centos7"
+  config.vm.box_version = "1.1.3"
   config.ssh.forward_agent = true
   config.vm.network "private_network", type: "dhcp"
   config.vm.provider :virtualbox do |v|

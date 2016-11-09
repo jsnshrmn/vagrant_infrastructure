@@ -1,2 +1,6 @@
 #!/bin/bash
-[ -f "/vagrant/vault_password.txt" ] && cat /vagrant/vault_password.txt
+
+VAULT_PW="/vagrant/vault_password.txt"
+[ -f "$VAULT_PW" ] || exit 1
+
+cat "$VAULT_PW"

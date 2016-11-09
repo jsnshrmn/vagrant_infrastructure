@@ -5,13 +5,13 @@
 # Set up vagrant user ssh keys. These need to live on the vms to have
 # reasonable permissions with Windows and vboxsf
 mkdir -p  "/home/vagrant/.ssh/machines"
-for host in `ls /vagrant/.vagrant/machines`;
+for host in $(ls /vagrant/.vagrant/machines);
 do
     [ ! -f "/vagrant/.vagrant/machines/${host}/virtualbox/private_key" ] && continue
-    mkdir /home/vagrant/.ssh/machines/${host}
-    cp -v /vagrant/.vagrant/machines/${host}/virtualbox/private_key /home/vagrant/.ssh/machines/${host}
-    chmod 600 /home/vagrant/.ssh/machines/${host}/private_key
-    chown -R vagrant:vagrant /home/vagrant/.ssh/
+    mkdir "/home/vagrant/.ssh/machines/${host}"
+    cp -v "/vagrant/.vagrant/machines/${host}/virtualbox/private_key" "/home/vagrant/.ssh/machines/${host}"
+    chmod 600 "/home/vagrant/.ssh/machines/${host}/private_key"
+    chown -R vagrant:vagrant "/home/vagrant/.ssh/"
 done
 
 
@@ -38,7 +38,7 @@ cp "/vagrant/scripts/inventory.py" "/vagrant/${1}"
 # Install default ansible roles
 # Or project-specific roles if present
 VAGRANT_REQUIREMENTS='/vagrant/requirements.yml'
-if [ -f "/vagrant/{$1}/requirements.yml" ]; then
+if [ -f "/vagrant/${1}/requirements.yml" ]; then
     VAGRANT_REQUIREMENTS="/vagrant/${1}/requirements.yml"
 fi
 ansible-galaxy install -r "${VAGRANT_REQUIREMENTS}" --force

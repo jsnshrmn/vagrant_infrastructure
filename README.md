@@ -11,13 +11,19 @@ Though there is a way to go before all of these provision nicely together, since
 Requirements
 ------------
 
-* Requires [Vagrant](https://www.vagrantup.com/downloads.html). 
-* Creates an Ansible control VM, so you don't need a working Ansible install.
+For best results, use:
+* [Vagrant](https://www.vagrantup.com/downloads.html) v1.8.4. 
+* [Virtualbox](https://www.virtualbox.org/) v5.0.x.
+* base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
+
+We've had enough bugs in recent versions of thinsg that all of the above should be considered required. 
+
+This environment creates an Ansible control VM, so you don't need a working local Ansible install on the VM host. 
 
 Installation
 ------------
 
-1. Install Vagrant.
+1. Install Vagrant and VirtualBox
 1. Clone this repo to a local folder.
 1. Configure the project to build:
 
@@ -50,36 +56,27 @@ Notes
 ------------
 
 * This thing currently expects all or nothing up and provision commands. Doesn't do useful port forwarding currently.
-
-* If you need to Vagrant to port forward to a privleged service, you can either run vagrant as root (eg. sudo vagrant), or (on Linux hosts) you can allow the vagrant binary to bind to privileged ports, by running something like the following.
-
-    ```
-    sudo setcap 'cap_net_bind_service=+ep' /opt/vagrant/bin/vagrant
-    ```
+* Additional configuration is required for vagrant to forward to a privileged port. It's probably easier to use `ngrok` if you need something like that. 
     
-    Where the specified executable is the actual vagrant binary, not the wrapper script that calls it. If this turns out to be unbearably obnoxious, we may change it in the future.
-    
-    This assumes that you'll be taking care of pesky name resolution yourself. You could do that using dnsmasq, eg.
-    ```
-    address=/vagrant.localdomain/127.0.0.1
-    ```
-    
-    It may be easier to skip doing this an use ngrok. 
-    
-
 Vagrant Usage 
 ------------
 
-The following vagrant commands are likely to see the most use.
+The following vagrant commands are likely to see the most use:
 
-* `vagrant up` to start the vm. The box will build itself on first startup.
-* `vagrant ssh` to log in
-* `vagrant halt` to shut the VM Down
-* `vagrant reload` bounces the box
+* `vagrant up` to start your vms. The box will build itself on first startup.
+* `vagrant ssh $vm` to log in to `$vm`
+* `vagrant halt` to shut down your vms
+* `vagrant reload` bounces your vms. 
 
-It maybe be neccessary to do a `halt` or `reload` if the guest VM gets confused about its network, or loses its fileshares. This most frequently happens when the host machine goes to sleep and/or moves between networks.
+It maybe be neccessary to do a `halt` or `reload` if the guest VM gets
+confused about its network, or loses its fileshares. This most
+frequently happens when the host machine goes to sleep and/or moves
+between networks.
 
-Less frequently, you'll may want to reprovision to get the lastest changes, or rebuild your VM Completely. In that case, you'll need these commands:
+Less frequently, you'll may want to reprovision to get the lastest
+changes, or rebuild your VM Completely. In that case, you'll need
+these commands:
+
 * `vagrant provision` will re-run the ansible provisioners
 * `vagrant destroy` to delete the VM, in case you want to start over
 
@@ -87,3 +84,4 @@ TODO
 ------------
 
 * Add support for the rest of our environments
+* Lots and lots. 
