@@ -23,7 +23,7 @@ This environment creates an Ansible control VM, so you don't need a working loca
 Installation
 ------------
 
-1. Install Vagrant.
+1. Install Vagrant and VirtualBox
 1. Clone this repo to a local folder.
 1. Configure the project to build:
 
