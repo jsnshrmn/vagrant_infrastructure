@@ -11,8 +11,14 @@ Though there is a way to go before all of these provision nicely together, since
 Requirements
 ------------
 
-* Requires [Vagrant](https://www.vagrantup.com/downloads.html). 
-* Creates an Ansible control VM, so you don't need a working Ansible install.
+For best results, use:
+* [Vagrant](https://www.vagrantup.com/downloads.html) v1.8.4. 
+* [Virtualbox](https://www.virtualbox.org/) v5.0.x.
+* base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
+
+We've had enough bugs in recent versions of thinsg that all of the above should be considered required. 
+
+This environment creates an Ansible control VM, so you don't need a working local Ansible install on the VM host. 
 
 Installation
 ------------
