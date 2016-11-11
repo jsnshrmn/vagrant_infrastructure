@@ -15,9 +15,13 @@ do
 done
 
 
-# we need git and ansible to get started
+# Install git and ansible to get started
 yum install -y git
-yum install -y ansible
+yum install -y python-pip
+pip install 'ansible==2.1.1'
+
+# Create the default ansible config folder (pip install doesn't).
+mkdir -pv /etc/ansible
 
 # create ansible vault secret if one doesn't exist.
 stat /vagrant/vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "a-zA-Z0-9~!@#$%^&*_-" | head -c${1:-254};echo;' > /vagrant/vault_password.txt
