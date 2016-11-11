@@ -17,6 +17,7 @@ done
 
 # we need git and ansible to get started
 yum install -y git
+yum install -y python-pip
 pip install 'ansible==2.1.1'
 
 # create ansible vault secret if one doesn't exist.
