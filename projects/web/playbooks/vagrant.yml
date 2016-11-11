@@ -59,7 +59,7 @@
   sudo: yes
   tasks:
     - name: Make sure securepath works on d7
-      tags: sudo
+      tags: sudoers
       replace:
         dest: /etc/sudoers
         regexp: '^Defaults.*secure_path.*$'
