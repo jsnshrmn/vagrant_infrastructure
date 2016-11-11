@@ -2,6 +2,21 @@
 # Style of environment to build: vagrant, test or prod
 environment_name: "vagrant"
 
+# Your email address
+#email:
+# Your ngrok token
+#ngrok_authtoken:
+#vagrant_ngrok_dn: "ngrok.io"
+
+# Configuration for tunnels.
+# Note that because proto == tls, traffic is encrypted end-to-end, rather than cleartext. This is good.
+# DO NOT PASS SENSITIVE DATA OVER CLEARTEXT TUNNELS.
+tunnels:
+  - name: '*'
+    dn_suffix: "{{ vagrant_ngrok_dn }}"
+    port: '443'
+    proto: 'tls'
+
 # Local credentials
 # additional shell accounts
 users:
@@ -29,9 +44,9 @@ cas_ldap_domain: "vagrant.localdomain"
 
 # root db password
 mariadb_root_pass: 'root'
-
 # Passing the local domain on to apache
-httpd_dn_suffix: "vagrant.localdomain"
+#httpd_dn_suffix: "vagrant.localdomain"
+httpd_dn_suffix: "{{ vagrant_ngrok_dn }}"
 
 # Local APC credentials
 apc_username: apcuser
@@ -40,7 +55,7 @@ apc_password: apcpass
 # Front end
 # nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
- - name: d7.vagrant.localdomain
+ - name: "d7.{{ vagrant_ngrok_dn }}"
    upstreams:
      - name: d7-vagrant-localdomain
        servers:
@@ -48,7 +63,7 @@ nginx_star_sites:
    robots: disallow
 # nginx_literal_sites: [] # Use this if you have no literal sites
 nginx_literal_sites:
- - name: cas.vagrant.localdomain
+ - name: "cas.{{ vagrant_ngrok_dn }}"
    upstreams:
      - name: cas-vagrant-localdomain
        servers:
