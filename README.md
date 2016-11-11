@@ -12,7 +12,7 @@ Requirements
 ------------
 
 For best results, use:
-* [Vagrant](https://www.vagrantup.com/downloads.html) [v1.8.4](https://releases.hashicorp.com/vagrant/1.8.4/).
+* [Vagrant](https://www.vagrantup.com/downloads.html) [v1.8.4](https://releases.hashicorp.com/vagrant/1.8.4/) on MacOS and Windows and [v1.8.6](https://releases.hashicorp.com/vagrant/1.8.4) on CentOS. 
 * [Virtualbox](https://www.virtualbox.org/) v5.0.x.
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
 

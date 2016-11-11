@@ -14,9 +14,13 @@ vagrantfile_path = File.dirname(__FILE__)
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-# Recent vagrant releases have been buggy, so we're requiring an exact
-# version known to work.
-Vagrant.require_version( "<1.8.7")
+# Recent vagrant releases have been buggy
+Vagrant.require_version( "<1.8.7")  # blacklisting untested versions
+Vagrant.require_version( "!=1.8.7") # broken curl
+Vagrant.require_version( "!=1.8.5") # broken ssh permissions
+# - vagrant 1.8.4 is known to be a good choice on MacOs and Windoes
+# - vagrant 1.8.6 is known to be a good choice on Linux
+
 
 # If we're doing anything that provisions or reprovisions machines, we
 # need to start new versions of the config files that need to know
