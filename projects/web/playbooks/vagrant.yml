@@ -8,15 +8,6 @@
 
 - hosts: d7.vagrant.localdomain
   sudo: yes
-    
-  pre_tasks:
-    - name: /srv is a directory
-      file: path=/srv state=directory mode=0755 force=yes
-
-    - name: Check preconditions for running playbook.
-      assert:
-        that:
-          - mariadb_root_pass is defined
   roles:
     - role: OULibraries.mariadb
       tags: mariadb
@@ -24,35 +15,47 @@
       tags: apache2
     - role: OULibraries.d7
       tags: d7
-    - role: OULibraries.ngrok
-      tags: ngrok
-
-  post_tasks:
-    - name: Make sure securepath works
-      lineinfile:
-        dest: /etc/sudoers
-        regexp: '^Defaults    secure_path = .*$'
-        line: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/php/bin/'
-        validate: 'visudo -cf %s'
-
-- hosts: solr.vagrant.localdomain
-  sudo: yes
   pre_tasks:
     - name: /srv is a directory
       file: path=/srv state=directory mode=0755 force=yes
-  roles:
-    - role: OULibraries.java
-      tags: java
-    - role: geerlingguy.solr
-      tags: solr
-      
+    - name: Check preconditions for running playbook.
+      assert:
+        that:
+          - mariadb_root_pass is defined
   post_tasks:
     - name: Make sure securepath works
-      lineinfile:
+      replace:
         dest: /etc/sudoers
-        regexp: '^Defaults    secure_path = .*$'
-        line: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/php/bin/'
+        regexp: '^Defaults.*secure_path.*$'
+        replace: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/php/bin'
         validate: 'visudo -cf %s'
+
+# - hosts: solr.vagrant.localdomain
+#   sudo: yes
+#   roles:
+#     - role: OULibraries.java
+#       tags: java
+#     - role: geerlingguy.solr
+#       tags: solr
+#   post_tasks:
+#     - name: Make sure securepath works
+#       lineinfile:
+#         dest: /etc/sudoers
+#         regexp: '^Defaults    secure_path = .*$'
+#         line: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/apache/ant/bin/:/opt/apache/maven/bin'
+#         validate: 'visudo -cf %s'
+
+- hosts: nginx.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.nginx
+      tags: nginx
+    - role: OULibraries.ngrok
+      tags: ngrok
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
 
 - hosts: vagrant
   roles:

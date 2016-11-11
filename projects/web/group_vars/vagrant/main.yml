@@ -42,7 +42,6 @@ tunnels:
 mariadb_root_pass: 'root'
 
 # Email config
-
 smtp_host: smtp.office365.com
 smtp_port: 587
 smtp_domain: ou.edu
@@ -54,6 +53,7 @@ sendmail_users:
   - apache
   - root
 
+# Search config
 solr_version: "4.10.4"    
 solr_install_dir: "/opt/"
 solr_install_path: "/opt/solr"
@@ -64,3 +64,19 @@ solr_cores:
   - collection1
 solr_log_file_path: "/var/log/solr.log"
 solr_host: "0.0.0.0"
+
+# Front end
+# nginx_star_sites: [] # Use this if you have no star sites
+nginx_star_sites:
+  - name: d7.vagrant.localdomain
+    upstreams:
+    - name: d7-vagrant-localdomain
+      servers:
+        - d7.vagrant.localdomain:443
+    robots: disallow
+
+# nginx_literal_sites: [] # Use this if you have no literal sites
+nginx_literal_sites: []
+
+# d7_proxies:
+#   - 10.0.2.15
