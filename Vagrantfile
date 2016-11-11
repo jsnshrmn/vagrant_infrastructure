@@ -16,7 +16,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 # Recent vagrant releases have been buggy, so we're requiring an exact
 # version known to work.
-Vagrant.require_version( "=1.8.4")
+Vagrant.require_version( "<1.8.7")
 
 # If we're doing anything that provisions or reprovisions machines, we
 # need to start new versions of the config files that need to know
