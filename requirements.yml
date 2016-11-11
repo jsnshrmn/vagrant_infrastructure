@@ -13,7 +13,7 @@
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
-  version: v2016-07-29.0
+  version: master
   name: OULibraries.d7
 
 - src: https://github.com/OULibraries/ansible-role-java
@@ -39,9 +39,9 @@
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
   version: v2016-10-17.0
   name: OULibraries.postfix-mta
- 
-- src: https://github.com/geerlingguy/ansible-role-solr
-  version: 3.2.0
+
+- src: https://github.com/OULibraries/ansible-role-solr
+  version: oulib
   name: geerlingguy.solr
 
 - src: https://github.com/OULibraries/ansible-role-users
