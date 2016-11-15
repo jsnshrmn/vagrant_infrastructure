@@ -1,12 +1,12 @@
 OULibraries vagrant_infrastructure
 =========
 
-A starting point for testing infrastructure playbooks in Vagrant.  Provisions multiple machines, including an Ansible control machine.  Then uses the Ansible machine to configure the various boxes appropriately for their roles.  Currently provisions:
-* Drupal
-* CAS
-* Nginx
+A starting point for testing infrastructure playbooks in Vagrant.  Provisions multiple machines, including an Ansible control machine.  Then uses the Ansible machine to configure the various boxes appropriately for their roles.  
 
-Though there is a way to go before all of these provision nicely together, since the CAS and Nginx roles are still being written.
+Currently includes projects that define environments for:
+* OU web dev
+* CAS dev
+* OJS dev
 
 Requirements
 ------------
