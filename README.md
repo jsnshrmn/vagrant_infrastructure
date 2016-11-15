@@ -11,19 +11,12 @@ Currently includes projects that define environments for:
 Requirements
 ------------
 
-This environment can be a little finicky. The software versions and platforms specified below are known working combos. 
-
-MacOS and Windows:
-* [Vagrant](https://www.vagrantup.com/downloads.html) v1.8.6 on MacOS and Windows 
-* [Virtualbox](https://www.virtualbox.org/) v5.1.6.
-* base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
-
-Fedora:
+This environment can be a little finicky. The software combo below is know to work on a recentish release of MacOS and Windows and Fedora:
 * Vagrant [v1.8.6](https://releases.hashicorp.com/vagrant/1.8.6/)
-* Virtualbox 5.1.6
+* Virtualbox [v5.1.6](https://www.virtualbox.org/wiki/Download_Old_Builds_5_1)
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
 
-We've had enough bugs in recent versions of things that all of the above should be considered required. 
+We've had lots of version related bugs with this stack, so the above versions should probably be considered requried.  
 
 This environment creates an Ansible control VM, so you don't need a working local Ansible install on the VM host. 
 
