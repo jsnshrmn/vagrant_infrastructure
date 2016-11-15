@@ -14,8 +14,8 @@ Requirements
 This environment can be a little finicky. The software versions and platforms specified below are known working combos. 
 
 MacOS and Windows:
-* [Vagrant](https://www.vagrantup.com/downloads.html) [v1.8.4](https://releases.hashicorp.com/vagrant/1.8.4/) on MacOS and Windows 
-* [Virtualbox](https://www.virtualbox.org/) v5.0.x.
+* [Vagrant](https://www.vagrantup.com/downloads.html) v1.8.6 on MacOS and Windows 
+* [Virtualbox](https://www.virtualbox.org/) v5.1.6.
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.3) v1.1.3
 
 Fedora:
