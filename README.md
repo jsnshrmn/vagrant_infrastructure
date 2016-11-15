@@ -53,6 +53,10 @@ Installation
       ```
 1. If you want to configure interactive Vagrant commands (for example, ssh) to use  your normal user account, set the `OULIB_USER` environment variable to your username and make sure that the project that you're building adds your user to all of the boxes that you'll need to login to. 
 
+     ```
+     export OULIB_USER=jdoe
+     ```
+
 
 Notes
 ------------
