@@ -7,7 +7,7 @@
 # https://drupal-dev2.drupal.vm.test on the vagrant host to https://drupal-dev2.ngrok.io
 
 # Style of environment to build: vagrant, test or prod
-environment_name: "webtest"
+environment_name: "webdev"
 
 # Drupal site email
 drupal_sitemail: "lib-noreply@ou.edu"
