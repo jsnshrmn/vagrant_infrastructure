@@ -50,7 +50,7 @@
 
 - src: https://github.com/OULibraries/ansible-role-sclphp
   version: master
-  name: OULibraries.master
+  name: OULibraries.sclphp
 
 - src: https://github.com/OULibraries/ansible-role-searchgateway
   version: master
