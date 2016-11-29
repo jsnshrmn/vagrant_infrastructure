@@ -65,18 +65,6 @@ solr_cores:
 solr_log_file_path: "/var/log/solr.log"
 solr_host: "0.0.0.0"
 
-# Front end
-# nginx_star_sites: [] # Use this if you have no star sites
-nginx_star_sites:
-  - name: d7.vagrant.localdomain
-    upstreams:
-    - name: d7-vagrant-localdomain
-      servers:
-        - d7.vagrant.localdomain:443
-    robots: disallow
-
-# nginx_literal_sites: [] # Use this if you have no literal sites
-nginx_literal_sites: []
 
 # d7_proxies:
 #   - 10.0.2.15

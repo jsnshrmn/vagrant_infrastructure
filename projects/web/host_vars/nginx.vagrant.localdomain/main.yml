@@ -1,0 +1,12 @@
+# Front end
+# nginx_star_sites: [] # Use this if you have no star sites
+nginx_star_sites:
+  - name: d7.vagrant.localdomain
+    upstreams:
+    - name: d7-vagrant-localdomain
+      servers:
+        - d7.vagrant.localdomain:443
+    robots: disallow
+
+nginx_literal_sites: []
+nginx_stub_sites: []

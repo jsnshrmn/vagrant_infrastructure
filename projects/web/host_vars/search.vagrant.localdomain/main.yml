@@ -1,0 +1,9 @@
+---
+
+nginx_star_sites: []
+nginx_literal_sites: []
+nginx_stub_sites:
+  - name: "search.vagrant.localdomain"
+    robots: "disallow"
+
+searchgateway_nginx_stub: "search.vagrant.localdomain.conf"

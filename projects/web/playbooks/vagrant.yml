@@ -38,6 +38,21 @@
 #         line: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/apache/ant/bin/:/opt/apache/maven/bin'
 #         validate: 'visudo -cf %s'
 
+- hosts: search.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.sclphp
+      tags: sclphp
+    - role: OULibraries.nginx
+      tags: nginx
+    - role: OULibraries.searchgateway
+      tags: searchgateway
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
+
+
 - hosts: nginx.vagrant.localdomain
   sudo: yes
   roles:
