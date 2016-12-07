@@ -14,6 +14,8 @@ do
     chown -R vagrant:vagrant "/home/vagrant/.ssh/"
 done
 
+# Clean metadata in case of old mirrors etc
+yum clean metadata
 
 # Install git and ansible to get started
 yum install -y git
