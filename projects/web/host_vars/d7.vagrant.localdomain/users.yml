@@ -5,3 +5,5 @@ users:
   - name: '{{my_user}}'
     groups: 'wheel,apache'
     pubkey: '{{ my_pubkey }}'
+
+users_secure_path: '/sbin:/bin:/usr/sbin:/usr/bin:/opt/php/bin'    

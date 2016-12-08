@@ -68,3 +68,7 @@ solr_host: "0.0.0.0"
 
 # d7_proxies:
 #   - 10.0.2.15
+
+nginx_star_sites: []
+nginx_literal_sites: []
+nginx_stub_sites: []

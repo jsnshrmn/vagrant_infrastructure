@@ -23,3 +23,8 @@ end
 config.vm.define( "nginx") do |nginx|
   nginx.vm.hostname = "nginx.vagrant.localdomain"
 end
+
+# Nginx
+config.vm.define( "solr") do |nginx|
+  nginx.vm.hostname = "solr.vagrant.localdomain"
+end
