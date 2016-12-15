@@ -17,6 +17,11 @@ apc_enabled: "0"
 
 # Developer ID and Auth
 
+devel_user:
+  name: "{{ my_name }}"
+  account: "{{ my_user }}"
+  email: "{{ my_email }}"
+
 # Your email address
 email: "{{ my_email }}"
 # Your ngrok token
