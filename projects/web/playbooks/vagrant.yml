@@ -2,7 +2,8 @@
 - hosts: vagrant
   sudo: yes
   roles:
-    - OULibraries.centos7
+    - role: OULibraries.centos7
+      tags: centos7
   pre_tasks:
     - include: selinux.yml
 
