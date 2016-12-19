@@ -1,4 +1,6 @@
 ---
+# SELinux is permissive by default in the geerlingguy/centos7 basebox
+# so we provide a switch for enabling enforcement
 - name: Enable selinux for testing
   selinux:
     state: enforcing
