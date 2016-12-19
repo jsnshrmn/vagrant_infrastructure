@@ -15,8 +15,8 @@ config.vm.define( "d7") do |d7|
 end
 
 # Search Gateway
-config.vm.define( "search") do |d7|
-  d7.vm.hostname = "search.vagrant.localdomain"
+config.vm.define( "apigate") do |d7|
+  d7.vm.hostname = "apigate.vagrant.localdomain"
 end
 
 # Nginx

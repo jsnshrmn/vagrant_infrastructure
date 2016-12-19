@@ -24,7 +24,7 @@
         that:
           - mariadb_root_pass is defined
 
-- hosts: search.vagrant.localdomain
+- hosts: apigate.vagrant.localdomain
   sudo: yes
   roles:
     - role: OULibraries.sclphp
