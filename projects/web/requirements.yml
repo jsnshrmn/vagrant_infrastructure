@@ -9,7 +9,7 @@
   name: OULibraries.cas
 
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2016-10-21.0
+  version: master
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
@@ -25,7 +25,7 @@
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: dev-localservice
+  version: v2016-12-15.0
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
