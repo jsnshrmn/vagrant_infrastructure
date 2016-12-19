@@ -1,5 +1,9 @@
 ---
 
+# Style of environment to build: vagrant, test or prod
+# 'vagrant' will result in permissive selinux
+environment_name: "vagrant"
+
 # Developer ID and Auth
 devel_user:
   name: "{{ my_name }}"
