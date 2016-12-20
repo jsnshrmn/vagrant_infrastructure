@@ -1,13 +1,10 @@
 # See main Vagrantfile for default settings and provisioners
 
-# # Solr
-# config.vm.define( "solr") do |solr|
-#   solr.vm.hostname = "solr.vagrant.localdomain"
-#   solr.vm.network "forwarded_port", guest:8983, host:8983
-#   solr.vm.provider :virtualbox do |v|
-#     v.memory = 1024
-#   end
-# end
+# Solr
+config.vm.define( "solr") do |solr|
+  solr.vm.hostname = "solr.vagrant.localdomain"
+  solr.vm.network "forwarded_port", guest:8983, host:8983
+end
 
 # Drupal 7
 config.vm.define( "d7") do |d7|
@@ -22,9 +19,4 @@ end
 # Nginx
 config.vm.define( "nginx") do |nginx|
   nginx.vm.hostname = "nginx.vagrant.localdomain"
-end
-
-# Nginx
-config.vm.define( "solr") do |nginx|
-  nginx.vm.hostname = "solr.vagrant.localdomain"
 end
