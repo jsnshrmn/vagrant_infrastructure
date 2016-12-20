@@ -20,6 +20,6 @@ ngrok_authtoken: "{{my_ngrok_authtoken }}"
 # DO NOT PASS SENSITIVE DATA OVER CLEARTEXT TUNNELS.
 tunnels:
   - name: '*'
-    dn_suffix: '{{ httpd_dn_suffix }}'
+    dn_suffix: '{{ my_httpd_dn_suffix }}'
     port: '443'
     proto: 'tls'
