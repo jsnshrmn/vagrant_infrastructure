@@ -64,5 +64,3 @@
   roles:
     - role: OULibraries.users
       tags: users
-    - role: OULibraries.devel
-      tags: devel
