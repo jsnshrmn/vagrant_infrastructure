@@ -1,5 +1,5 @@
 ---
-# Some vms need to know about other VMs
+# Some VMs need to know about other VMs
 - name: Copy hosts file
   copy:
     src: /vagrant/hosts
