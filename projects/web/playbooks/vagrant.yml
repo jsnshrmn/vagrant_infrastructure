@@ -5,7 +5,8 @@
     - role: OULibraries.centos7
       tags: centos7
   pre_tasks:
-    - include: selinux.yml
+    - include: pretasks.yml
+      tags: pretasks
 
 - hosts: d7.vagrant.localdomain
   sudo: yes
