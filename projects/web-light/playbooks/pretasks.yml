@@ -1,0 +1,19 @@
+---
+# Some VMs need to know about other VMs
+- name: Copy hosts file
+  copy:
+    src: /vagrant/hosts
+    dest: /etc/hosts
+
+# SELinux is permissive by default in the geerlingguy/centos7 basebox
+# so we provide a switch for enabling enforcement
+- name: Enable selinux for testing
+  selinux:
+    state: enforcing
+    policy: targeted
+  when: environment_name != "vagrant"
+- name: Disable selinux for vagrant dev
+  selinux:
+    state: permissive
+    policy: targeted
+  when: environment_name == "vagrant"

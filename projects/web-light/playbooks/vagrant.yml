@@ -1,0 +1,70 @@
+---
+- hosts: vagrant
+  sudo: yes
+  roles:
+    - role: OULibraries.centos7
+      tags: centos7
+  pre_tasks:
+    - include: pretasks.yml
+      tags: pretasks
+
+- hosts: d7.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.mariadb
+      tags: mariadb
+    - role: OULibraries.apache2
+      tags: apache2
+    - role: OULibraries.d7
+      tags: d7
+    - role: OULibraries.ngrok
+      tags: ngrok
+
+  pre_tasks:
+    - name: /srv is a directory
+      file: path=/srv state=directory mode=0755 force=yes
+    - name: Check preconditions for running playbook.
+      assert:
+        that:
+          - mariadb_root_pass is defined
+
+# - hosts: apigate.vagrant.localdomain
+#   sudo: yes
+#   roles:
+#     - role: OULibraries.sclphp
+#       tags: sclphp
+#     - role: OULibraries.nginx
+#       tags: nginx
+#     - role: OULibraries.searchgateway
+#       tags: searchgateway
+#   pre_tasks:
+#     - copy:
+#         src: /vagrant/dhparam.pem
+#         dest: "{{ nginx_cert_path }}/dhparam.pem"
+
+
+# - hosts: nginx.vagrant.localdomain
+#   sudo: yes
+#   roles:
+#     - role: OULibraries.nginx
+#       tags: nginx
+#     - role: OULibraries.ngrok
+#       tags: ngrok
+#   pre_tasks:
+#     - copy:
+#         src: /vagrant/dhparam.pem
+#         dest: "{{ nginx_cert_path }}/dhparam.pem"
+
+# - hosts: solr.vagrant.localdomain
+#   sudo: yes
+#   roles:
+#     - role: OULibraries.java
+#       tags: java
+#     - role: geerlingguy.solr
+#       tags: solr
+
+# Got back and configure interactive users and devel settings
+- hosts: vagrant
+  roles:
+    - role: OULibraries.users
+      tags: users
