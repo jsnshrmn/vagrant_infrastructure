@@ -1,4 +1,4 @@
-OULibraries vagrant_infrastructure
+]0;95;0cOULibraries vagrant_infrastructure
 =========
 
 A starting point for testing infrastructure playbooks in Vagrant.  Provisions multiple machines, including an Ansible control machine.  Then uses the Ansible machine to configure the various boxes appropriately for their roles.  
@@ -18,7 +18,10 @@ This environment can be a little finicky. The software combo below is know to wo
 
 We've had lots of version related bugs with this stack, so the above versions should probably be considered requried.  
 
-This environment creates an Ansible control VM, so you don't need a working local Ansible install on the VM host. 
+This environment creates an Ansible control VM, so you don't need a working local Ansible install on the VM host.
+
+*NOTE:* This environment seems to be incompatible with the DDPE antivirus software installed, which our Windows users may have installed. 
+
 
 Installation
 ------------
