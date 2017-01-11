@@ -1,2 +1,0 @@
----
-users_secure_path: '/sbin:/bin:/usr/sbin:/usr/bin:/opt/apache/ant/bin/:/opt/apache/maven/bin'    
