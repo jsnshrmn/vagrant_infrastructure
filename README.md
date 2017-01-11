@@ -1,4 +1,4 @@
-]0;95;0cOULibraries vagrant_infrastructure
+OULibraries vagrant_infrastructure
 =========
 
 A starting point for testing infrastructure playbooks in Vagrant.  Provisions multiple machines, including an Ansible control machine.  Then uses the Ansible machine to configure the various boxes appropriately for their roles.  
