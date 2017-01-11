@@ -1,0 +1,17 @@
+---
+
+# Style of environment to build: vagrant, test or prod
+# 'vagrant' will result in permissive selinux
+environment_name: "vagrant"
+
+# Developer ID and Auth
+devel_user:
+  name: "{{ my_name }}"
+  account: "{{ my_user }}"
+  email: "{{ my_email }}"
+
+
+# empty defaults for nginx. 
+nginx_star_sites: []
+nginx_literal_sites: []
+nginx_stub_sites: []
