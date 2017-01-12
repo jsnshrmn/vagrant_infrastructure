@@ -3,7 +3,6 @@
 # Solr
 config.vm.define( "solr") do |solr|
   solr.vm.hostname = "solr.vagrant.localdomain"
-  solr.vm.network "forwarded_port", guest:8983, host:8983
 end
 
 # Drupal 7
