@@ -55,10 +55,14 @@
 - hosts: solr.vagrant.localdomain
   sudo: yes
   roles:
+    - role: OULibraries.nginx
+      tags: nginx
     - role: OULibraries.java
       tags: java
     - role: geerlingguy.solr
       tags: solr
+    - role: OULibraries.solr-onesearch
+      tags: solr-onesearch
 
 # Got back and configure interactive users and devel settings
 - hosts: vagrant
