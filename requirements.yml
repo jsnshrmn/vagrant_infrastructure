@@ -25,7 +25,7 @@
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: v2016-11-14.0
+  version: v2016-12-15.0
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
@@ -40,10 +40,10 @@
   version: v2016-10-17.0
   name: OULibraries.postfix-mta
 
-- src: https://github.com/OULibraries/ansible-role-solr
-  version: oulib
-  name: geerlingguy.solr
-
+- src: https://github.com/OULibraries/ansible-role-solr-onesearch
+  version: master
+  name: OULibraries.solr-onesearch
+  
 - src: https://github.com/OULibraries/ansible-role-users
   version: v2016-11-14.0
   name: OULibraries.users

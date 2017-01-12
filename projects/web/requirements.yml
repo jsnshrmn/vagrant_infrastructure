@@ -9,11 +9,11 @@
   name: OULibraries.cas
 
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: master
+  version: v2016-12-14.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
-  version: master
+  version: v2017-01-09.0
   name: OULibraries.d7
 
 - src: https://github.com/OULibraries/ansible-role-java
@@ -44,6 +44,10 @@
   version: oulib
   name: geerlingguy.solr
 
+- src: https://github.com/OULibraries/ansible-role-solr-onesearch
+  version: master
+  name: OULibraries.solr-onesearch  
+  
 - src: https://github.com/OULibraries/ansible-role-users
   version: v2016-11-14.0
   name: OULibraries.users
