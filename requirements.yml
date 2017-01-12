@@ -39,10 +39,6 @@
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
   version: v2016-10-17.0
   name: OULibraries.postfix-mta
-
-- src: https://github.com/OULibraries/ansible-role-solr-onesearch
-  version: master
-  name: OULibraries.solr-onesearch
   
 - src: https://github.com/OULibraries/ansible-role-users
   version: v2016-11-14.0
