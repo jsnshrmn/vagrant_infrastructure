@@ -41,13 +41,13 @@ Installation
       In `Vagrantfile`, specify your project
       ```
       -VAGRANTFILE_PROJECT="project"
-      +VAGRANTFILE_PROJECT="projects/web"
+      +VAGRANTFILE_PROJECT="projects/web-light"
       ```
      
       In the `ansible.cfg`, specify the path to your projects inventory
       ```
       -inventory = /vagrant/project/inventory.py
-      +inventory = /vagrant/projects/web/inventory.py
+      +inventory = /vagrant/projects/web-light/inventory.py
       ```
 1. Set an editor in your shell environment, eg.
 
