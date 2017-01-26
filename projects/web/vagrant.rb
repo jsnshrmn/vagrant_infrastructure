@@ -3,15 +3,16 @@
 # Solr
 config.vm.define( "solr") do |solr|
   solr.vm.hostname = "solr.vagrant.localdomain"
-  solr.vm.network "forwarded_port", guest:8983, host:8983
-  solr.vm.provider :virtualbox do |v|
-    v.memory = 1024
-  end
 end
 
 # Drupal 7
 config.vm.define( "d7") do |d7|
   d7.vm.hostname = "d7.vagrant.localdomain"
+end
+
+# Search Gateway
+config.vm.define( "apigate") do |d7|
+  d7.vm.hostname = "apigate.vagrant.localdomain"
 end
 
 # Nginx

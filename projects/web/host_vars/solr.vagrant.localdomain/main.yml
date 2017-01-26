@@ -1,0 +1,28 @@
+---
+# Solr config
+# See https://github.com/geerlingguy/ansible-role-solr
+solr_version: "4.10.4"    
+solr_install_dir: "/opt/"
+solr_install_path: "/opt/solr"
+solr_home: "/var/solr"
+solr_port: "8983"
+solr_xmx: "512M"
+solr_cores:
+  - collection1
+solr_log_file_path: "/var/log/solr.log"
+# listen on all interfaces
+solr_host: "0.0.0.0"
+
+onesearch_solr_user: "solr"
+onesearch_solr_pass: "solr"
+
+nginx_star_sites: []
+nginx_stub_sites: []
+nginx_literal_sites: []
+nginx_loopback_sites:
+  - name: solr
+    robots: disallow
+    upstreams:
+      - name: local-solr-jetty
+        ports:
+          - 8983

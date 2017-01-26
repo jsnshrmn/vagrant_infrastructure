@@ -2,9 +2,11 @@
 - hosts: vagrant
   sudo: yes
   roles:
-    - OULibraries.centos7
+    - role: OULibraries.centos7
+      tags: centos7
   pre_tasks:
-    - include: selinux.yml
+    - include: pretasks.yml
+      tags: pretasks
 
 - hosts: d7.vagrant.localdomain
   sudo: yes
@@ -23,20 +25,20 @@
         that:
           - mariadb_root_pass is defined
 
-# - hosts: solr.vagrant.localdomain
-#   sudo: yes
-#   roles:
-#     - role: OULibraries.java
-#       tags: java
-#     - role: geerlingguy.solr
-#       tags: solr
-#   post_tasks:
-#     - name: Make sure securepath works
-#       lineinfile:
-#         dest: /etc/sudoers
-#         regexp: '^Defaults    secure_path = .*$'
-#         line: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/apache/ant/bin/:/opt/apache/maven/bin'
-#         validate: 'visudo -cf %s'
+- hosts: apigate.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.sclphp
+      tags: sclphp
+    - role: OULibraries.nginx
+      tags: nginx
+    - role: OULibraries.searchgateway
+      tags: searchgateway
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
+
 
 - hosts: nginx.vagrant.localdomain
   sudo: yes
@@ -50,18 +52,20 @@
         src: /vagrant/dhparam.pem
         dest: "{{ nginx_cert_path }}/dhparam.pem"
 
+- hosts: solr.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.nginx
+      tags: nginx
+    - role: OULibraries.java
+      tags: java
+    - role: geerlingguy.solr
+      tags: solr
+    - role: OULibraries.solr-onesearch
+      tags: solr-onesearch
+
+# Got back and configure interactive users and devel settings
 - hosts: vagrant
   roles:
     - role: OULibraries.users
       tags: users
-
-- hosts: d7.vagrant.localdomain
-  sudo: yes
-  tasks:
-    - name: Make sure securepath works on d7
-      tags: sudoers
-      replace:
-        dest: /etc/sudoers
-        regexp: '^Defaults.*secure_path.*$'
-        replace: 'Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin:/opt/php/bin'
-        validate: 'visudo -cf %s'
