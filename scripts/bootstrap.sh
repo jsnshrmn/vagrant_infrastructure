@@ -16,6 +16,7 @@ done
 
 # Clean metadata in case of old mirrors etc
 yum clean metadata
+yum check-update
 
 # Install git and ansible to get started
 yum install -y git

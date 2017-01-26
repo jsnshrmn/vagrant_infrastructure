@@ -9,7 +9,7 @@
   name: OULibraries.cas
 
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2016-10-21.0
+  version: v2016-12-14.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
@@ -29,7 +29,7 @@
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
-  version: v2016-09-01.0
+  version: v2016-12-14.0
   name: OULibraries.ngrok
 
 - src: https://github.com/OULibraries/ansible-role-ojs
