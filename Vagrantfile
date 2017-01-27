@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_version = "1.1.3"
   config.ssh.forward_agent = true
   if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box
+    config.cache.scope = :machine
   end
   config.vm.provider :virtualbox do |v|
     v.memory = 512
