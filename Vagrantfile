@@ -42,7 +42,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "geerlingguy/centos7"
   config.vm.box_version = "1.1.3"
   config.ssh.forward_agent = true
-  config.vm.network "private_network", type: "dhcp"
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.scope = :box
+  end
   config.vm.provider :virtualbox do |v|
     v.memory = 512
     v.linked_clone = true
@@ -68,6 +70,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Build Ansible control machine and run vagrant playbook
   config.vm.define "ansible" do |ansible|
     ansible.vm.hostname = "ansible.vagrant.localdomain"
+    ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
     ansible.vm.provider :virtualbox do |v|
       v.memory = 256  # Keeping overhead low
       v.cpus = 1
