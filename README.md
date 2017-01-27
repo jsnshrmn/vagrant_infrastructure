@@ -77,17 +77,35 @@ The following vagrant commands are likely to see the most use:
 * `vagrant halt` to shut down your vms
 * `vagrant reload` bounces your vms. 
 
-It maybe be neccessary to do a `halt` or `reload` if the guest VM gets
-confused about its network, or loses its fileshares. This most
-frequently happens when the host machine goes to sleep and/or moves
-between networks.
-
 Less frequently, you'll may want to reprovision to get the lastest
 changes, or rebuild your VM Completely. In that case, you'll need
 these commands:
 
 * `vagrant provision` will re-run the ansible provisioners
 * `vagrant destroy` to delete the VM, in case you want to start over
+
+
+Vagrant Troubleshooting
+-----------------------
+
+It maybe be neccessary to do a `halt` or `reload` if the guest VM gets
+confused about its network, or loses its fileshares. This most
+frequently happens when the host machine goes to sleep and/or moves
+between networks.
+
+In cases where vagrant up fails because it can't mount the vboxsf vagrant share
+simply run vagrant up again until it succeeds.
+
+
+Ngrok Troubleshooting
+---------------------
+
+Should ngrok become confused and broken, simply restart the oulib-ngrok service
+on the vagrant machine running the tunnel.
+```
+sudo systemctl restart oulib-ngrok
+```
+
 
 TODO
 ------------
