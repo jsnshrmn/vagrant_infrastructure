@@ -40,7 +40,7 @@ end
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
   config.vm.box = "geerlingguy/centos7"
-  config.vm.box_version = "1.1.3"
+  config.vm.box_version = "1.1.7"
   config.ssh.forward_agent = true
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :machine
