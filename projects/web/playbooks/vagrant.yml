@@ -63,6 +63,10 @@
       tags: solr
     - role: OULibraries.solr-onesearch
       tags: solr-onesearch
+  pre_tasks:
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: "{{ nginx_cert_path }}/dhparam.pem"
 
 # Got back and configure interactive users and devel settings
 - hosts: vagrant
