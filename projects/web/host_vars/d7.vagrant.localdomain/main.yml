@@ -32,3 +32,6 @@ smtp_authpassword: "{{ my_smtp_authpassword }}"
 sendmail_users:
   - apache
   - root
+
+# PHP Config
+d7_memory_limit: "256M"
