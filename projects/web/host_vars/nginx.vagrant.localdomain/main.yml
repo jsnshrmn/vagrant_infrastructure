@@ -15,6 +15,12 @@ nginx_literal_sites:
        servers:
          - apigate.vagrant.localdomain:443
    robots: disallow
+- name: "cas.{{ my_httpd_dn_suffix }}"
+   upstreams:
+     - name: cas-vagrant-localdomain
+       servers:
+         - cas.vagrant.localdomain:8443
+   robots: disallow
 
 
 nginx_stub_sites: []
