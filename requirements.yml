@@ -25,7 +25,7 @@
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: v2016-12-15.0
+  version: v2017-02-14.0
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
