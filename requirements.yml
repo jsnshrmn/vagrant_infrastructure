@@ -59,3 +59,9 @@
 - src: https://github.com/OULibraries/ansible-role-searchgateway
   version: master
   name: OULibraries.searchgateway
+
+- src: https://github.com/OULibraries/ansible-role-fcrepo3
+  name: OULibraries.fcrepo3
+
+- src: https://github.com/OULibraries/ansible-role-d7-islandora
+  name: OULibraries.d7-islandora
