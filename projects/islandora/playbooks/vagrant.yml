@@ -11,8 +11,6 @@
 - hosts: islandora.vagrant.localdomain
   sudo: yes
   tags: deploy
-  vars_files:
-    - my-vars.yml
   pre_tasks:
     - name: /srv is a directory
       file: path=/srv state=directory mode=0755 force=yes
