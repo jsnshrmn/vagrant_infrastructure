@@ -1,0 +1,74 @@
+---
+- hosts: vagrant
+  sudo: yes
+  roles:
+    - role: OULibraries.centos7
+      tags: centos7
+  pre_tasks:
+    - include: pretasks.yml
+      tags: pretasks
+
+- hosts: islandora.vagrant.localdomain
+  sudo: yes
+  tags: deploy
+  vars_files:
+    - my-vars.yml
+  pre_tasks:
+    - name: /srv is a directory
+      file: path=/srv state=directory mode=0755 force=yes
+
+    - name: Check preconditions for running playbook. 
+      assert:
+        that:
+          - mariadb_root_pass is defined
+  roles:
+   - role: OULibraries.mariadb
+     tags: mariadb
+   - role: OULibraries.fcrepo3
+     tags: fcrepo3
+   - role: OULibraries.apache2
+     tags: apache2
+   - role: OULibraries.users
+     tags: users
+   - role: OULibraries.ngrok
+     tags: ngrok
+   - role: OULibraries.d7
+     tags: d7
+   - role: OULibraries.d7-islandora
+     tags: d7-islandora
+
+  tasks:
+    - name: Enable selinux for testing
+      selinux:
+        state: enforcing
+        policy: targeted
+      when: environment_name != "vagrant"
+    - name: Disable selinux for vagrant dev
+      selinux:
+        state: permissive
+        policy: targeted
+      when: environment_name == "vagrant"
+
+    - name: Add apache user to vagrant group
+      user:
+        name: apache
+        append: yes
+        groups: vagrant
+    - name: Add vagrant user to apache group
+      user:
+        name: vagrant
+        append: yes
+        groups: apache
+    - name: Add vagrant user to tomcat group
+      user:
+        name: vagrant
+        append: yes
+        groups: apache
+
+
+
+# Got back and configure interactive users and devel settings
+- hosts: vagrant
+  roles:
+    - role: OULibraries.users
+      tags: users
