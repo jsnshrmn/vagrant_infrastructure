@@ -20,7 +20,7 @@ nginx_star_sites: []
 nginx_stub_sites: []
 nginx_literal_sites: []
 nginx_loopback_sites:
-  - name: solr
+  - name: solr.vagrant.localdomain
     robots: disallow
     upstreams:
       - name: local-solr-jetty
