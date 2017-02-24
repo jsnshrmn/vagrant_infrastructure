@@ -3,10 +3,12 @@ OULibraries vagrant_infrastructure
 
 A starting point for testing infrastructure playbooks in Vagrant.  Provisions multiple machines, including an Ansible control machine.  Then uses the Ansible machine to configure the various boxes appropriately for their roles.  
 
-Currently includes projects that define environments for:
-* OU web dev
-* CAS dev
-* OJS dev
+Currently includes projects that define dev environments for:
+* [web](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web/README.md)
+* [web-light](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web-light/README.md)
+* [islandora](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/islandora/README.md)
+* [CAS](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/cas/README.md)
+* OJS
 
 Requirements
 ------------
