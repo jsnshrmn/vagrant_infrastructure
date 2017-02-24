@@ -15,7 +15,7 @@ Requirements
 
 This environment can be a little finicky. The software combo below is know to work on a recentish release of MacOS and Windows and Fedora:
 * Vagrant [v1.8.6](https://releases.hashicorp.com/vagrant/1.8.6/)
-* Virtualbox [v5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/)
+* Virtualbox [v5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/) and compatible Guest Additions
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.7) v1.1.7
 
 We've had lots of version related bugs with this stack, so the above versions should probably be considered requried.  
