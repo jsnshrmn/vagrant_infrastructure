@@ -1,4 +1,4 @@
-Project: islandora
+Project: Islandora
 =========
 
 Islandora dev environment. 
@@ -24,7 +24,10 @@ Configure the following in `web-light/group_vars/vagrant/secrets.yml`:
 * `my_smtp_authpassword` - smtp service credentials
 
 
-With that done, `vagrant up` should give you a working `repository` Islandora site. 
+With that done, `vagrant up` should give you:
+
+* ansible host
+* islandora host with `repostiory` site. 
 
 
 Author Information
