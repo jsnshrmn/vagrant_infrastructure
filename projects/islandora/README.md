@@ -1,7 +1,7 @@
-Project: web-light
+Project: islandora
 =========
 
-Abbreviated copy of web infrastructure, for when you just need to do some Drupal dev. 
+Islandora dev environment. 
 
 Requirements
 ------------
@@ -24,7 +24,7 @@ Configure the following in `web-light/group_vars/vagrant/secrets.yml`:
 * `my_smtp_authpassword` - smtp service credentials
 
 
-With that done, `vagrant up` should give you a working d7 box with ngrok forwarding for sites, but won't set up any sites.
+With that done, `vagrant up` should give you a working `repository` Islandora site. 
 
 
 Author Information
