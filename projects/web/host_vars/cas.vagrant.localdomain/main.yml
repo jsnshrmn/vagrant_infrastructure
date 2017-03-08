@@ -1,0 +1,13 @@
+cas_services:
+  - file: "starNgrok"
+    serviceId: '^https://.*{{ my_httpd_dn_suffix }}/.*'
+    name: "OULibraries ngrok"
+    id: "1"
+    evaluationOrder: "1"
+    description: "OU Libraries ngrok"
+    logoutUrl: "https://.*{{ my_httpd_dn_suffix }}/caslogout"
+    logoutType: "NONE"
+
+
+# Unique ID for CAS node
+cas_host_name: cas.vagrant.localdomain
