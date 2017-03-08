@@ -1,5 +1,6 @@
 ---
 - hosts: vagrant
+  serial: 1
   sudo: yes
   roles:
     - role: OULibraries.centos7
