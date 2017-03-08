@@ -5,7 +5,7 @@
   name: OULibraries.apache2
 
 - src: https://github.com/OULibraries/ansible-role-cas
-  version: devjason-fileauth
+  version: master
   name: OULibraries.cas
 
 - src: https://github.com/OULibraries/ansible-role-centos7
