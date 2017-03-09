@@ -21,22 +21,6 @@ Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 # - vagrant 1.8.4 is known to be a good choice on MacOs and Windoes
 # - vagrant 1.8.6 is known to be a good choice on Linux
 
-
-# If we're doing anything that provisions or reprovisions machines, we
-# need to start new versions of the config files that need to know
-# about our VMs.
-if  ['up', 'reload', 'provision'].include? vagrant_command
-  # /etc/hosts file for control machine
-  File.open(vagrantfile_path+'/hosts', 'w') do |hosts|
-    hosts.puts "127.0.0.1	localhost.localdomain localhost"
-  end
-  # ~/.ssh/config for vagrant user on control machine
-  File.open(vagrantfile_path+'/ssh.cfg', 'w') do |hosts|
-    hosts.puts "Host *.vagrant.localdomain"
-    hosts.puts "  StrictHostKeyChecking no"
-  end
-end
-
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
   config.vm.box = "geerlingguy/centos7"
@@ -46,12 +30,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.memory = 512
     v.linked_clone = true
   end
-
-  # All VMs should report in so we can configure them with ansible
-  config.vm.provision "shell",
-                      path: "scripts/gethostinfo.sh",
-                      keep_color: "True",
-                      run: "always"
 
   # Use a "real" user for interactive logins
   if  ['ssh', 'scp'].include? vagrant_command
