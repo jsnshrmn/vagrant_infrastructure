@@ -12,14 +12,11 @@ config.vm.define "d7" do |d7|
   d7.vm.network "private_network", ip: "192.168.96.4", :netmask => "255.255.255.0"
 end
 
-# # CAS
-# config.vm.define "cas" do |cas|
-#   cas.vm.hostname = "cas.vagrant.localdomain"
-#   cas.vm.network "private_network", ip: "192.168.96.5", :netmask => "255.255.255.0"
-#   cas.vm.provider :virtualbox do |v|
-#     v.memory = 1024
-#   end
-# end
+# CAS
+config.vm.define "cas" do |cas|
+  cas.vm.hostname = "cas.vagrant.localdomain"
+  cas.vm.network "private_network", ip: "192.168.96.5", :netmask => "255.255.255.0"
+end
 
 # Search Gateway
 config.vm.define( "apigate") do |apigate|

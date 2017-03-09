@@ -1,11 +1,13 @@
-# LDAP General
-cas_ldap_url: "ldaps://ldap.vagrant.localdomain"
-cas_ldap_use_ssl: "false"
-cas_ldap_useStartTLS: "true"
-cas_ldap_rootDn: "CN=root,OU=Scary,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_baseDn: "ou=General,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_managerDn: "CN=root,OU=Scary,OU=Groups,OU=Users,DC=ldap,DC=example,DC=org"
-cas_ldap_managerPassword: "mypassword"
+cas_services:
+  - file: "starNgrok"
+    serviceId: '^https://.*{{ my_httpd_dn_suffix }}/.*'
+    name: "OULibraries ngrok"
+    id: "1"
+    evaluationOrder: "1"
+    description: "OU Libraries ngrok"
+    logoutUrl: "https://.*{{ my_httpd_dn_suffix }}/caslogout"
+    logoutType: "NONE"
 
-# LDAP authentication
-cas_ldap_domain: "vagrant.localdomain"
+
+# Unique ID for CAS node
+cas_host_name: cas.vagrant.localdomain
