@@ -16,9 +16,6 @@ end
 config.vm.define "cas" do |cas|
   cas.vm.hostname = "cas.vagrant.localdomain"
   cas.vm.network "private_network", ip: "192.168.96.5", :netmask => "255.255.255.0"
-  cas.vm.provider :virtualbox do |v|
-    v.memory = 512
-  end
 end
 
 # Search Gateway

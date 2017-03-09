@@ -27,6 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_version = "1.1.7"
   config.ssh.forward_agent = true
   config.vm.provider :virtualbox do |v|
+    v.cpus = 1
     v.memory = 512
     v.linked_clone = true
   end
@@ -48,7 +49,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
     ansible.vm.provider :virtualbox do |v|
       v.memory = 256  # Keeping overhead low
-      v.cpus = 1
     end
     ansible.vm.provision "shell",
                          path: "scripts/bootstrap.sh",
