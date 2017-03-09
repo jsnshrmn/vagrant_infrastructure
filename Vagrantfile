@@ -42,9 +42,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "geerlingguy/centos7"
   config.vm.box_version = "1.1.7"
   config.ssh.forward_agent = true
-  if Vagrant.has_plugin?("vagrant-cachier")
-    config.cache.scope = :box
-  end
   config.vm.provider :virtualbox do |v|
     v.memory = 512
     v.linked_clone = true

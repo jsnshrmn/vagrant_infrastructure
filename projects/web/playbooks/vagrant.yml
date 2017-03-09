@@ -1,20 +1,23 @@
 ---
-- hosts: d7.vagrant.localdomain
+- hosts: vagrant
   sudo: yes
   roles:
     - role: OULibraries.centos7
       tags: centos7
+  pre_tasks:
+    - include: pretasks.yml
+      tags: pretasks
+
+- hosts: d7.vagrant.localdomain
+  sudo: yes
+  roles:
     - role: OULibraries.mariadb
       tags: mariadb
     - role: OULibraries.apache2
       tags: apache2
     - role: OULibraries.d7
       tags: d7
-    - role: OULibraries.users
-      tags: users
   pre_tasks:
-    - include: pretasks.yml
-      tags: pretasks
     - name: /srv is a directory
       file: path=/srv state=directory mode=0755 force=yes
     - name: Check preconditions for running playbook.
@@ -25,19 +28,13 @@
 - hosts: apigate.vagrant.localdomain
   sudo: yes
   roles:
-    - role: OULibraries.centos7
-      tags: centos7
     - role: OULibraries.sclphp
       tags: sclphp
     - role: OULibraries.nginx
       tags: nginx
     - role: OULibraries.searchgateway
       tags: searchgateway
-    - role: OULibraries.users
-      tags: users
   pre_tasks:
-    - include: pretasks.yml
-      tags: pretasks
     - copy:
         src: /vagrant/dhparam.pem
         dest: "{{ nginx_cert_path }}/dhparam.pem"
@@ -46,17 +43,11 @@
 - hosts: nginx.vagrant.localdomain
   sudo: yes
   roles:
-    - role: OULibraries.centos7
-      tags: centos7
     - role: OULibraries.nginx
       tags: nginx
     - role: OULibraries.ngrok
       tags: ngrok
-    - role: OULibraries.users
-      tags: users
   pre_tasks:
-    - include: pretasks.yml
-      tags: pretasks
     - copy:
         src: /vagrant/dhparam.pem
         dest: "{{ nginx_cert_path }}/dhparam.pem"
@@ -64,8 +55,6 @@
 - hosts: solr.vagrant.localdomain
   sudo: yes
   roles:
-    - role: OULibraries.centos7
-      tags: centos7
     - role: OULibraries.nginx
       tags: nginx
     - role: OULibraries.java
@@ -74,24 +63,19 @@
       tags: solr
     - role: OULibraries.solr-onesearch
       tags: solr-onesearch
-    - role: OULibraries.users
-      tags: users
   pre_tasks:
-    - include: pretasks.yml
-      tags: pretasks
     - copy:
         src: /vagrant/dhparam.pem
         dest: "{{ nginx_cert_path }}/dhparam.pem"
 
-- hosts: cas.vagrant.localdomain
-  sudo: yes
+# - hosts: cas.vagrant.localdomain
+#   sudo: yes
+#   roles:
+#     - OULibraries.cas
+
+
+# Got back and configure interactive users and devel settings
+- hosts: vagrant
   roles:
-    - role: OULibraries.centos7
-      tags: centos7
-    - role: OULibraries.cas
-      tags: cas
     - role: OULibraries.users
       tags: users
-  pre_tasks:
-    - include: pretasks.yml
-      tags: pretasks
