@@ -23,8 +23,7 @@ yum install -y yum-plugin-versionlock
 yum versionlock kernel
 
 # Install git and ansible to get started
-yum install -y git
-yum install -y python-pip
+yum install -y git gcc openssl-devel python-devel python2-pip
 pip install 'ansible==2.1.1'
 
 # Create the default ansible config folder (pip install doesn't).
@@ -42,7 +41,7 @@ chmod 600 /home/vagrant/.ssh/config
 # ansible complains if this file is on the windows share because permissions
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 chown root:wheel /etc/ansible/ansible.cfg
-chmod 640 /etc/ansible/ansible.cfg
+chmod 644 /etc/ansible/ansible.cfg
 
 # ansible uses the inventory path to locate group and host vars so we have to
 # make sure the script is in the project folder

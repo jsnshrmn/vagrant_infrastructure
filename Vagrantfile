@@ -27,6 +27,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_version = "1611.01"
   if Vagrant.has_plugin?("vagrant-vbguest")
     config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+    config.vbguest.auto_update = true
   end
   config.ssh.forward_agent = true
   config.vm.provider :virtualbox do |v|
