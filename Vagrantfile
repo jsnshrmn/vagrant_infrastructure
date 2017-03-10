@@ -23,8 +23,11 @@ Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
-  config.vm.box = "geerlingguy/centos7"
-  config.vm.box_version = "1.1.7"
+  config.vm.box = "centos/7"
+  config.vm.box_version = "1611.01"
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  end
   config.ssh.forward_agent = true
   config.vm.provider :virtualbox do |v|
     v.cpus = 1
