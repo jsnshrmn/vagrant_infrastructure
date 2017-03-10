@@ -23,8 +23,8 @@ yum install -y yum-plugin-versionlock
 yum versionlock kernel
 
 # Install git and ansible to get started
-yum install -y epel-release git gcc openssl-devel python-devel python2-pip
-yum install -y python2-pip
+yum install -y epel-release
+yum install -y git gcc openssl-devel python-devel python2-pip
 pip install 'ansible==2.1.1'
 
 # Create the default ansible config folder (pip install doesn't).
