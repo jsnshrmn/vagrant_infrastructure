@@ -1,4 +1,8 @@
 ---
+
+- name: Add vagrant user to wheel group
+  command: usermod -a -G wheel vagrant
+
 # Some VMs need to know about other VMs
 - name: Copy hosts file
   copy:

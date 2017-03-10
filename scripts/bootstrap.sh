@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Add vagrant user to wheel group
-usermod -a -G wheel vagrant
-
 # Set up vagrant user ssh keys. These need to live on the vms to have
 # reasonable permissions with Windows and vboxsf
 mkdir -p  "/home/vagrant/.ssh/machines"
