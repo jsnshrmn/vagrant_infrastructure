@@ -18,10 +18,6 @@ done
 yum clean metadata
 yum check-update
 
-# Lock kernel version
-yum install -y yum-plugin-versionlock
-yum versionlock kernel
-
 # Install git and ansible to get started
 yum install -y git
 yum install -y python-pip
