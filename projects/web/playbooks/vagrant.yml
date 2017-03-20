@@ -71,7 +71,8 @@
 - hosts: cas.vagrant.localdomain
   sudo: yes
   roles:
-    - OULibraries.cas
+    - role: OULibraries.cas
+      tags: cas
 
 # Got back and configure interactive users and devel settings
 - hosts: vagrant
