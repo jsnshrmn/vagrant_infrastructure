@@ -40,9 +40,10 @@ d7_post_max_size: "70M"
 d7_date_timezone: "America/Chicago"
 
 # Control of PHP session expiration
-d7_session_cookie_lifetime: "900"
+d7_session_cookie_lifetime: "0"
 d7_session_gc_probability: "1"
 d7_session_gc_divisor: "1"
+d7_session_gc_maxlifetime: "1800" 
 
-# D7 CAS Host
+# d7 CAS Host
 d7_cas: "login.opstest.lib.ou.edu"
