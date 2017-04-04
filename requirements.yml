@@ -13,7 +13,7 @@
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
-  version: v2017-03-02.0
+  version: v2017-03-21.0
   name: OULibraries.d7
 
 - src: https://github.com/OULibraries/ansible-role-java
