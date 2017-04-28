@@ -26,7 +26,6 @@ apc_username: apcuser
 apc_password: apcpass
 
 # Front end
-# nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
 # - name: journals.vagrant.localdomain
  - name: "journals.{{ vagrant_ojs_dn }}"
@@ -35,9 +34,6 @@ nginx_star_sites:
        servers:
          - ojs.vagrant.localdomain:443
    robots: disallow
-# nginx_literal_sites: [] # Use this if you have no literal sites
-nginx_literal_sites: []
-
 
 # Credentials for creating the OJS DB
 ojs_mariadb_login_username: root

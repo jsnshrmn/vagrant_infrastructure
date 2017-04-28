@@ -1,6 +1,5 @@
 ---
 # Front end
-# nginx_star_sites: [] # Use this if you have no star sites
 nginx_star_sites:
   - name: "d7.{{ my_httpd_dn_suffix }}"
     upstreams:
