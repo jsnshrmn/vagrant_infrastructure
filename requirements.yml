@@ -8,12 +8,16 @@
   version: master
   name: OULibraries.cas
 
+- src: https://github.com/OULibraries/ansible-role-celery-worker
+  version: master
+  name: OULibraries.celery-worker
+
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2017-01-31.0
+  version: v2017-04-28.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
-  version: v2017-03-21.0
+  version: v2017-04-28.0
   name: OULibraries.d7
 
 - src: https://github.com/OULibraries/ansible-role-java
@@ -25,7 +29,7 @@
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: v2017-02-14.0
+  version: v2017-03-02.0
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok

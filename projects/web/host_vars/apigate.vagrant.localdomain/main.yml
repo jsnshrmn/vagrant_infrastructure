@@ -3,8 +3,6 @@
 
 searchgateway_name: "apigate"
 
-nginx_star_sites: []
-nginx_literal_sites: []
 nginx_stub_sites:
   - name: "{{ searchgateway_name }}"
     robots: "disallow"

@@ -16,9 +16,6 @@ solr_host: "0.0.0.0"
 onesearch_solr_user: "solr"
 onesearch_solr_pass: "solr"
 
-nginx_star_sites: []
-nginx_stub_sites: []
-nginx_literal_sites: []
 nginx_loopback_sites:
   - name: solr.vagrant.localdomain
     robots: disallow
