@@ -11,3 +11,12 @@ cas_services:
 
 # Unique ID for CAS node
 cas_host_name: cas.vagrant.localdomain
+
+# CAS login screen verbiage variables
+cas_screen_welcome_instructions: "Login with your OUNetID (4x4)"
+cas_screen_welcome_security:
+
+cas_screen_label_netid: "<span class=\"accesskey\">O</span>UNetID (4x4):"
+cas_authenticationFailure_AccountNotFoundException: "Sorry, unrecognized
+username or password. Visit the <a href=\"https://libraries.ou
+.edu/login-help\">Login Help</a> page for assistance."
