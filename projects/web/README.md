@@ -1,4 +1,4 @@
-Vagrant Infrastructure Web Project
+Vagrant Infrastructure - Web
 =========
 
 This project provides a multi-machine Vagrant environment that closely mimics the OU Libraries AWS-based web environment.
