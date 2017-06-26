@@ -41,18 +41,18 @@ Installation
 1. Clone this repo to a local folder.
 1. Configure the project to build:
 
-      On Linux or MacOS, you can symlink your project in projects to `project`, eg.
+      On *Linux* or *MacOS*, you can symlink your project in projects to `project`, eg.
       ```
       # Linux or MacOS
       ln -s projects/example project
       ```
      
-      On Windows, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
+      On *Windows*, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
       
       In `Vagrantfile`, specify your project
       ```
-      -VAGRANTFILE_PROJECT="project"
-      +VAGRANTFILE_PROJECT="projects/web-light"
+      -vagrantfile_project="project"
+      +vagrantfile_project="projects/web-light"
       ```
      
       In the `ansible.cfg`, specify the path to your projects inventory
