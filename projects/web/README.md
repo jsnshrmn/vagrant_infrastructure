@@ -19,7 +19,7 @@ It won't build `islandora.vagrant.localdomain` and you may see errors about this
 Requirements
 ------------
 
-Working vagrant_infrastructure install. A paid ngrok account.  Patience.
+All requirements for `vagrant_infrastructure`. A paid ngrok account. Patience.
 
 Configuration
 -------------
@@ -32,5 +32,5 @@ General Usage
 Once you have configured your settings, use `vagrant up` to build the environment. 
 
 With that done, the most common starting point is to log use `vagrant
-ssh d7` to log in to the confiured Drupal host where you can make use
-of our `d7` scripts build and manage drupal sites.
+ssh d7` to log in to the configured `d7` host where you will be able
+to use our `d7` scripts to create and manage Drupal sites.
