@@ -1,31 +1,35 @@
-OULibraries.vagrant_infrastructure web
+Vagrant Infrastructure - Web
 =========
 
-Multimachine Vagrant web testing environment.
+This project provides a multi-machine Vagrant environment that closely mimics the OU Libraries AWS-based web environment.
+
+It will build the following VMs:
+
+* `ansible.vagrant.localdomain`
+* `nginx.vagrant.localdomain`
+* `d7.vagrant.localdomain`
+* `cas.vagrant.localdomain`
+* `apigate.vagrant.localdomain`
+* `solr.vagrant.localdomain`
+
+It won't build `islandora.vagrant.localdomain` and you may see errors about this host being unreachable. These can be safely ignored. 
+
 
 Requirements
 ------------
 
-Working vagrant_infrastructure install. A paid ngrok account.  Patience.
+All requirements for `vagrant_infrastructure`. A paid ngrok account. Patience.
 
-Usage
------
+Configuration
+-------------
 
-Configure the following in `web/group_vars/vagrant/secrets.yml`:
+Configure your details in `web/group_vars/vagrant/secrets.yml` based on the template `web/group_vars/vagrant/example-secrets.yml`. 
 
-* `my_user` - your shell account, should match prod account for easiest synch config
-* `my_name` - your name (for git config, etc)
-* `my_email` - your email
-* `my_pubkey` - your public key for GitHub and site synching
-* `ssh_brokers` - ssh brokers that you'll need for synching sites
-* `my_ngrok_authtoken` - your ngrok token
-* `my_httpd_dn_suffix` - your reserved ngrok suffix
-* `my_smtp_authuser` - smtp service credentials
-* `my_smtp_authpassword` - smtp service credentials
-```
-cas_fileauth_users:
-  - username: - a cas username of your choosing
-    password: - a cas password of your choosing
-```
 
-With that done, `vagrant up` should give you working d7 + cas + nginx boxes. 
+General Usage
+------------
+Once you have configured your settings, use `vagrant up` to build the environment. 
+
+With that done, the most common starting point is to log use `vagrant
+ssh d7` to log in to the configured `d7` host where you will be able
+to use our `d7` scripts to create and manage Drupal sites.
