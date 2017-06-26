@@ -1,10 +1,9 @@
-OULibraries.vagrant_infrastructure web
+Vagrant Infrastructure Web Project
 =========
 
-This project provides a multi-machine Vagrant environment that closely mimics the OU Libraries AWS web environment.
+This project provides a multi-machine Vagrant environment that closely mimics the OU Libraries AWS-based web environment.
 
 It will build the following VMs:
-
 
 * `ansible.vagrant.localdomain`
 * `nginx.vagrant.localdomain`
