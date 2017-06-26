@@ -22,7 +22,7 @@ We've had lots of version related bugs with this stack, so the above versions sh
 
 All projects create an Ansible control VM, so you don't need a working local Ansible install on the VM host.
 
-** Windows only notes:**
+### Windows only notes
 * This environment seems to be incompatible with the default DDPE antivirus software install, which OU Libraries Windows users may have installed. 
 * Use our [msys2 setup](https://github.com/OULibraries/msys2-setup) to get an okay shell environment. You'll need to run vagrant from inside msys2.
 * For convenience you may which to alias the windows vagrant.exe to the vagrant command in bash. One way to do that is to add the following to ~/.bash_profile     
