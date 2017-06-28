@@ -109,6 +109,22 @@ vagrant share you can typically fix that by re-running `vagrant up`
 again until it succeeds.
 
 
+### Normal Errors: "UNREACHABLE"
+
+If you see blocks of errors like the following chunk of "UNREACHABLE", that's probably OK. We've standardized the network configuration across all of the projects and the result is that you're probably not building all of the available machines for any particular project. 
+```
+==> ansible: TASK [setup] *******************************************************************
+==> ansible: ok: [islandora.vagrant.localdomain]
+==> ansible: fatal: [nginx.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
+==> ansible: fatal: [d7.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
+==> ansible: fatal: [cas.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
+==> ansible: fatal: [apigate.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
+==> ansible: fatal: [solr.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
+==> ansible: ok: [ansible.vagrant.localdomain]
+```
+If it bugs you too much, we'd love a pull request. 
+
+
 Ngrok Tunneling
 -----
 
