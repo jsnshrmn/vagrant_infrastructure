@@ -3,11 +3,10 @@ OULibraries vagrant_infrastructure
 
 This is a shared vagrant environment capable of building a number of different OU Libraries projects in Vagrant using our infrastructure playbooks. For each development project, it will provision the required machines and an Ansible control machine and then using Ansible to configure a development environment based on our production environments. 
 Currently includes the following development projects:
-* [web](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web/README.md) - mutli-VM Drupal+ dev environment
+* [web](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web/README.md) - mutli-VM Drupal+ dev environment. 
 * [web-light](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web-light/README.md) - single VM Drupal dev environment, still a work in progress 
 * [islandora](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/islandora/README.md) - single VM islandora dev environment
-* [CAS](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/cas/README.md) - deprecated
-* OJS - single VM OJS dev environment, needs work. 
+* OJS - single VM OJS dev environment, needs work, docs. 
 
 where "Single machine" means "Single machine with ansible control machine".
 
