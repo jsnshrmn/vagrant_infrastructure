@@ -13,7 +13,7 @@ Due to recent changes in Oracle's site, you'll need to manualy download `jdk-8u1
 Usage
 -----
 
-Configure your details in web/group_vars/vagrant/secrets.yml based on the template web/group_vars/vagrant/example-secrets.yml.
+Configure your details in `islandora/group_vars/vagrant/secrets.yml` based on the template `islandora/group_vars/vagrant/example-secrets.yml`.
 
 With that done, `vagrant up` should give you:
 
