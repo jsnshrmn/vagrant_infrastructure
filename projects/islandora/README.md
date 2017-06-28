@@ -8,26 +8,17 @@ Requirements
 
 Working vagrant_infrastructure install. A paid ngrok account.  Patience.
 
+Due to recent changes in Oracle's site, you'll need to manualy download `jdk-8u102-linux-x64.rpm` from the [JDK download site](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) and copy it to 'project/downloads' in your vagrant folder. 
+
 Usage
 -----
 
-Configure the following in `web-light/group_vars/vagrant/secrets.yml`:
-
-* `my_user` - your shell account, should match prod account for easiest synch config 
-* `my_name` - your name (for git config, etc)
-* `my_email` - your email
-* `my_pubkey` - your public key for GitHub and site synching
-* `ssh_brokers` - ssh brokers that you'll need for synching sites
-* `my_ngrok_authtoken` - your ngrok token 
-* `my_httpd_dn_suffix` - your reserved ngrok suffix
-* `my_smtp_authuser` - smtp service credentials
-* `my_smtp_authpassword` - smtp service credentials
-
+Configure your details in web/group_vars/vagrant/secrets.yml based on the template web/group_vars/vagrant/example-secrets.yml.
 
 With that done, `vagrant up` should give you:
 
 * ansible host
-* islandora host with `repostiory` site. 
+* islandora host with `repository` site. 
 
 
 Author Information
