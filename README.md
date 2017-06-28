@@ -51,7 +51,7 @@ Configuration
       ln -s projects/example project
       ```
      
-      On *&Windows*&, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
+      On **Windows**, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
       
       In `Vagrantfile`, specify your project
       ```
@@ -65,7 +65,7 @@ Configuration
       +inventory = /vagrant/projects/web-light/inventory.py
       ```
 
-1. Review the `README` for your project and perform any required steps. This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author. 
+1. **Review the `README` for your project and perform any required steps.** This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author. 
 
 
 1. Set the `OULIB_USER` environment variable to specify a user to use for intaractive vagrant commands (like `vagrant ssh`). In most cases, this should be your normal ssh login, and should match credentials specified when configuring the project in the previous step.
