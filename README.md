@@ -31,9 +31,9 @@ All projects create an Ansible control VM, so you don't need a working local Ans
 if [ -f "/c/HashiCorp/Vagrant/bin/vagrant.exe" ] ; then
   alias vagrant="/c/HashiCorp/Vagrant/bin/vagrant.exe"
 fi
-
 ```
-
+* Windows 10 users may run in to [this bug](https://github.com/mitchellh/vagrant/issues/6852) and need to [install some additional libraries](https://www.microsoft.com/en-us/download/details.aspx?id=8328) to get Vagrant working.
+ 
 Installation
 ------------
 1. Install Vagrant and VirtualBox as specified above.
@@ -132,7 +132,7 @@ Most projects are configured to make use of `ngrok` to provide secure
 https access.  To make use of this, you'll need a paid account at
 [ngrok.com](https://ngrok.com/). See the ngrok documentation for details. 
 
-Should ngrok become confused and broken, simply restart the oulib-ngrok service
+Should ngrok become confused and broken, you can probably fix this by restarting the oulib-ngrok service
 on the vagrant machine running the tunnel (Generally the `nginx` reverse proxy.) 
 
 ```
