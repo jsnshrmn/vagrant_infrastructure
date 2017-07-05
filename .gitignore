@@ -34,3 +34,7 @@ project
 
 # Ignore copies of inventory script
 projects/*/inventory.py
+
+tls_certs/*
+dhparam.pem
+privkey.pem

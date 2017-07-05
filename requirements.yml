@@ -13,7 +13,7 @@
   name: OULibraries.celery-worker
 
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2017-04-28.0
+  version: v2017-06-06.0
   name: OULibraries.centos7
 
 - src: https://github.com/OULibraries/ansible-role-d7
@@ -29,7 +29,7 @@
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
-  version: v2017-03-02.0
+  version: master
   name: OULibraries.nginx
 
 - src: https://github.com/OULibraries/ansible-role-ngrok
@@ -41,11 +41,11 @@
   name: OULibraries.ojs
 
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
-  version: v2016-10-17.0
+  version: v2017-04-17.1
   name: OULibraries.postfix-mta
 
 - src: https://github.com/OULibraries/ansible-role-users
-  version: v2016-11-14.0
+  version: v2017-05-09.0
   name: OULibraries.users
 
 - src: https://github.com/OULibraries/ansible-role-solr
@@ -63,6 +63,10 @@
 - src: https://github.com/OULibraries/ansible-role-searchgateway
   version: master
   name: OULibraries.searchgateway
+
+- src: https://github.com/OULibraries/ansible-role-tls-cert
+  version: master
+  name: OULibraries.tls-cert
 
 - src: https://github.com/OULibraries/ansible-role-fcrepo3
   name: OULibraries.fcrepo3

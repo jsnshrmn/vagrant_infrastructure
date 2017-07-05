@@ -15,7 +15,7 @@ vagrantfile_path = File.dirname(__FILE__)
 VAGRANTFILE_API_VERSION = "2"
 
 # Recent vagrant releases have been buggy
-Vagrant.require_version( "<1.8.7")  # blacklisting untested versions
+Vagrant.require_version( "1.9.4")  # blacklisting untested versions
 Vagrant.require_version( "!=1.8.7") # broken curl
 Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 # - vagrant 1.8.4 is known to be a good choice on MacOs and Windoes
@@ -23,6 +23,10 @@ Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
+  if Vagrant.has_plugin?("vagrant-vbguest")
+    config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+    config.vbguest.auto_update = false
+  end
   config.vm.box = "geerlingguy/centos7"
   config.vm.box_version = "1.1.7"
   config.ssh.forward_agent = true

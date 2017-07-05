@@ -8,6 +8,12 @@
     - include: pretasks.yml
       tags: pretasks
 
+- hosts: ansible.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.tls-cert
+      tags: tls-cert
+
 - hosts: d7.vagrant.localdomain
   sudo: yes
   roles:
@@ -34,23 +40,14 @@
       tags: nginx
     - role: OULibraries.searchgateway
       tags: searchgateway
-  pre_tasks:
-    - copy:
-        src: /vagrant/dhparam.pem
-        dest: "{{ nginx_cert_path }}/dhparam.pem"
-
 
 - hosts: nginx.vagrant.localdomain
   sudo: yes
   roles:
     - role: OULibraries.nginx
       tags: nginx
-    - role: OULibraries.ngrok
-      tags: ngrok
-  pre_tasks:
-    - copy:
-        src: /vagrant/dhparam.pem
-        dest: "{{ nginx_cert_path }}/dhparam.pem"
+#    - role: OULibraries.ngrok
+#      tags: ngrok
 
 - hosts: solr.vagrant.localdomain
   sudo: yes

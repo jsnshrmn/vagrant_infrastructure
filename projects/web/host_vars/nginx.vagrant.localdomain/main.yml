@@ -1,15 +1,17 @@
 ---
 # Front end
-nginx_star_sites:
-  - name: "d7.{{ my_httpd_dn_suffix }}"
+nginx_sites:
+  - name: "*.d7.{{ my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"
     upstreams:
       - name: d7-vagrant-localdomain
         servers:
           - d7.vagrant.localdomain:443
+        locations:
+          - /
     robots: disallow
-
-nginx_literal_sites:
   - name: "apigate.{{ my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"
     upstreams:
       - name: apigate-vagrant-localdomain
         servers:
@@ -17,8 +19,8 @@ nginx_literal_sites:
         locations:
           - /
     robots: disallow
-
   - name: "cas.{{ my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"
     upstreams:
       - name: cas-vagrant-localdomain
         servers:

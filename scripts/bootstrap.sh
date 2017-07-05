@@ -19,9 +19,9 @@ yum clean metadata
 yum check-update
 
 # Install git and ansible to get started
-yum install -y git
-yum install -y python-pip
-pip install 'ansible==2.1.1'
+yum install -y epel-release
+yum install -y git gcc openssl-devel python-devel python2-pip
+pip install 'ansible==2.3.1.0'
 
 # Create the default ansible config folder (pip install doesn't).
 mkdir -pv /etc/ansible
