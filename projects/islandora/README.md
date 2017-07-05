@@ -8,7 +8,7 @@ Requirements
 
 Working vagrant_infrastructure install. A paid ngrok account.  Patience.
 
-Due to recent changes in Oracle's site, you'll need to manualy download `jdk-8u102-linux-x64.rpm` from the [JDK download site]http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html) and copy it to 'project/downloads' in your vagrant folder. 
+Due to recent changes in Oracle's site, you'll need to manualy download `jdk-8u102-linux-x64.rpm` from the [JDK download site](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html) and copy it to 'project/downloads' in your vagrant folder. 
 
 Usage
 -----
