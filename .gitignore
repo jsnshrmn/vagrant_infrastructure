@@ -34,3 +34,6 @@ project
 
 # Ignore copies of inventory script
 projects/*/inventory.py
+
+# Ignore downloaded project assets
+projects/*/downloads
