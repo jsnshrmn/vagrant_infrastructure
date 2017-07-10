@@ -35,6 +35,9 @@ project
 # Ignore copies of inventory script
 projects/*/inventory.py
 
+# Ignore tls_certs
 tls_certs/*
-dhparam.pem
 privkey.pem
+
+# Ignore downloaded project assets
+projects/*/downloads

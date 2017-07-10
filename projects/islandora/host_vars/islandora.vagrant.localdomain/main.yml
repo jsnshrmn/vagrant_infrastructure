@@ -1,6 +1,6 @@
 ---
 # Style of environment to build: vagrant, test or prod
-environment_name: "vagrant"
+environment_name: "webdev"
 
 # APC?
 apc_enabled: "0"

@@ -36,17 +36,6 @@
      tags: d7-islandora
 
   tasks:
-    - name: Enable selinux for testing
-      selinux:
-        state: enforcing
-        policy: targeted
-      when: environment_name != "vagrant"
-    - name: Disable selinux for vagrant dev
-      selinux:
-        state: permissive
-        policy: targeted
-      when: environment_name == "vagrant"
-
     - name: Add apache user to vagrant group
       user:
         name: apache
