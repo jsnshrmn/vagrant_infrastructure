@@ -44,10 +44,10 @@
   roles:
     - role: OULibraries.sclphp
       tags: sclphp
-    - role: OULibraries.nginx
-      tags: nginx
     - role: OULibraries.searchgateway
       tags: searchgateway
+    - role: OULibraries.nginx
+      tags: nginx
 
 - hosts: nginx.vagrant.localdomain
   sudo: yes
