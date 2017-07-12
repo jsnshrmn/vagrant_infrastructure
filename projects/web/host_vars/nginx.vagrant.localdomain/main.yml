@@ -8,7 +8,10 @@ nginx_sites:
         servers:
           - d7.vagrant.localdomain:443
         locations:
-          - /
+          - location_match: /
+            extras:
+              - name: client_max_body_size 
+                value: 1024M
     robots: disallow
   - name: "apigate.{{ my_httpd_dn_suffix }}"
     cert_name: "{{ my_httpd_dn_suffix }}"
@@ -17,7 +20,7 @@ nginx_sites:
         servers:
           - apigate.vagrant.localdomain:443
         locations:
-          - /
+          - location_match: /
     robots: disallow
   - name: "cas.{{ my_httpd_dn_suffix }}"
     cert_name: "{{ my_httpd_dn_suffix }}"
@@ -26,7 +29,7 @@ nginx_sites:
         servers:
           - cas.vagrant.localdomain:8443
         locations:
-          - /
+          - location_match: /
     robots: disallow
 
 

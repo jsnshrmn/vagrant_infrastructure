@@ -16,3 +16,4 @@ tls_certificates:
       - "*.d7.{{ my_httpd_dn_suffix }}"
       - "apigate.{{ my_httpd_dn_suffix }}"
       - "cas.{{ my_httpd_dn_suffix }}"
+      - "solr.{{ my_httpd_dn_suffix }}"
