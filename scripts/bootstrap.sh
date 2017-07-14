@@ -1,18 +1,8 @@
 #!/usr/bin/env bash
 
 
-
-# Set up vagrant user ssh keys. These need to live on the vms to have
-# reasonable permissions with Windows and vboxsf
-mkdir -p  "/home/vagrant/.ssh/machines"
-for host in $(ls /vagrant/.vagrant/machines);
-do
-    [ ! -f "/vagrant/.vagrant/machines/${host}/virtualbox/private_key" ] && continue
-    mkdir "/home/vagrant/.ssh/machines/${host}"
-    cp -v "/vagrant/.vagrant/machines/${host}/virtualbox/private_key" "/home/vagrant/.ssh/machines/${host}"
-    chmod 600 "/home/vagrant/.ssh/machines/${host}/private_key"
-    chown -R vagrant:vagrant "/home/vagrant/.ssh/"
-done
+# Copy /etc/hosts file and set up ssh keys for vagrant user
+/vagrant/scripts/fix-hosts.sh
 
 # Clean metadata in case of old mirrors etc
 yum clean metadata
@@ -29,11 +19,6 @@ mkdir -pv /etc/ansible
 # create ansible vault secret if one doesn't exist.
 stat /vagrant/vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "a-zA-Z0-9~!@#$%^&*_-" | head -c${1:-254};echo;' > /vagrant/vault_password.txt
 
-# copy hosts file provided by vagrant provisioner
-cp /vagrant/hosts /etc/hosts
-cp /vagrant/ssh.cfg /home/vagrant/.ssh/config
-chown vagrant:vagrant /home/vagrant/.ssh/config
-chmod 600 /home/vagrant/.ssh/config
 
 # ansible complains if this file is on the windows share because permissions
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
