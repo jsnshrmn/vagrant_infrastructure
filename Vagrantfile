@@ -14,12 +14,21 @@ vagrantfile_path = File.dirname(__FILE__)
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-# Recent vagrant releases have been buggy
-Vagrant.require_version( "1.9.4")  # blacklisting untested versions
-Vagrant.require_version( "!=1.8.7") # broken curl
+
+# VAGRANT COMPATIBILITY 
+#
+# Many Recent vagrant releases have been buggy, so we've blacklisted
+# specific releases and ones we haven't gotten around to testing yet.
+# Feel free to uncomment and try a new release if you feel lucky!
+Vagrant.require_version( "<=1.9.4")
+# - 1.9.4 is known to work on Linux, Windows, and MacOS
+Vagrant.require_version( "!=1.9.3") # broken SMB sync
+# - 1.9.2 might be OK.
+Vagrant.require_version( "!=1.9.1") # broken network config
+Vagrant.require_version( "!=1.8.7") # broken curl library
+# - 1.8.6 is known to be good on Linux
 Vagrant.require_version( "!=1.8.5") # broken ssh permissions
-# - vagrant 1.8.4 is known to be a good choice on MacOs and Windoes
-# - vagrant 1.8.6 is known to be a good choice on Linux
+# - 1.8.4 is known to be good on MacOs and Windows
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default configuration for all VMs
