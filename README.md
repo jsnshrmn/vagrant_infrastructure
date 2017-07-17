@@ -139,6 +139,26 @@ on the vagrant machine running the tunnel (Generally the `nginx` reverse proxy.)
 sudo systemctl restart oulib-ngrok
 ```
 
+Manually Rebuild a Project VM
+-------------------------
+
+You may want to rebuild an individual Vagrant VM without reprovisioning the full project from scratch (e.g. for Ansible role development).  For example, to build a new `solr.vagrant.localdomain` VM from scratch, first destroy and recreate the existing Solr VM.
+```
+# From the vagrant host
+$ vagrant destroy solr
+$ vagrant up solr
+```
+Then make sure the Ansible control machine has up-to-date info about the newly built host. (Mainly, you need the newly created ssh machine key.)
+```
+# From the vagrant host
+$ OULIB_USER=vagrant vagrant ssh ansible --command "/vagrant/scripts/fix-hosts.sh"
+```
+Finally,  re-run the project playbook, limiting the scope to the machine that you want to rebuild.
+```
+# From the vagrant host
+$ OULIB_USER=vagrant vagrant ssh ansible --command "ansible-playbook /vagrant/projects/web/playbooks/vagrant.yml --limit solr.vagrant.localdomain"
+```
+
 TODO
 ------------
 
