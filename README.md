@@ -99,17 +99,21 @@ these commands:
 Vagrant Troubleshooting
 -----------------------
 
-It maybe be neccessary to do a `halt` or `reload` if the guest VM gets
-confused about its network, or loses its fileshares. This most
-frequently happens when the host machine goes to sleep and/or moves
-between networks.
+### Network weirdness
+
+If the guest VM gets confused about its network, can't talk to the internet, or loses it's 
+fileshares, it maybe be neccessary to do reboot your VMs with `vagrant halt && vagrant up` 
+or `vagrant reload`. If Vagrant is unable to successfully issue these commands,  you may need 
+to use the VirtualBox GUI to halt the VM before restarting it with `vagrant up`.  
+
+### Mounted fileshares and vboxsf errors
 
 In cases where vagrant up fails because it can't mount the vboxsf
 vagrant share you can typically fix that by re-running `vagrant up`
 again until it succeeds.
 
 
-### Normal Errors: "UNREACHABLE"
+### Ansible "UNREACHABLE" error
 
 If you see blocks of errors like the following chunk of "UNREACHABLE", that's probably OK. We've standardized the network configuration across all of the projects and the result is that you're probably not building all of the available machines for any particular project. 
 ```
@@ -125,7 +129,7 @@ If you see blocks of errors like the following chunk of "UNREACHABLE", that's pr
 If it bugs you too much, we'd love a pull request. 
 
 
-Ngrok Tunneling
+Ngrok problems
 -----
 
 Most projects are configured to make use of `ngrok` to provide secure
@@ -139,7 +143,7 @@ on the vagrant machine running the tunnel (Generally the `nginx` reverse proxy.)
 sudo systemctl restart oulib-ngrok
 ```
 
-Manually Rebuild a Project VM
+Manually Rebuild a Single Project VM
 -------------------------
 
 You may want to rebuild an individual Vagrant VM without reprovisioning the full project from scratch (e.g. for Ansible role development).  For example, to build a new `solr.vagrant.localdomain` VM from scratch, first destroy and recreate the existing Solr VM.
