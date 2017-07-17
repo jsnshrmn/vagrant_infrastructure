@@ -16,10 +16,14 @@ solr_host: "0.0.0.0"
 onesearch_solr_user: "solr"
 onesearch_solr_pass: "solr"
 
-nginx_loopback_sites:
+nginx_sites:
   - name: solr.vagrant.localdomain
+    cert_name: "{{ my_httpd_dn_suffix }}"
     robots: disallow
     upstreams:
       - name: local-solr-jetty
-        ports:
-          - 8983
+        secure: false
+        servers:
+          - 127.0.0.1:8983
+        locations:
+          - location_match: /

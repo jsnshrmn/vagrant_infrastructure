@@ -1,10 +1,8 @@
 ---
 
-
 searchgateway_name: "apigate"
 
-nginx_stub_sites:
-  - name: "{{ searchgateway_name }}"
-    robots: "disallow"
-
-
+nginx_sites:
+  - name: "{{ searchgateway_name }}.{{ my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"
+    app_include: "{{ searchgateway_name }}"

@@ -23,7 +23,13 @@ All requirements for `vagrant_infrastructure`. A paid ngrok account. Patience.
 Configuration
 -------------
 
-Configure your details in `web/group_vars/vagrant/secrets.yml` based on the template `web/group_vars/vagrant/example-secrets.yml`. 
+Configure your details in `web/group_vars/vagrant/secrets.yml` based on the template `web/group_vars/vagrant/example-secrets.yml`.
+
+### OneSearch and API Gateway
+
+If you need a working API Gateway (for OneSearch, etC) you'll also need to configure `web/host_vars/apigate.vagrant.localdomain/secrets.yml` based on the template at `web/host_vars/apigate.vagrant.localdomain/example-secrets.yml`. 
+
+
 
 
 General Usage
