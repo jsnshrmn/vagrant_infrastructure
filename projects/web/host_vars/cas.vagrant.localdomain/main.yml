@@ -1,3 +1,4 @@
+---
 cas_services:
   - file: "starNgrok"
     serviceId: '^https://.*{{ my_httpd_dn_suffix }}/.*'
@@ -11,6 +12,10 @@ cas_services:
 
 # Unique ID for CAS node
 cas_host_name: cas.vagrant.localdomain
+
+# Specify a cas overlay
+cas_overlay_repo: "https://github.com/OULibraries/cas-overlay.git"
+cas_overlay_version: "4.1-oulib"
 
 # CAS login screen verbiage variables
 cas_screen_welcome_instructions: "Login with your OUNetID (4x4)"
