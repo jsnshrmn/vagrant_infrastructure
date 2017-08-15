@@ -73,3 +73,6 @@
 
 - src: https://github.com/OULibraries/ansible-role-d7-islandora
   name: OULibraries.d7-islandora
+
+- src: https://github.com/OULibraries/ansible-role-dspace6
+  name: OULibraries.dspace6
