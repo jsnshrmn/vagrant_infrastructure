@@ -6,3 +6,4 @@
 192.168.96.6	apigate.vagrant.localdomain
 192.168.96.7	solr.vagrant.localdomain
 192.168.96.8	islandora.vagrant.localdomain
+192.168.96.9    dev.vagrant.localdomain
