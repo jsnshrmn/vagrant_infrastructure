@@ -76,3 +76,6 @@
 
 - src: https://github.com/OULibraries/ansible-role-dspace6
   name: OULibraries.dspace6
+
+- src: https://github.com/OULibraries/ansible-role-postgresql-server
+  name: OULibraries.postgresql-server

@@ -9,14 +9,14 @@
     - include: pretasks.yml
       tags: pretasks
 
-# # Build a stand-alone dspace box
-# - hosts: dspace.vagrant.localdomain
-#   sudo: yes
-#   roles:
-#     - role: OULibraries.postgresql-server
-#       tags: postgresql-server
-#     - role: OULibraries.dspace6
-#       tags: dspace6
+ # Build a stand-alone dspace box
+- hosts: dspace.vagrant.localdomain
+  sudo: yes
+  roles:
+    - role: OULibraries.postgresql-server
+      tags: postgresql-server
+    - role: OULibraries.dspace6
+      tags: dspace6
 
 # Got back and configure interactive users and devel settings for all hosts
 - hosts: vagrant
