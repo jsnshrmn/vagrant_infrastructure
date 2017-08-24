@@ -32,6 +32,11 @@ if [ -f "/c/HashiCorp/Vagrant/bin/vagrant.exe" ] ; then
   alias vagrant="/c/HashiCorp/Vagrant/bin/vagrant.exe"
 fi
 ```
+* For convenience you may wish to alias the ls command to ignore some uninteresting files that pollute the windows user home directory.  
+```
+# Alias ls to ignore ntuser files
+alias ls='ls -I "NTUSER.*" -I "ntuser.*"'
+```
 * Windows 10 users may run in to [this bug](https://github.com/mitchellh/vagrant/issues/6852) and need to [install some additional libraries](https://www.microsoft.com/en-us/download/details.aspx?id=8328) to get Vagrant working.
  
 Installation
