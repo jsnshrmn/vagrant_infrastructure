@@ -9,6 +9,8 @@ cas_services:
     logoutUrl: "https://.*{{ my_httpd_dn_suffix }}/caslogout"
     logoutType: "NONE"
 
+# Turn on SAML2 IdP
+cas_saml2_idp: true
 
 # Unique ID for CAS node
 cas_host_name: cas.vagrant.localdomain
