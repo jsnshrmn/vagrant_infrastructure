@@ -1,14 +1,47 @@
-OULibraries vagrant_infrastructure
+OU Libraries Vagrant Infrastructure
 =========
 
-This is a shared vagrant environment capable of building a number of different OU Libraries projects in Vagrant using our infrastructure playbooks. For each development project, it will provision the required machines and an Ansible control machine and then using Ansible to configure a development environment based on our production environments. 
-Currently includes the following development projects:
-* [web](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web/README.md) - mutli-VM Drupal+ dev environment. 
-* [web-light](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web-light/README.md) - single VM Drupal dev environment, still a work in progress 
-* [islandora](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/islandora/README.md) - single VM islandora dev environment
-* OJS - single VM OJS dev environment, needs work, docs. 
+The Vagrant Infrastructure project is very much a work in
+progress. We're currently focused on collecting together the various
+project environments that currently exist and looking for patterns
+that can be standardized and shared between them.
 
-where "Single machine" means "Single machine with ansible control machine".
+## Goals
+
+### Cross Team Collaboration
+
+This project is intended to provide a common development environment
+shared across teams and projects to make it easier for us to work
+together and support each other.
+
+### Highly Accurate Testing
+
+Vagrant Infrastructure makes use of the same Ansible roles that the
+Ops team uses to provision systems, allowing us to have a accurate
+development environments that closely duplicate the configuration of
+our test and production systems.
+
+### DevOps Documentation and Collaboration
+
+Vagrant Infrastructure is designed to improve communication and
+collaboration between the developers and the Ops team by providing a
+common point of reference for the configuration and deployment of
+systems,  and a working model of our production environment where
+developers and the Ops team can work together to design, document, and
+implement deployment of new systems.
+
+## Current Status
+
+This project provisions an Ansible control machine that matches our
+current configuration for deploying production and then uses that
+control machine to configure the set of VMs specified for that
+development environment.
+
+Currently the following development environments are available:
+* [web](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/web/README.md) - multi-VM Drupal+ dev environment.
+* [islandora](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/islandora/README.md) - single VM Islandora dev environment
+* [dspace](https://github.com/OULibraries/vagrant_infrastructure/blob/master/projects/dspace/README.md) - single VM DSpace dev environment
+
 
 Requirements
 ------------
@@ -18,22 +51,27 @@ This environment can be a little finicky. The software combo below is know to wo
 * Virtualbox [v5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/) and compatible Guest Additions
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.7) v1.1.7
 
-We've had lots of version related bugs with this stack, so the above versions should probably be considered requried.  
+We've had lots of version related bugs with this stack, so the above versions should probably be considered required.
 
 All projects create an Ansible control VM, so you don't need a working local Ansible install on the VM host.
 
 ### Windows only notes
-* This environment seems to be incompatible with the default DDPE antivirus software install, which OU Libraries Windows users may have installed. 
+* This environment seems to be incompatible with the default DDPE antivirus software install, which OU Libraries Windows users may have installed.
 * Use our [msys2 setup](https://github.com/OULibraries/msys2-setup) to get an okay shell environment. You'll need to run vagrant from inside msys2.
-* For convenience you may which to alias the windows vagrant.exe to the vagrant command in bash. One way to do that is to add the following to ~/.bash_profile     
+* For convenience you may which to alias the windows vagrant.exe to the vagrant command in bash. One way to do that is to add the following to ~/.bash_profile
 ```
 # Alias vagrant bin if it exists
 if [ -f "/c/HashiCorp/Vagrant/bin/vagrant.exe" ] ; then
   alias vagrant="/c/HashiCorp/Vagrant/bin/vagrant.exe"
 fi
 ```
+* For convenience you may wish to alias the ls command to ignore some uninteresting files that pollute the windows user home directory.
+```
+# Alias ls to ignore ntuser files
+alias ls='ls -I "NTUSER.*" -I "ntuser.*"'
+```
 * Windows 10 users may run in to [this bug](https://github.com/mitchellh/vagrant/issues/6852) and need to [install some additional libraries](https://www.microsoft.com/en-us/download/details.aspx?id=8328) to get Vagrant working.
- 
+
 Installation
 ------------
 1. Install Vagrant and VirtualBox as specified above.
@@ -45,48 +83,48 @@ Configuration
 
 1. Select your desired project and configure it to build as follows:
 
-      On **Linux** or **MacOS**, create a `project` symlink to specify the project that you want to build.
-      ```
-      # Linux or MacOS
-      ln -s projects/example project
-      ```
-     
-      On **Windows**, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
-      
-      In `Vagrantfile`, specify your project
-      ```
-      -vagrantfile_project="project"
-      +vagrantfile_project="projects/web-light"
-      ```
-     
-      In the `ansible.cfg`, specify the path to your projects inventory
-      ```
-      -inventory = /vagrant/project/inventory.py
-      +inventory = /vagrant/projects/web-light/inventory.py
-      ```
+	  On **Linux** or **MacOS**, create a `project` symlink to specify the project that you want to build.
+	  ```
+	  # Linux or MacOS
+	  ln -s projects/example project
+	  ```
 
-1. **Review the `README` for your project and perform any required steps.** This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author. 
+	  On **Windows**, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
+
+	  In `Vagrantfile`, specify your project
+	  ```
+	  -vagrantfile_project="project"
+	  +vagrantfile_project="projects/web-light"
+	  ```
+
+	  In the `ansible.cfg`, specify the path to your projects inventory
+	  ```
+	  -inventory = /vagrant/project/inventory.py
+	  +inventory = /vagrant/projects/web-light/inventory.py
+	  ```
+
+1. **Review the `README` for your project and perform any required steps.** This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author.
 
 
 1. Set the `OULIB_USER` environment variable to specify a user to use for intaractive vagrant commands (like `vagrant ssh`). In most cases, this should be your normal ssh login, and should match credentials specified when configuring the project in the previous step.
 
 For example, add something like the following to your `.bash_profile`.
 
-     ```
-     export OULIB_USER=jdoe
-     ```
+	 ```
+	 export OULIB_USER=jdoe
+	 ```
 
-    
-Vagrant Usage 
+
+Vagrant Usage
 ------------
 
 The following vagrant commands are likely to see the most use:
 
 * `vagrant up` to start your vms. The box will build itself on first startup.
 * `vagrant ssh $vm` to log in to `$vm`.
-* `vagrant suspend` to suspend your VM without shutting it down. 
+* `vagrant suspend` to suspend your VM without shutting it down.
 * `vagrant halt` to shut down your vms.
-* `vagrant reload` bounces your vms. 
+* `vagrant reload` bounces your vms.
 
 Less frequently, you'll may want to reprovision to get the lastest
 changes, or rebuild your VM Completely. In that case, you'll need
@@ -101,10 +139,10 @@ Vagrant Troubleshooting
 
 ### Network weirdness
 
-If the guest VM gets confused about its network, can't talk to the internet, or loses it's 
-fileshares, it maybe be neccessary to do reboot your VMs with `vagrant halt && vagrant up` 
-or `vagrant reload`. If Vagrant is unable to successfully issue these commands,  you may need 
-to use the VirtualBox GUI to halt the VM before restarting it with `vagrant up`.  
+If the guest VM gets confused about its network, can't talk to the internet, or loses it's
+fileshares, it maybe be necessary to do reboot your VMs with `vagrant halt && vagrant up`
+or `vagrant reload`. If Vagrant is unable to successfully issue these commands,  you may need
+to use the VirtualBox GUI to halt the VM before restarting it with `vagrant up`.
 
 ### Mounted fileshares and vboxsf errors
 
@@ -115,7 +153,7 @@ again until it succeeds.
 
 ### Ansible "UNREACHABLE" error
 
-If you see blocks of errors like the following chunk of "UNREACHABLE", that's probably OK. We've standardized the network configuration across all of the projects and the result is that you're probably not building all of the available machines for any particular project. 
+If you see blocks of errors like the following chunk of "UNREACHABLE", that's probably OK. We've standardized the network configuration across all of the projects and the result is that you're probably not building all of the available machines for any particular project.
 ```
 ==> ansible: TASK [setup] *******************************************************************
 ==> ansible: ok: [islandora.vagrant.localdomain]
@@ -126,7 +164,7 @@ If you see blocks of errors like the following chunk of "UNREACHABLE", that's pr
 ==> ansible: fatal: [solr.vagrant.localdomain]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh.", "unreachable": true}
 ==> ansible: ok: [ansible.vagrant.localdomain]
 ```
-If it bugs you too much, we'd love a pull request. 
+If it bugs you too much, we'd love a pull request.
 
 
 Ngrok problems
@@ -134,10 +172,10 @@ Ngrok problems
 
 Most projects are configured to make use of `ngrok` to provide secure
 https access.  To make use of this, you'll need a paid account at
-[ngrok.com](https://ngrok.com/). See the ngrok documentation for details. 
+[ngrok.com](https://ngrok.com/). See the ngrok documentation for details.
 
 Should ngrok become confused and broken, you can probably fix this by restarting the oulib-ngrok service
-on the vagrant machine running the tunnel (Generally the `nginx` reverse proxy.) 
+on the vagrant machine running the tunnel (Generally the `nginx` reverse proxy.)
 
 ```
 sudo systemctl restart oulib-ngrok
@@ -167,4 +205,7 @@ TODO
 ------------
 
 * Add support for the rest of our environments
-* Lots and lots. 
+* Lots and lots.
+
+<!--  LocalWords:  ansible
+ -->
