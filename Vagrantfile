@@ -34,13 +34,9 @@ vagrantfile_path = File.dirname(__FILE__)
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
-
 # VAGRANT COMPATIBILITY 
 #
-# Many Recent vagrant releases have been buggy, so we've blacklisted
-# specific releases and ones we haven't gotten around to testing yet.
-# Feel free to uncomment and try a new release if you feel lucky!
-
+# Many recent vagrant releases have been buggy.
 # - 1.9.4 is known to work on Linux, Windows, and MacOS
 Vagrant.require_version( "!=1.9.3") # broken SMB sync
 # - 1.9.2 might be OK.
@@ -53,22 +49,22 @@ Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # Default configuration for all VMs
 if Vagrant.has_plugin?("vagrant-vbguest")
-config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-config.vbguest.auto_update = false
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  config.vbguest.auto_update = false
 end
 config.vm.box = "geerlingguy/centos7"
 config.vm.box_version = "1.1.7"
 config.ssh.forward_agent = true
 config.vm.provider :virtualbox do |v|
-v.cpus = 1
-v.memory = 512
-v.linked_clone = true
+  v.cpus = 1
+  v.memory = 512
+  v.linked_clone = true
 end
 
 # Use a "real" user for interactive logins
 if  ['ssh', 'scp'].include? vagrant_command
-# Maybe you want to set this to a real account
-config.ssh.username = vagrant_user
+  # Maybe you want to set this to a real account
+  config.ssh.username = vagrant_user
 end
 
 
