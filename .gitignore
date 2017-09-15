@@ -32,6 +32,9 @@ vault_password.txt
 # Ignore symlink for active project
 project
 
+# Ignore dynamically generated ansible.cfg
+ansible.cfg
+
 # Ignore copies of inventory script
 projects/*/inventory.py
 
@@ -41,3 +44,4 @@ privkey.pem
 
 # Ignore downloaded project assets
 projects/*/downloads
+
