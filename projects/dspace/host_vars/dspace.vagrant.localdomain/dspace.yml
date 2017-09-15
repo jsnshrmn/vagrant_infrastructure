@@ -1,0 +1,6 @@
+dspace_install_dir: /srv/oulib/dspace/
+dspace_dn_prefix: dspace6
+dspace_dn_suffix: vagrant.localdomain
+dspace_site_name: OU Vagrant Dspace Dev
+dspace_db_username: dspace
+dspace_db_password: dspace
