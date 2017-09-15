@@ -83,24 +83,10 @@ Configuration
 
 1. Select your desired project and configure it to build as follows:
 
-	  On **Linux** or **MacOS**, create a `project` symlink to specify the project that you want to build.
-	  ```
-	  # Linux or MacOS
-	  ln -s projects/example project
-	  ```
-
-	  On **Windows**, you will need to edit two files: `Vagrantfile` and `ansible.cfg`
-
 	  In `Vagrantfile`, specify your project
 	  ```
-	  -vagrantfile_project="project"
+	  -vagrantfile_project="projects/generic"
 	  +vagrantfile_project="projects/web-light"
-	  ```
-
-	  In the `ansible.cfg`, specify the path to your projects inventory
-	  ```
-	  -inventory = /vagrant/project/inventory.py
-	  +inventory = /vagrant/projects/web-light/inventory.py
 	  ```
 
 1. **Review the `README` for your project and perform any required steps.** This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author.
