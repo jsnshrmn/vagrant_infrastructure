@@ -1,7 +1,4 @@
 users:
-  - name: 'libacct'
-    groups: 'wheel'
-    pubkey: '{{ libacct_pubkey }}'
   - name: '{{my_user}}'
     groups: 'wheel'
     pubkey: '{{ my_pubkey }}'
