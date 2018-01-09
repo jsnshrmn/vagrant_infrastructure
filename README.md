@@ -3,7 +3,7 @@ OU Libraries Vagrant Infrastructure
 
 The Vagrant Infrastructure project is very much a work in
 progress. We're currently focused on collecting together the various
-project environments that currently exist and looking for patterns
+project environments that currently exist and are looking for patterns
 that can be standardized and shared between them.
 
 ## Goals
@@ -17,7 +17,7 @@ together and support each other.
 ### Highly Accurate Testing
 
 Vagrant Infrastructure makes use of the same Ansible roles that the
-Ops team uses to provision systems, allowing us to have a accurate
+Ops team uses to provision systems, allowing us to have an accurate
 development environments that closely duplicate the configuration of
 our test and production systems.
 
@@ -46,14 +46,14 @@ Currently the following development environments are available:
 Requirements
 ------------
 
-This environment can be a little finicky. The software combo below is know to work on a recentish release of MacOS and Windows and Fedora:
+This environment can be a little finicky. The software combo below is known to work on a recentish release of MacOS and Windows and Fedora:
 * Vagrant [v1.8.6](https://releases.hashicorp.com/vagrant/1.8.6/)
 * Virtualbox [v5.1.14](http://download.virtualbox.org/virtualbox/5.1.14/) and compatible Guest Additions
 * base box [geerlingguy/centos7](https://atlas.hashicorp.com/geerlingguy/boxes/centos7/versions/1.1.7) v1.1.7
 
 We've had lots of version related bugs with this stack, so the above versions should probably be considered required.
 
-All projects create an Ansible control VM, so you don't need a working local Ansible install on the VM host.
+All projects create an Ansible control VM, so you don't need a working local Ansible install on the VM host. 
 
 ### Windows only notes
 * This environment seems to be incompatible with the default DDPE antivirus software install, which OU Libraries Windows users may have installed.
@@ -186,6 +186,45 @@ Finally,  re-run the project playbook, limiting the scope to the machine that yo
 # From the vagrant host
 $ OULIB_USER=vagrant vagrant ssh ansible --command "ansible-playbook /vagrant/projects/web/playbooks/vagrant.yml --limit solr.vagrant.localdomain"
 ```
+
+Ad-hoc Ansible Commands
+------
+As this is an attempt to replicate the production enviornment as closely as possible ad-hoc Ansible commands are not immediately available and require one to SSH into a specific vagrant box within the prod-infrastructure. Below are two scenarios:
+
+### Scenario #1:
+* User follows all preceding steps
+* User Git clones this archive
+* User enters vagrant_infrastructure directory on their box
+* User initializes boxes and enviornment
+```
+	user@localdomain$: vagrant up
+```
+* User attempts to run an adhoc command to gather information about web server/host
+```
+	user@localdoamin$: ansible web -m setup
+```
+This scenario will result in an error if one were to Git clone this archive as the host itself is not defined on the machine running ansible.
+
+### Scenario #2:
+* User follows all preceding steps
+* User Git clones this archive
+* User enters vagrant_infrastructure directory on their box
+* User initializes boxes and enviornment
+```
+	user@localdomain$: vagrant up
+```
+* User SSH's into project specific vagrant box
+```
+	user@localdomain$: vagrant ssh vagrant@web.vagrant.localdomain
+```
+* User attempts to run an adhoc command to gather information about web server/host
+```
+	[vagrant@web.vagrant.localdomain]$: ansible web -m setup
+```
+This scenario will result in the ad-hoc command successfully executing and host information being returned.
+
+* Note:
+A possible work around for the user in the given scenarios is to append the contents of ```vagrant_infrastructure/hosts``` to `/etc/hosts` allowing for a direct SSH to the vagrant box, thus providing a more accurate production-like enviornment. 
 
 TODO
 ------------
