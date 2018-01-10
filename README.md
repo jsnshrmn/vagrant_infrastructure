@@ -189,25 +189,10 @@ $ OULIB_USER=vagrant vagrant ssh ansible --command "ansible-playbook /vagrant/pr
 
 Ad-hoc Ansible Commands
 ------
-As this is an attempt to replicate the production enviornment as closely as possible ad-hoc Ansible commands are not immediately available and require one to SSH into a specific vagrant box within the prod-infrastructure. Below are two scenarios:
+General purpose ad-hoc commands require one to SSH into a specific vagrant box within the prod-infrastructure.
 
-### Scenario #1:
-* User follows all preceding steps
-* User Git clones this archive
-* User enters vagrant_infrastructure directory on their box
-* User initializes boxes and enviornment
-```
-	user@localdomain$: vagrant up
-```
-* User attempts to run an adhoc command to gather information about web server/host
-```
-	user@localdoamin$: ansible web -m setup
-```
-This scenario will result in an error if one were to Git clone this archive as the host itself is not defined on the machine running ansible.
-
-### Scenario #2:
-* User follows all preceding steps
-* User Git clones this archive
+### Example:
+* Ensure development requirements are met
 * User enters vagrant_infrastructure directory on their box
 * User initializes boxes and enviornment
 ```
@@ -221,10 +206,10 @@ This scenario will result in an error if one were to Git clone this archive as t
 ```
 	[vagrant@web.vagrant.localdomain]$: ansible web -m setup
 ```
-This scenario will result in the ad-hoc command successfully executing and host information being returned.
+This will result in the ad-hoc command successfully executing and host information being returned.
 
 * Note:
-A possible work around for the user in the given scenarios is to append the contents of ```vagrant_infrastructure/hosts``` to `/etc/hosts` allowing for a direct SSH to the vagrant box, thus providing a more accurate production-like enviornment. 
+A possible work around for the user in the given example is to append the contents of ```vagrant_infrastructure/hosts``` to `/etc/hosts` allowing for a direct SSH to the vagrant box from the host vagrant enviornment
 
 TODO
 ------------
