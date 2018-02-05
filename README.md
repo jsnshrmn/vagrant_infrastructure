@@ -89,12 +89,13 @@ Configuration
 	  +vagrantfile_project="projects/web-light"
 	  ```
 
-1. **Review the `README` for your project and perform any required steps.** This will probably include adding credentials and personal settings to a `secrets.yml` file. If your desired project doesn't have a `README` yet, harrass it's author.
+1. **Review the `README` for your project and perform any required steps.** This will probably include at minimum adding credentials and personal settings to a `secrets.yml` file based on the `example-secrets.yml` file for that project. These files will typically live in `$project/group_vars/vagrant`. 
 
-
+    If a project doesn't have both a `README` and and `example-secrets.yml`, that's a bug.    
+    
 1. Set the `OULIB_USER` environment variable to specify a user to use for intaractive vagrant commands (like `vagrant ssh`). In most cases, this should be your normal ssh login, and should match credentials specified when configuring the project in the previous step.
 
-For example, add something like the following to your `.bash_profile`.
+    For example, add something like the following to your `.bash_profile`.
 
 	 ```
 	 export OULIB_USER=jdoe
