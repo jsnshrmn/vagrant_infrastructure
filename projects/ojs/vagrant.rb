@@ -3,13 +3,10 @@
 # OJS
 config.vm.define "ojs" do |ojs|
   ojs.vm.hostname = "ojs.vagrant.localdomain"
+  ojs.vm.network "private_network", ip: "192.168.96.11", :netmask => "255.255.255.0"
   ojs.vm.provider :virtualbox do |v|
-    v.memory = 1024
+    v.memory = 2000
+    v.cpus = 2
   end
 end
 
-# Nginx
-config.vm.define "nginx" do |nginx|
-  nginx.vm.hostname = "nginx.vagrant.localdomain"
-  nginx.vm.network "forwarded_port", guest:443, host:64443
-end

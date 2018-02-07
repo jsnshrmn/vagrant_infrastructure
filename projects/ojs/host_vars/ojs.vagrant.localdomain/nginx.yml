@@ -1,0 +1,10 @@
+---
+
+nginx_sites:
+  - name: "journals.{{ my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"   
+    app_include: "journals.{{my_httpd_dn_suffix }}"  
+
+  - name: "ijsw.{{my_httpd_dn_suffix }}"
+    cert_name: "{{ my_httpd_dn_suffix }}"   
+    app_include: "ijsw.{{my_httpd_dn_suffix }}"  
