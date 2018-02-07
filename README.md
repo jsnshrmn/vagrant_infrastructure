@@ -120,6 +120,9 @@ these commands:
 * `vagrant provision` to re-run the ansible provisioners.
 * `vagrant destroy` to delete the VM, in case you want to start over.
 
+You may also find it useful (and timesaving!) to snapshot and restore your VMs with
+`vagrant snapshot`. 
+
 
 Vagrant Troubleshooting
 -----------------------
