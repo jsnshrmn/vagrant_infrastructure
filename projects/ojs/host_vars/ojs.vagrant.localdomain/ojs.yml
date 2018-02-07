@@ -1,0 +1,15 @@
+---
+
+ojs_sites:
+  - name: "journals.{{ my_httpd_dn_suffix }}"
+    installs: 
+      - path: arp
+      - path: jheai
+      - path: soonerhorizon
+      - path: studyandscrutiny
+
+  - name: "ijsw.{{ my_httpd_dn_suffix }}"
+    installs: 
+      - path: ijsw
+ 
+   
