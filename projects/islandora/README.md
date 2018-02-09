@@ -21,7 +21,15 @@ With that done, `vagrant up` should give you:
 * ansible host
 * islandora host with a basic `repository` site. 
 
-From that point, you can use the `d7` utilities to get an update-to-date copy of the production repository site.  
+From that point, you can use the `d7` utilities to get create an updated dev copy of the production repository Drupal site:
+
+```
+d7_sync.sh /srv/repository $repo-host-internal-name /srv/repository
+d7_make.sh /srv/repository https://raw.githubusercontent.com/OULibraries/d7-ops/dev/make/repo.make
+```
+
+*Note:* You won't have a duplicate of repository content, and it would be unfeasible to sync the repository. Any dev content that is required will need to be imported or created. (With the [Islandora Sample Content Generator](https://github.com/mjordan/islandora_scg), for example)   
+
 
 Author Information
 ------------------
