@@ -11,5 +11,18 @@ ojs_sites:
   - name: "ijsw.{{ my_httpd_dn_suffix }}"
     installs: 
       - path: ijsw
- 
+    nginx: |
+      # Extra config for IJSW
+      location /home  {
+        rewrite "^/home(/.*)?$" /ijsw$1;
+      }
+         
+      location = / {
+         return 301 /home;
+      }
    
+ojs_db_host: locahost
+ojs_db_user: root
+ojs_db_pass: root
+
+ojs_salt: "OJS_SALT"
