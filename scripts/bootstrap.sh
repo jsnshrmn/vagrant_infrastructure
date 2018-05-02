@@ -10,7 +10,7 @@ yum check-update
 
 # Install git and ansible to get started
 yum install -y epel-release
-yum install -y git gcc openssl-devel python-devel python2-pip
+yum install -y git gcc openssl-devel python-devel python2-pip sshpass
 pip install 'ansible==2.3.1.0'
 
 # Create the default ansible config folder (pip install doesn't).
@@ -23,7 +23,7 @@ stat /vagrant/vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "
 # ansible complains if this file is on the windows share because permissions
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 chown root:wheel /etc/ansible/ansible.cfg
-chmod 640 /etc/ansible/ansible.cfg
+chmod 644 /etc/ansible/ansible.cfg
 
 # ansible uses the inventory path to locate group and host vars so we have to
 # make sure the script is in the project folder
