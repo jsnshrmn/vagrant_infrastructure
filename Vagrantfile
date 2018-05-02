@@ -5,7 +5,7 @@
 
 # Set the project that you would like to build
 # by default, we built the trival dev project
-vagrant_project ="projects/wpn"
+vagrant_project ="projects/generic"
 
 ##### End of Config
 
