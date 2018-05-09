@@ -52,8 +52,7 @@ if Vagrant.has_plugin?("vagrant-vbguest")
   config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
   config.vbguest.auto_update = false
 end
-config.vm.box = "geerlingguy/centos7"
-config.vm.box_version = "1.1.7"
+config.vm.box = "bento/centos-7"
 config.ssh.forward_agent = true
 config.vm.provider :virtualbox do |v|
   v.cpus = 1
