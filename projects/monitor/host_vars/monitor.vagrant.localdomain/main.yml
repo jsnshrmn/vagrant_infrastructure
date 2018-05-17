@@ -1,0 +1,11 @@
+---
+elk_dn_prefix: ''
+elk_dn_suffix: ''
+elk_web_username: elasticsearch
+elk_web_passwd: elasticsearch
+mariadb_root: root
+httpd_dn_suffix: 'vagrant.localdomain'
+HTTPD_DN_SUFFIX: 'vagrant.localdomain'
+httpd_cert_path: '/etc/pki/tls/certs'
+httpd_key_path: '/etc/pki/tls/private'
+zabbix_web_port: '443'
