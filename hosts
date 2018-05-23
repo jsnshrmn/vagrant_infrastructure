@@ -11,4 +11,4 @@
 192.168.96.11   ojs.vagrant.localdomain
 192.168.96.12   monitor.vagrant.localdomain
 192.168.96.13   elasticsearch.vagrant.localdomain
-#192.168.96.14   syslog.vagrant.localdomain
+192.168.96.14   syslog.vagrant.localdomain

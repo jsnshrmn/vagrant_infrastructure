@@ -22,27 +22,11 @@
     - role: OULibraries.zabbix
       tags: zabbix
  
-#- hosts: syslog.vagrant.localdomain
-#  become: true
-#  roles:
-#    - role: OULibraries.java
-#      tags: java
-#    - role: OULibraries.syslogng
-#      tags: syslog-ng
-#    - role: OULibraries.filebeat
-#      tags: filebeat
-#    - role: OULibraries.logstash
-#      tags: logstash
-#
 - hosts: elasticsearch.vagrant.localdomain
   become: true
   roles: 
     - role: OULibraries.java
       tags: java
-#    - role: OULibraries.nginx
-#      tags: nginx
-#    - role: OULibraries.apache2
-#      tags: apache2
     - role: OULibraries.elasticsearch
       tags: elasticsearch
     - role: OULibraries.kibana
@@ -54,7 +38,7 @@
     - role: OULibraries.logstash
       tags: logstash
 
-  tasks: 
+#  tasks: 
 #    - name: Send notification message via Slack all options
 #      slack:
 #        token: T8D641BEC/B9SUZRV16/u9MP6h0g2sKS8fgnHvrx7MJL
@@ -64,8 +48,7 @@
 #           # icon_url: http://www.example.com/some-image-file.png
 #        link_names: 0
 #        parse: 'none'
-#        #  delegate_to: localhost
-#
+
 # Got back and configure interactive users and devel settings for all hosts
 #- hosts: vagrant
 #  become: true
