@@ -1,2 +1,8 @@
 ---
-
+httpd_dn_suffix: vagrant.localdomain
+syslogng_client_ip: localhost
+syslogng_dn_prefix: "elasticsearch"
+syslogng_dn_suffix: "vagrant.localdomain"
+syslogng_client_prefix: "monitor"
+syslogng_client_suffix: "vagrant.localdomain"
+syslogng_client_cert:

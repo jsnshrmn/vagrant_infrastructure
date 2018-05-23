@@ -11,9 +11,9 @@ config.vm.define "elasticsearch" do |elasticsearch|
   elasticsearch.vm.network "private_network", ip: "192.168.96.13", :netmask => "255.255.255.0"
  end
 
-config.vm.define "syslog" do |syslog|
-  syslog.vm.hostname = "syslog.vagrant.localdomain"
-  syslog.vm.network "private_network", ip: "192.168.96.14", :netmask => "255.255.255.0"
- end
-
-
+#config.vm.define "syslog" do |syslog|
+#  syslog.vm.hostname = "syslog.vagrant.localdomain"
+#  syslog.vm.network "private_network", ip: "192.168.96.14", :netmask => "255.255.255.0"
+# end
+#
+#

@@ -1,0 +1,9 @@
+---
+# Postfix MTA config
+smtp_host: smtp.office365.com
+smtp_port: 587
+smtp_domain: ou.edu
+smtp_start_tls: true
+smtp_authuser: LibSvcSendmail@ou.edu
+use_sender_maps: 1
+# smtp_authpassword in vault.yml

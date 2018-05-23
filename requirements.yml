@@ -1,60 +1,79 @@
 ---
 
 - src: https://github.com/OULibraries/ansible-role-apache2
-  version: v2016-10-17.0
+  version: master
   name: OULibraries.apache2
+
+- src: https://github.com/OULibraries/ansible-role-autofs
+  version: master
+  name: OULibraries.autofs
 
 - src: https://github.com/OULibraries/ansible-role-cas
   version: master
   name: OULibraries.cas
 
-- src: https://github.com/OULibraries/ansible-role-celery-worker
-  version: master
-  name: OULibraries.celery-worker
-
 - src: https://github.com/OULibraries/ansible-role-centos7
-  version: v2017-06-06.0
+  version: master
   name: OULibraries.centos7
 
+- src: https://github.com/OULibraries/ansible-role-celery-worker.git
+  name: OULibraries.celery-worker
+
 - src: https://github.com/OULibraries/ansible-role-d7
-  version: v2017-04-28.0
+  version: master
   name: OULibraries.d7
+
+- src: https://github.com/OULibraries/ansible-role-d7-islandora
+  name: OULibraries.d7-islandora
+  version: master
+
+- src: https://github.com/OULibraries/ansible-role-docker-host
+  name: OULibraries.docker-host
+  version: master
+
+- src: https://github.com/OULibraries/ansible-role-ec2-cloudwatch-logs
+  version: master
+  name: OULibraries.ec2-cloudwatch-logs
+
+- src: https://github.com/OULibraries/ansible-role-ec2-init
+  version: master
+  name: OULibraries.ec2-init
+
+- src: https://github.com/OULibraries/ansible-role-fcrepo3
+  name: OULibraries.fcrepo3
+  version: master
+
+- src: https://github.com/OULibraries/ansible-role-gitlab
+  name: OULibraries.gitlab
+  version: master
+
+- src: https://github.com/OULibraries/ansible-role-gitolite3
+  name: OULibraries.gitolite3
+  version: master
 
 - src: https://github.com/OULibraries/ansible-role-java
   version: master
   name: OULibraries.java
 
 - src: https://github.com/OULibraries/ansible-role-mariadb
-  version: v2016-09-26.0
+  version: master
   name: OULibraries.mariadb
 
 - src: https://github.com/OULibraries/ansible-role-nginx
   version: master
   name: OULibraries.nginx
 
-- src: https://github.com/OULibraries/ansible-role-ngrok
-  version: v2017-01-26.0
-  name: OULibraries.ngrok
-
 - src: https://github.com/OULibraries/ansible-role-ojs
   version: master
   name: OULibraries.ojs
 
 - src: https://github.com/OULibraries/ansible-role-postfix-mta
-  version: v2017-04-17.1
+  version: master
   name: OULibraries.postfix-mta
 
-- src: https://github.com/OULibraries/ansible-role-users
-  version: v2017-05-09.0
-  name: OULibraries.users
-
-- src: https://github.com/geerlingguy/ansible-role-solr
-  version: 3.6.2
-  name: geerlingguy.solr
-
-- src: https://github.com/OULibraries/ansible-role-solr-onesearch
+- src: https://github.com/OULibraries/ansible-role-repox
   version: master
-  name: OULibraries.solr-onesearch
+  name: OULibraries.repox
 
 - src: https://github.com/OULibraries/ansible-role-sclphp
   version: master
@@ -64,18 +83,58 @@
   version: master
   name: OULibraries.searchgateway
 
+- src: https://github.com/geerlingguy/ansible-role-solr
+  version: 3.6.2
+  name: geerlingguy.solr
+
+- src: https://github.com/OULibraries/ansible-role-solr-onesearch
+  version: master
+  name: OULibraries.solr-onesearch
+
+- src: https://github.com/OULibraries/ansible-role-searchgateway
+  version: master
+  name: OULibraries.searchgateway
+
+- src: https://github.com/OULibraries/ansible-role-sendmail
+  version: master
+  name: OULibraries.sendmail
+
 - src: https://github.com/OULibraries/ansible-role-tls-cert
-  version: v2017-07-10.0
+  version: master
   name: OULibraries.tls-cert
 
-- src: https://github.com/OULibraries/ansible-role-fcrepo3
-  name: OULibraries.fcrepo3
+- src: https://github.com/OULibraries/ansible-role-users
+  version: master
+  name: OULibraries.users
 
-- src: https://github.com/OULibraries/ansible-role-d7-islandora
-  name: OULibraries.d7-islandora
+- src: https://github.com/OULibraries/ansible-role-zabbix
+  version: master
+  name: OULibraries.zabbix
 
-- src: https://github.com/OULibraries/ansible-role-dspace6
-  name: OULibraries.dspace6
+- src: https://github.com/OULibraries/ansible-role-zabbix-agent
+  version: master
+  name: OULibraries.zabbix-agent
 
-- src: https://github.com/OULibraries/ansible-role-postgresql-server
-  name: OULibraries.postgresql-server
+- src: https://github.com/OULibraries/ansible-role-zabbix-proxy
+  version: master
+  name: OULibraries.zabbix-proxy
+
+- src: https://github.com/OULibraries/ansible-role-syslogng
+  version: master
+  name: OULibraries.syslogng
+
+- src: https://github.com/OULibraries/ansible-role-syslogng-client
+  version: master
+  name: OULibraries.syslogng-client
+
+- src: https://github.com/OULibraries/ansible-role-elk
+  version: master
+  name: OULibraries.elk
+
+- src: https://github.com/OULibraries/ansible-role-elk-client
+  version: master
+  name: OULibraries.elk-client
+
+- src:  https://github.com/OULibraries/ansible-role-mdconvert
+  version: master
+  name: OULibraries.mdconvert

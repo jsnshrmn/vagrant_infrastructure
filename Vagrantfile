@@ -5,7 +5,7 @@
 
 # Set the project that you would like to build
 # by default, we built the trival dev project
-vagrant_project ="projects/generic"
+vagrant_project ="projects/monitor"
 
 ##### End of Config
 
@@ -56,7 +56,7 @@ config.vm.box = "bento/centos-7"
 config.ssh.forward_agent = true
 config.vm.provider :virtualbox do |v|
   v.cpus = 1
-  v.memory = 512
+  v.memory = 2054
   v.linked_clone = true
 end
 
@@ -76,7 +76,7 @@ config.vm.define "ansible" do |ansible|
 ansible.vm.hostname = "ansible.vagrant.localdomain"
 ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
     ansible.vm.provider :virtualbox do |v|
-      v.memory = 256  # Keeping overhead low
+      v.memory = 512  # Keeping overhead low
     end
     ansible.vm.provision "shell",
                          path: "scripts/bootstrap.sh",

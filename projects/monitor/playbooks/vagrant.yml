@@ -22,11 +22,31 @@
     - role: OULibraries.zabbix
       tags: zabbix
  
-- hosts: syslog.vagrant.localdomain
+#- hosts: syslog.vagrant.localdomain
+#  become: true
+#  roles:
+#    - role: OULibraries.java
+#      tags: java
+#    - role: OULibraries.syslogng
+#      tags: syslog-ng
+#    - role: OULibraries.filebeat
+#      tags: filebeat
+#    - role: OULibraries.logstash
+#      tags: logstash
+#
+- hosts: elasticsearch.vagrant.localdomain
   become: true
-  roles:
+  roles: 
     - role: OULibraries.java
       tags: java
+#    - role: OULibraries.nginx
+#      tags: nginx
+#    - role: OULibraries.apache2
+#      tags: apache2
+    - role: OULibraries.elasticsearch
+      tags: elasticsearch
+    - role: OULibraries.kibana
+      tags: kibana
     - role: OULibraries.syslogng
       tags: syslog-ng
     - role: OULibraries.filebeat
@@ -34,17 +54,18 @@
     - role: OULibraries.logstash
       tags: logstash
 
-- hosts: elasticsearch.vagrant.localdomain
-  become: true
-  roles: 
-    - role: OULibraries.java
-      tags: java
-    - role: OULibraries.elasticsearch
-      tags: elasticsearch
-    - role: OULibraries.kibana
-      tags: kibana 
-
-
+  tasks: 
+#    - name: Send notification message via Slack all options
+#      slack:
+#        token: T8D641BEC/B9SUZRV16/u9MP6h0g2sKS8fgnHvrx7MJL
+#        msg: '{{ inventory_hostname }} completed'
+#        channel: #zabbix_test
+#        username: 'Ansible on {{ inventory_hostname }}'
+#           # icon_url: http://www.example.com/some-image-file.png
+#        link_names: 0
+#        parse: 'none'
+#        #  delegate_to: localhost
+#
 # Got back and configure interactive users and devel settings for all hosts
 #- hosts: vagrant
 #  become: true

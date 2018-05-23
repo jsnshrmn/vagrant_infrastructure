@@ -1,8 +1,6 @@
 ---
-elk_dn_prefix: ''
-elk_dn_suffix: ''
-elk_web_username: elasticsearch
-elk_web_passwd: elasticsearch
+
+mariadb_root_pass: root
 mariadb_root: root
 httpd_dn_suffix: 'vagrant.localdomain'
 HTTPD_DN_SUFFIX: 'vagrant.localdomain'
