@@ -1,0 +1,12 @@
+# Email config
+ smtp_host: smtp.office365.com
+ smtp_port: 587
+ smtp_domain: ou.edu
+ smtp_start_tls: "YES"
+ smtp_from_line_override: "YES"
+ smtp_authuser: "{{my_smtp_authuser }}"
+ smtp_authpassword: "{{ my_smtp_authpassword }}"
+ sendmail_users:
+   - apache
+   - root
+#     

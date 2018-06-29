@@ -1,0 +1,19 @@
+---
+# TLS Certificates are generated on the control machine
+
+tls_cert_country: "{{ my_tls_cert_country | default('US') }}"
+tls_cert_state: "{{ my_tls_cert_state | default('Oklahoma') }}"
+tls_cert_locality: "{{ my_tls_cert_locality | default('Norman') }}"
+tls_cert_organization: "{{ my_tls_cert_organization | default('University of Oklahoma Libraries') }}"
+tls_cert_department: "{{ my_tls_cert_department | default('DevOps') }}"
+tls_cert_acme_account_email: "{{ my_email }}"
+tls_cert_acme_directory: "{{ my_tls_cert_acme_directory | default('https://acme-v01.api.letsencrypt.org/directory') }}"
+
+tls_certificates:
+  - common_name: "{{ my_httpd_dn_suffix }}"
+    type: self-signed
+    alt_names:
+      - "*.d7.{{ my_httpd_dn_suffix }}"
+      - "apigate.{{ my_httpd_dn_suffix }}"
+      - "cas.{{ my_httpd_dn_suffix }}"
+      - "solr.{{ my_httpd_dn_suffix }}"

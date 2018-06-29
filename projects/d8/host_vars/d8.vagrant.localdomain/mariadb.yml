@@ -1,0 +1,5 @@
+---
+
+# root db password
+mariadb_root_pass: 'root'
+

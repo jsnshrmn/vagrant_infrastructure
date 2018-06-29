@@ -1,0 +1,12 @@
+---
+# Your ngrok token
+ngrok_authtoken: "{{my_ngrok_authtoken }}"
+
+# Configuration for tunnels.
+# Note that because proto == tls, traffic is encrypted end-to-end, rather than cleartext. This is good.
+# DO NOT PASS SENSITIVE DATA OVER CLEARTEXT TUNNELS.
+tunnels:
+  - name: '*'
+    dn_suffix: 'd8.{{ my_httpd_dn_suffix }}'
+    port: '443'
+    proto: 'tls'

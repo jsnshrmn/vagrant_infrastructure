@@ -1,0 +1,69 @@
+---
+- hosts: vagrant
+  become: true
+  roles:
+    - OULibraries.centos7
+  pre_tasks:
+    - include: pretasks.yml
+
+- hosts: ansible.vagrant.localdomain
+  become: true
+  roles:
+    - role: OULibraries.tls-cert
+      tags: tls-cert
+  pre_tasks:
+    - file:
+        path: /vagrant/tls_certs
+        state: directory
+    - copy:
+        src: /vagrant/dhparam.pem
+        dest: /vagrant/tls_certs/dhparam.pem
+
+- hosts: ojs.vagrant.localdomain
+  become: true 
+  roles:
+    - role: OULibraries.mariadb
+      tags: mariadb
+    - role: OULibraries.nginx
+      tags: nginx
+    - role: OULibraries.sclphp
+      tags: sclphp
+    - role: OULibraries.postfix-mta
+      tags: postfix-mta      
+    - role: OULibraries.ngrok
+      tags: ngrok      
+      when: my_ngrok_authtoken is defined and my_ngrok_authtoken is not none
+  pre_tasks:
+    - name: /srv is a directory
+      file: 
+        path: /srv 
+        state: directory 
+        mode: 0755 
+        force: yes
+
+    - name: Ensure app etc directory exists
+      file:
+        path: /srv/{{ item.app_include }}/etc
+        owner: root
+        group: root
+        mode: 0755
+        state: directory
+        recurse: yes
+      with_items:
+        - "{{ nginx_sites }}"
+      when: (item.app_include|default(false))
+      tags: nginx 
+
+    - name: Check preconditions for running playbook.
+      assert:
+        that:
+          - mariadb_root_pass is defined
+
+# Got back and configure interactive users
+- hosts: vagrant
+  become: true
+  roles:
+    - OULibraries.users
+
+
+
