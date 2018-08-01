@@ -9,3 +9,6 @@
 192.168.96.9    dev.vagrant.localdomain
 192.168.96.10   dspace.vagrant.localdomain
 192.168.96.11   ojs.vagrant.localdomain
+192.168.96.12   diff.vagrant.localdomain
+192.168.96.13   api.vagrant.localdomain
+192.168.96.14   ui.vagrant.localdomain

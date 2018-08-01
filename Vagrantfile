@@ -5,7 +5,7 @@
 
 # Set the project that you would like to build
 # by default, we built the trival dev project
-vagrant_project ="projects/generic"
+vagrant_project ="projects/webmonitoring"
 
 ##### End of Config
 
