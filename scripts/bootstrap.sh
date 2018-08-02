@@ -10,8 +10,10 @@ yum check-update
 
 # Install git and ansible to get started
 yum install -y epel-release
-yum install -y git gcc openssl-devel python-devel python2-pip sshpass
-pip install 'ansible~=2.4.3.0'
+yum install -y git gcc openssl-devel python-devel python2-pip sshpas
+pip install --upgrade setuptools
+pip install --upgrade pip
+pip install -r /vagrant/${1}/playbooks/web-monitoring-ansible/requirements.txt
 
 # Create the default ansible config folder (pip install doesn't).
 mkdir -pv /etc/ansible
