@@ -1,3 +1,6 @@
+# Ignore vault passwords
+vault_password.txt
+
 # Ignore swap files
 *.swp
 
