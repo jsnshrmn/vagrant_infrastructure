@@ -25,4 +25,4 @@
     - role: OULibraries.users
       tags: users
 
-- import_playbook: webmonitoring-ansible/site.yml
+- import_playbook: web-monitoring-ansible/site.yml
