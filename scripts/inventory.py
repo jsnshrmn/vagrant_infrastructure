@@ -5,9 +5,17 @@ import os
 
 # Get current directory
 cwd = os.path.dirname(os.path.abspath(__file__))
-
 # Ansible inventory skeleton for Vagrant use
 inventory = {
+    'diffing-servers' : {
+        'hosts' : ['diff.vagrant.localdomain'],
+    },
+    'api-servers' : {
+        'hosts' : ['api.vagrant.localdomain'],
+    },
+    'ui-servers' : {
+        'hosts' : ['ui.vagrant.localdomain'],
+    },
     'vagrant' : {
         'hosts' : [],
     }

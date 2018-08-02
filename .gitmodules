@@ -1,0 +1,3 @@
+[submodule "projects/webmonitoring/playbooks/web-monitoring-ansible"]
+	path = projects/webmonitoring/playbooks/web-monitoring-ansible
+	url = git@github.com:danielballan/web-monitoring-ansible.git

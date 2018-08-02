@@ -11,7 +11,7 @@ yum check-update
 # Install git and ansible to get started
 yum install -y epel-release
 yum install -y git gcc openssl-devel python-devel python2-pip sshpass
-pip install 'ansible~=2.5.0'
+pip install 'ansible~=2.4.3.0'
 
 # Create the default ansible config folder (pip install doesn't).
 mkdir -pv /etc/ansible
