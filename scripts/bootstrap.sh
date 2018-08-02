@@ -16,8 +16,8 @@ pip install 'ansible~=2.4.3.0'
 # Create the default ansible config folder (pip install doesn't).
 mkdir -pv /etc/ansible
 
-# create ansible vault secret if one doesn't exist.
-stat /vagrant/vault_password.txt &>/dev/null || bash -c '< /dev/urandom tr -dc "a-zA-Z0-9~!@#$%^&*_-" | head -c${1:-254};echo;' > /vagrant/vault_password.txt
+# exit if there is not ansible vault secret.
+stat /vagrant/vault_password.txt &>/dev/null || exit 1
 
 
 # ansible complains if this file is on the windows share because permissions
@@ -42,5 +42,5 @@ sudo -u vagrant bash -c "
 # Keep colors intact
 export PYTHONUNBUFFERED=1
 export ANSIBLE_FORCE_COLOR=1
-ansible-playbook --user=vagrant --vault-id /vagrant/vault_password.txt /vagrant/${1}/playbooks/vagrant.yml
+ansible-playbook --user=vagrant --vault-id /vagrant/scripts/vaultpw.sh /vagrant/${1}/playbooks/vagrant.yml
 "
