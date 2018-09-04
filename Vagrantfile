@@ -53,12 +53,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 #      mount_options: ["file_mode=0775", "dir_mode=0775"],
 #      create: true
 
-config.vm.synced_folder ".", "/vagrant",
+config.vm.synced_folder ".", "/vagrant"
+#      type: "smb",
+#      smb_host: "10.0.75.1",
+#      mount_options: ["vers=2.1"]
 #      type: "rsync",
 #      rsync_auto: "true"
 #      disabled: "true"
 #
-config.vbguest.auto_update = false
+#config.vbguest.auto_update = false
 #config.vm.box = "bento/centos-7"
 #config.vm.box = "bento/debian-9"
 #config.vm.box = "bento/ubuntu-18.04"

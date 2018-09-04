@@ -16,7 +16,7 @@ database_url: "{{ dev_database_url }}"
 #dev_database_name: web-monitoring-db_development
 # These control which version of the code is deployed.
 #web_monitoring_processing_gitref: j-dev-conda-env-file
-web_monitoring_processing_gitref: ia-healthcheck
+web_monitoring_processing_gitref: master
 web_monitoring_db_gitref: master
 web_monitoring_ui_gitref: master
 #web_monitoring_ui_gitref: master
