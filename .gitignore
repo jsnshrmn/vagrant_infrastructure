@@ -1,3 +1,6 @@
+# Ignore hosts file
+hosts
+
 # Ignore vault passwords
 vault_password.txt
 

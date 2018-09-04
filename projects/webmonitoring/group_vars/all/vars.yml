@@ -1,0 +1,89 @@
+# TESTING
+# See also vault.yml in this directory, a file encrypted by ansible-vault
+# which contains the values of the all sensitive variables that are only
+# referenced below.
+#
+dev_database_pg_username: "{{ rails_user.name }}"
+dev_database_pg_password: wmdb1
+dev_database_pg_dbname: web-monitoring-db_development
+test_database_pg_username: "{{ dev_database_pg_username }}" 
+test_database_pg_password: "{{ dev_database_pg_password }}"
+test_database_pg_dbname: web-monitoring-db_test
+dev_database_url: "postgres://{{ dev_database_pg_username }}:{{ dev_database_pg_password }}@localhost/{{ dev_database_pg_dbname }}"
+test_database_url: "postgres://{{ test_database_pg_username }}:{{ test_database_pg_password }}@localhost/{{ test_database_pg_dbname }}"
+database_url: "{{ dev_database_url }}"
+#database_url: !!null
+#dev_database_name: web-monitoring-db_development
+# These control which version of the code is deployed.
+#web_monitoring_processing_gitref: j-dev-conda-env-file
+web_monitoring_processing_gitref: ia-healthcheck
+web_monitoring_db_gitref: master
+web_monitoring_ui_gitref: master
+#web_monitoring_ui_gitref: master
+# Dependencies
+node_version: v8.10.0
+
+# as in testing.ansible.monitoring.envirodatagov.org
+subdomain: testing
+
+# AWS key pair
+aws_key_pair_name: web-monitoring-test
+
+# EC2 image
+aws_image: ami-0def3275
+# User that we SSH as (depends on aws_image)
+ansible_user: vagrant
+
+cloudwatch_logs_region: us-west-2
+
+allowed_archive_hosts: "https://edgi-versionista-archive.s3.amazonaws.com/ https://edgi-versionista-archive.s3.amazonaws.com/edgi-versionista-archive/"
+#api_key: "{{ api_key }}"
+#aws_access_key_id: "{{ aws_access_key_id }}"
+#aws_archive_bucket: "{{ aws_archive_bucket }}"
+aws_region: us-east-1
+#aws_secret_access_key: "{{ aws_secret_access_key }}"
+#aws_working_bucket: "{{ aws_working_bucket }}"
+cache_date_differ: "2018-01-30T06:00:00Z"
+database_rds: ""
+#database_url: "postgres://web-monitoring-db_development:wmdb@api.vagrant.localdomain/web-monitoring-db_development"  # Not sensitive. For dev only.
+differ_default: "http://diff.vagrant.localdomain"
+differ_html_source: "http://diff.vagrant.localdomain"
+differ_html_text: "http://diff.vagrant.localdomain"
+differ_html_text_diff: "http://diff.vagrant.localdomain"
+differ_html_visual: "http://diff.vagrant.localdomain"
+differ_identical_bytes: "http://diff.vagrant.localdomain"
+differ_length: "http://diff.vagrant.localdomain"
+differ_links: "http://diff.vagrant.localdomain"
+differ_pagefreezer: "http://diff.vagrant.localdomain"
+differ_side_by_side_text: "http://diff.vagrant.localdomain"
+differ_source: "http://diff.vagrant.localdomain"
+force_ssl: false
+#google_dictionary_sheet_id: "{{ google_dictionary_sheet_id }}"
+#google_important_change_sheet_id: "{{ google_important_change_sheet_id }}"
+#google_service_client_email: "{{ google_service_client_email }}"
+#google_sheets_api_key: "{{ google_sheets_api_key }}"
+#google_sheets_private_key: "{{ google_sheets_private_key }}"
+#google_task_sheet_id: "{{ google_task_sheet_id }}"
+host_url: https://api.vagrant.localdomain
+lang: en_US.UTF-8
+mail_sender: website.monitoring@envirodatagov.org
+max_collection_page_size: 1000
+new_relic_app_name: Web Monitoring DB (Staging)
+new_relic_env: staging
+new_relic_license_key: ""
+new_relic_log: stdout
+node_env: production
+#postmark_api_token: "{{ postmark_api_token }}"
+rack_env: development
+rails_env: development
+rails_log_to_stdout: enabled
+rails_serve_static_files: enabled
+rds_url: ""
+redis_cache_url: ""
+redis_url: ""
+#secret_key_base: "{{ secret_key_base }}"
+sentry_dsn: ""
+#token_private_key: "{{ token_private_key }}"
+#versionista_email: "{{ versionista_email }}"
+#versionista_password: "{{ versionista_password }}"
+web_monitoring_db_url: http://api.vagrant.localdomain/

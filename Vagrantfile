@@ -48,16 +48,59 @@ Vagrant.require_version( "!=1.8.5") # broken ssh permissions
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # Default configuration for all VMs
-if Vagrant.has_plugin?("vagrant-vbguest")
-  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
-  config.vbguest.auto_update = false
-end
-config.vm.box = "bento/centos-7"
+#  config.vm.synced_folder "./projects/webmonitoring/playbooks/web-monitoring-ansible/venv", "/venv",
+#      type: "virtualbox",
+#      mount_options: ["file_mode=0775", "dir_mode=0775"],
+#      create: true
+
+config.vm.synced_folder ".", "/vagrant",
+#      type: "rsync",
+#      rsync_auto: "true"
+#      disabled: "true"
+#
+config.vbguest.auto_update = false
+#config.vm.box = "bento/centos-7"
+#config.vm.box = "bento/debian-9"
+#config.vm.box = "bento/ubuntu-18.04"
+#config.vm.box = "bento/ubuntu-16.04"
 config.ssh.forward_agent = true
-config.vm.provider :virtualbox do |v|
-  v.cpus = 1
-  v.memory = 512
-  v.linked_clone = true
+#config.ssh.password = "vagrant"
+
+config.vm.provider "docker" do |d|
+  #d.image = "library/debian:9"
+  d.build_dir = "."
+  #d.cmd = ["apt", "help"]
+#  d.cmd = ["apt", "update"]
+#  d.cmd = ["cat", "/etc/apt/sources.list"]
+#  d.cmd = ["apt", "search", "ssh"]
+#  d.cmd = ["apt", "install", "-y", "openssh-server"]
+#  d.cmd = ["/bin/sh", "while", "true;", "do", "sleep", "1000;", "done"]
+  d.has_ssh = true
+end
+
+
+# virtualbox
+#config.vm.provider :virtualbox do |v|
+#  v.cpus = 1
+#  v.memory = 512
+#  v.linked_clone = true
+#end
+
+# hyperv
+config.vm.provider :hyperv do |h|
+  h.cpus = 1
+  h.memory = 256
+  h.maxmemory = 2048
+  # bento boxes don't support linked clones on hyperv as of 2018-09-04
+  h.linked_clone = false
+  h.vm_integration_services = {
+    guest_service_interface: true,
+    heartbeat: true,
+    key_value_pair_exchange: true,
+    shutdown: true,
+    time_synchronization: true,
+    vss: true,
+  }
 end
 
 # Use a "real" user for interactive logins
@@ -71,16 +114,23 @@ end
 # Use binding.eval to make sure that we're in the right scope.
 binding.eval(File.read(File.expand_path(vagrantfile_path+'/'+ vagrant_project+"/vagrant.rb")))
 
+
+# All VMs should report in so we can configure them with ansible
+config.vm.provision "shell",
+    inline: "sudo /vagrant/scripts/gethostinfo.sh",
+    keep_color: "True",
+    run: "always"
+
 # Build Ansible control machine and run vagrant playbook
 config.vm.define "ansible" do |ansible|
 ansible.vm.hostname = "ansible.vagrant.localdomain"
 ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
-    ansible.vm.provider :virtualbox do |v|
-      v.memory = 256  # Keeping overhead low
-    end
+    #ansible.vm.provider :virtualbox do |v|
+    #  v.memory = 256  # Keeping overhead low
+    #end
     ansible.vm.provision "shell",
-                         path: "scripts/bootstrap.sh",
-                         keep_color: "True",
-                         args: vagrant_project
+                         inline: "sudo /vagrant/scripts/bootstrap.sh #{vagrant_project}",
+                         keep_color: "True"
+#                         args: vagrant_project
   end
 end

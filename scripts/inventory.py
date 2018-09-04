@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
 
 import json
 import os
@@ -15,6 +15,9 @@ inventory = {
     },
     'ui-servers' : {
         'hosts' : ['ui.vagrant.localdomain'],
+    },
+    'dev-database' : {
+        'hosts' : ['api.vagrant.localdomain'],
     },
     'vagrant' : {
         'hosts' : [],
