@@ -1,6 +1,6 @@
 FROM library/debian:9
 
-RUN apt update && apt install -y openssh-server python-minimal sudo
+RUN apt update && apt install -y openssh-server python-minimal sudo systemd
 RUN mkdir /var/run/sshd
 
 # Configure insecure root user for Vagrant
@@ -27,9 +27,20 @@ RUN echo 'vagrant         ALL = (ALL) NOPASSWD: ALL' >> /etc/sudoers
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
-#RUN mkdir -p /vagrant
-#WORKDIR /vagrant
-#ADD . /vagrant
+# Get a working systemd, cribbed from:
+# https://developers.redhat.com/blog/2014/05/05/running-systemd-within-docker-container/
+ENV container docker
+RUN (cd /lib/systemd/system/sysinit.target.wants/; for i in *; do [ $i == systemd-tmpfiles-setup.service ] || rm -f $i; done);
+rm -f /lib/systemd/system/multi-user.target.wants/*;
+rm -f /etc/systemd/system/*.wants/*;
+rm -f /lib/systemd/system/local-fs.target.wants/*;
+rm -f /lib/systemd/system/sockets.target.wants/*udev*;
+rm -f /lib/systemd/system/sockets.target.wants/*initctl*;
+rm -f /lib/systemd/system/basic.target.wants/*;
+rm -f /lib/systemd/system/anaconda.target.wants/*;
+VOLUME [ “/sys/fs/cgroup” ]
+CMD [“/usr/sbin/init”]
+
 
 EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]

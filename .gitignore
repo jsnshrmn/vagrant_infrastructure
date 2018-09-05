@@ -1,5 +1,6 @@
 # Ignore hosts file
 hosts
+ssh.cfg
 
 # Ignore vault passwords
 vault_password.txt

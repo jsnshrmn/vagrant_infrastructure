@@ -27,7 +27,7 @@ inventory = {
 # Read vagrant hosts from Vagrantfile
 with open( "/vagrant/Vagrantfile", "r") as hosts:
     for line in hosts:
-        if( "vagrant.localdomain" in line):
+        if( "vm.hostname = " in line and ".vagrant.localdomain" in line):
             my_host = line.split("=")[1].replace('"', '').strip()
             inventory['vagrant']['hosts'].append(my_host)
 
