@@ -43,7 +43,6 @@ mkdir -pv /etc/ansible
 # exit if there is not ansible vault secret.
 stat /vagrant/vault_password.txt &>/dev/null || exit 1
 
-
 # ansible complains if this file is on the windows share because permissions
 cp /vagrant/ansible.cfg /etc/ansible/ansible.cfg
 chown root:${admingroup} /etc/ansible/ansible.cfg

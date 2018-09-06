@@ -50,19 +50,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 # Default configuration for all VMs
 config.vm.synced_folder ".", "/vagrant"
 config.ssh.forward_agent = true
+#config.ssh.password = "vagrant"
 
 config.vm.provider "docker" do |d|
   d.build_dir = "."
   d.has_ssh = true
+  d.create_args = ["--privileged", "--cap-add", "SYS_ADMIN", "-v", "/run", "-v", "/tmp", "-v", "/sys/fs/cgroup:/sys/fs/cgroup:ro"]
 end
-
 
 # Use a "real" user for interactive logins
 if  ['ssh', 'scp'].include? vagrant_command
   # Maybe you want to set this to a real account
   config.ssh.username = vagrant_user
 end
-
 
 # Load and build project VMs
 # Use binding.eval to make sure that we're in the right scope.
@@ -89,16 +89,20 @@ config.vm.provision "shell",
     keep_color: "True",
     run: "always"
 
+# All VMs should have systemd. Docker is fast enough that we actually need to
+# wait for the vagrant share to be mounted. Thus the sleep block.
+config.vm.provision "shell",
+    inline: "while [ ! -f /vagrant/scripts/systemd.sh ]; do sleep 1; done; \
+        sudo /vagrant/scripts/systemd.sh",
+    keep_color: "True",
+    run: "always"
+
 # Build Ansible control machine and run vagrant playbook
 config.vm.define "ansible" do |ansible|
-ansible.vm.hostname = "ansible.vagrant.localdomain"
-ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
-    #ansible.vm.provider :virtualbox do |v|
-    #  v.memory = 256  # Keeping overhead low
-    #end
+    ansible.vm.hostname = "ansible.vagrant.localdomain"
+    ansible.vm.network "private_network", ip: "192.168.96.2", :netmask => "255.255.255.0"
     ansible.vm.provision "shell",
-                         inline: "sudo /vagrant/scripts/bootstrap.sh #{vagrant_project}",
-                         keep_color: "True"
-#                         args: vagrant_project
+    inline: "sudo /vagrant/scripts/bootstrap.sh #{vagrant_project}",
+        keep_color: "True"
   end
 end

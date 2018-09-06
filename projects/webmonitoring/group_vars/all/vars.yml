@@ -21,7 +21,7 @@ web_monitoring_db_gitref: master
 web_monitoring_ui_gitref: master
 #web_monitoring_ui_gitref: master
 # Dependencies
-node_version: v8.10.0
+node_version: v8.11.4
 
 # as in testing.ansible.monitoring.envirodatagov.org
 subdomain: testing
