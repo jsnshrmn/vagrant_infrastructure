@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 
 # If systemd is working, exit.
-if systemctl -a
+if systemctl -a > /dev/null
 then
   exit 0
 else
   # Fire up systemd if it's not happy
-  nohup systemd --system --unit=basic.target > /root/$(hostname -f).systemd.log 2>&1 &
+  cd /root/
+  nohup /bin/systemd --system --unit=basic.target > $(hostname -f).systemd.log 2>&1 &
 
   # Disable the ssh service, since we're running sshd in the foreground
   # to keep our container running.

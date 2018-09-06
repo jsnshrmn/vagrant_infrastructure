@@ -23,6 +23,7 @@ log_path = /vagrant/ansible.log
 vault_password_file = /vagrant/scripts/vaultpw.sh
 inventory = /vagrant/#{vagrant_project}/inventory.py
 forks = 100
+timeout = 30
 [ssh_connection]
 scp_if_ssh = True
 CFG
@@ -83,17 +84,18 @@ if  ['up', 'reload', 'provision'].include? vagrant_command
   end
 end
 
-# All VMs should report in so we can configure them with ansible
+# All VMs should report in so we can configure them with ansible.
+# Docker is fast enough that we may be executing before vagrant share is up.
+# Thus the sleep block.
 config.vm.provision "shell",
-    inline: "sudo /vagrant/scripts/gethostinfo.sh",
+    inline: "while [ ! -f /vagrant/scripts/gethostinfo.sh ]; do sleep 1; done; \
+        sudo /vagrant/scripts/gethostinfo.sh",
     keep_color: "True",
     run: "always"
 
-# All VMs should have systemd. Docker is fast enough that we actually need to
-# wait for the vagrant share to be mounted. Thus the sleep block.
+# Ensure systemd is running on all containers.
 config.vm.provision "shell",
-    inline: "while [ ! -f /vagrant/scripts/systemd.sh ]; do sleep 1; done; \
-        sudo /vagrant/scripts/systemd.sh",
+    inline: "sudo /root/systemd.sh",
     keep_color: "True",
     run: "always"
 
