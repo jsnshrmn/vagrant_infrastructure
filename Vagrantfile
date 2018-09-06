@@ -27,7 +27,7 @@ timeout = 30
 [ssh_connection]
 scp_if_ssh = True
 CFG
-open(vagrantfile_path+'/ansible.cfg', 'w') do |f|
+open(vagrantfile_path+'/ansible.cfg', 'w', crlf_newline: false) do |f|
   f.puts ansible_cfg
 end
 
@@ -65,7 +65,7 @@ if  ['ssh', 'scp'].include? vagrant_command
   config.ssh.username = vagrant_user
 end
 
-# Load and build project VMs
+# Load and build project containers.
 # Use binding.eval to make sure that we're in the right scope.
 binding.eval(File.read(File.expand_path(vagrantfile_path+'/'+ vagrant_project+"/vagrant.rb")))
 
@@ -74,17 +74,17 @@ binding.eval(File.read(File.expand_path(vagrantfile_path+'/'+ vagrant_project+"/
 # about our VMs.
 if  ['up', 'reload', 'provision'].include? vagrant_command
   # /etc/hosts file for control machine
-  File.open(vagrantfile_path+'/hosts', 'w') do |hosts|
+  File.open(vagrantfile_path+'/hosts', 'w', crlf_newline: false) do |hosts|
     hosts.puts "127.0.0.1	localhost.localdomain localhost"
   end
   # ~/.ssh/config for vagrant user on control machine
-  File.open(vagrantfile_path+'/ssh.cfg', 'w') do |hosts|
+  File.open(vagrantfile_path+'/ssh.cfg', 'w', crlf_newline: false) do |hosts|
     hosts.puts "Host *.vagrant.localdomain"
     hosts.puts "  StrictHostKeyChecking no"
   end
 end
 
-# All VMs should report in so we can configure them with ansible.
+# Each container writes its ip address and hostname to a common hosts file.
 # Docker is fast enough that we may be executing before vagrant share is up.
 # Thus the sleep block.
 config.vm.provision "shell",
