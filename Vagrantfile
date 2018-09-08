@@ -56,7 +56,7 @@ config.ssh.forward_agent = true
 config.vm.provider "docker" do |d|
   d.build_dir = "."
   d.has_ssh = true
-  d.create_args = ["--privileged", "--cap-add", "SYS_ADMIN", "-v", "/run", "-v", "/tmp", "-v", "/sys/fs/cgroup:/sys/fs/cgroup:ro"]
+  d.create_args = ["--cap-add", "SYS_ADMIN", "-v", "/run", "-v", "/tmp", "-v", "/sys/fs/cgroup:/sys/fs/cgroup:ro"]
 end
 
 # Use a "real" user for interactive logins
