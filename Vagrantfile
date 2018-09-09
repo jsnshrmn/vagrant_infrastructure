@@ -93,11 +93,9 @@ config.vm.provision "shell",
     keep_color: "True",
     run: "always"
 
-# Ensure systemd is running on all containers.
+# Kill the SSHD process we used to bootstrap and start a proper service.
 config.vm.provision "shell",
-    inline: "sudo /root/systemd.sh",
-    keep_color: "True",
-    run: "always"
+    inline: "/usr/bin/pkill sshd && /bin/systemctl start ssh"
 
 # Build Ansible control machine and run vagrant playbook
 config.vm.define "ansible" do |ansible|
