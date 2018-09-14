@@ -3,7 +3,7 @@
 echo "export VISIBLE=now" >> /etc/profile
 
 # Install packages.
-apt update && apt install -y dialog locales openssh-server python-minimal sudo systemd
+apt update && apt install -y dialog locales locales-all openssh-server python-minimal sudo systemd
 
 # Lie if anyone anyone asks if we booted up with systemd.
 # https://www.freedesktop.org/software/systemd/man/sd_booted.html
